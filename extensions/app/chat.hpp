@@ -33,7 +33,7 @@ public:
   Program(const Options &options)
     : m_options(options), m_scheduler(face.getIoService())
   {
-    std::cout << "SVS client starting:" << m_options.m_id << std::endl;
+    std::cerr << "SVS client " << m_options.m_id << "started" << std::endl;
     m_signingInfo.setSha256Signing();
   }
 
@@ -44,7 +44,7 @@ public:
     m_scheduler.schedule(ndn::time::milliseconds(100), [this] { publishMsg("testmsg1 from "+m_options.m_id); });
 
     m_scheduler.schedule(ndn::time::milliseconds(300), [this] {publishMsg("testmsg2 from "+m_options.m_id); });
-    
+
     face.processEvents();
 
   }

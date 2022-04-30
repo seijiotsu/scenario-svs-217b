@@ -25,7 +25,7 @@ const SecurityOptions SecurityOptions::DEFAULT(SecurityOptions::DEFAULT_KEYCHAIN
 void
 KeyChainSigner::sign(Interest& interest) const
 {
-  //m_keyChain.sign(interest, signingInfo);
+  m_keyChain.sign(interest, signingInfo);
 }
 
 void

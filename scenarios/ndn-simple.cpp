@@ -20,9 +20,9 @@
 // ndn-simple.cpp
 
 #include "ns3/core-module.h"
+#include "ns3/ndnSIM-module.h"
 #include "ns3/network-module.h"
 #include "ns3/point-to-point-module.h"
-#include "ns3/ndnSIM-module.h"
 
 namespace ns3 {
 
@@ -46,14 +46,12 @@ namespace ns3 {
  *     NS_LOG=ndn.Consumer:ndn.Producer ./waf --run=ndn-simple
  */
 
-int
-main(int argc, char* argv[])
-{
+int main(int argc, char *argv[]) {
   // setting default parameters for PointToPoint links and channels
   Config::SetDefault("ns3::PointToPointNetDevice::DataRate", StringValue("10Mbps"));
   Config::SetDefault("ns3::PointToPointChannel::Delay", StringValue("10ms"));
   Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("20p"));
-
+  ndn::Interest::setDefaultCanBePrefix(false);
   // Read optional command-line parameters (e.g., enable visualizer with ./waf --run=<> --visualize
   CommandLine cmd;
   cmd.Parse(argc, argv);
@@ -81,14 +79,14 @@ main(int argc, char* argv[])
   ndn::AppHelper consumerHelper1("Chat");
   consumerHelper1.SetAttribute("Id", StringValue("/node1"));
   auto apps = consumerHelper1.Install(nodes.Get(0));
-  apps.Stop(Seconds(10.0)); // stop the consumer app at 10 seconds mark
+  apps.Stop(Seconds(10.0));// stop the consumer app at 10 seconds mark
 
   ndn::AppHelper consumerHelper2("Chat");
   consumerHelper2.SetAttribute("Id", StringValue("/node2"));
   auto apps2 = consumerHelper2.Install(nodes.Get(2));
   apps2.Start(Seconds(0.04));
-  apps2.Stop(Seconds(10.0)); // stop the consumer app at 10 seconds mark
- 
+  apps2.Stop(Seconds(10.0));// stop the consumer app at 10 seconds mark
+
 
   ndn::FibHelper::AddRoute(nodes.Get(2), "/ndn/svs", nodes.Get(1), 1);
   ndn::FibHelper::AddRoute(nodes.Get(1), "/ndn/svs", nodes.Get(2), 1);
@@ -104,10 +102,8 @@ main(int argc, char* argv[])
   return 0;
 }
 
-} // namespace ns3
+}// namespace ns3
 
-int
-main(int argc, char* argv[])
-{
+int main(int argc, char *argv[]) {
   return ns3::main(argc, argv);
 }
