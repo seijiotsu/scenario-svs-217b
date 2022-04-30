@@ -46,9 +46,12 @@ namespace ns3 {
  *     NS_LOG=ndn.Consumer:ndn.Producer ./waf --run=ndn-simple
  */
 
-int main(int argc, char *argv[]) {
+int
+main(int argc, char* argv[])
+{
   // setting default parameters for PointToPoint links and channels
-  Config::SetDefault("ns3::PointToPointNetDevice::DataRate", StringValue("10Mbps"));
+  Config::SetDefault("ns3::PointToPointNetDevice::DataRate",
+                     StringValue("10Mbps"));
   Config::SetDefault("ns3::PointToPointChannel::Delay", StringValue("10ms"));
   Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("20p"));
   ndn::Interest::setDefaultCanBePrefix(false);
@@ -71,18 +74,20 @@ int main(int argc, char *argv[]) {
   ndnHelper.InstallAll();
 
   // Choosing forwarding strategy
-  ndn::StrategyChoiceHelper::InstallAll("/ndn/svs", "/localhost/nfd/strategy/multicast");
+  ndn::StrategyChoiceHelper::InstallAll("/ndn/svs",
+                                        "/localhost/nfd/strategy/multicast");
 
   // Installing applications
 
   // Consumer
   ndn::AppHelper consumerHelper1("Chat");
-  consumerHelper1.SetAttribute("Id", StringValue("/node1"));
+  consumerHelper1.SetPrefix("/node1");
+  consumerHelper1.SetAttribute("PublishDelayMs", IntegerValue(1000));
   auto apps = consumerHelper1.Install(nodes.Get(0));
   apps.Stop(Seconds(10.0));// stop the consumer app at 10 seconds mark
 
   ndn::AppHelper consumerHelper2("Chat");
-  consumerHelper2.SetAttribute("Id", StringValue("/node2"));
+  consumerHelper2.SetPrefix("/node2");
   auto apps2 = consumerHelper2.Install(nodes.Get(2));
   apps2.Start(Seconds(0.04));
   apps2.Stop(Seconds(10.0));// stop the consumer app at 10 seconds mark
@@ -104,6 +109,8 @@ int main(int argc, char *argv[]) {
 
 }// namespace ns3
 
-int main(int argc, char *argv[]) {
+int
+main(int argc, char* argv[])
+{
   return ns3::main(argc, argv);
 }

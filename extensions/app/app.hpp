@@ -1,32 +1,31 @@
-#include "ns3/ndnSIM/helper/ndn-stack-helper.hpp"
-#include "ns3/ndnSIM-module.h"
+#include "../ndn-svs/svsync.hpp"
+#include "chat.hpp"
 #include "ns3/application.h"
 #include "ns3/integer.h"
+#include "ns3/ndnSIM-module.h"
+#include "ns3/ndnSIM/helper/ndn-stack-helper.hpp"
 #include "ns3/string.h"
-#include "chat.hpp"
-#include "../ndn-svs/svsync.hpp"
 #include <strstream>
 
 class ProgramPrefix : public Program
 {
 public:
-  ProgramPrefix(const Options &options) : Program(options)
+  ProgramPrefix(const Options& options)
+      : Program(options)
   {
     // Use HMAC signing
     ndn::svs::SecurityOptions securityOptions(m_keyChain);
     //securityOptions.interestSigner->signingInfo.setSigningHmacKey("dGhpcyBpcyBhIHNlY3JldCBtZXNzYWdl");
 
     m_svs = std::make_shared<ndn::svs::SVSync>(
-      ndn::Name(m_options.prefix),
-      ndn::Name(m_options.m_id),
-      face,
-      std::bind(&ProgramPrefix::onMissingData, this, _1),
-      securityOptions);
+            ndn::Name(m_options.prefix), ndn::Name(m_options.m_id), face,
+            std::bind(&ProgramPrefix::onMissingData, this, _1),
+            securityOptions);
   }
 };
 
 namespace ns3 {
-namespace ndn{
+namespace ndn {
 
 // Class inheriting from ns3::Application
 class Chat : public Application
@@ -35,11 +34,19 @@ public:
   static TypeId
   GetTypeId()
   {
-    static TypeId tid = TypeId("Chat")
-      .SetParent<Application>()
-      .AddConstructor<Chat>()
-      .AddAttribute("Id", "Id", StringValue("default_id"),
-            MakeStringAccessor(&Chat::m_id), MakeStringChecker());
+    static TypeId tid =
+            TypeId("Chat")
+                    .SetParent<Application>()
+                    .AddConstructor<Chat>()
+                    .AddAttribute(
+                            "PublishDelayMs", "publish Delay ms",
+                            IntegerValue(1000),
+                            MakeIntegerAccessor(&Chat::m_publish_delay_ms),
+                            MakeIntegerChecker<int64_t>())
+                    .AddAttribute("Prefix", "Prefix",
+                                  StringValue("default_prefix"),
+                                  MakeStringAccessor(&Chat::m_id),
+                                  MakeStringChecker());
 
     return tid;
   }
@@ -52,6 +59,7 @@ protected:
     Options opt;
     opt.prefix = "/ndn/svs";
     opt.m_id = m_id;
+    opt.publish_delay_ms = m_publish_delay_ms;
     m_instance.reset(new ProgramPrefix(opt));
     m_instance->run();
   }
@@ -66,9 +74,8 @@ protected:
 private:
   std::unique_ptr<ProgramPrefix> m_instance;
   std::string m_id;
-
+  int64_t m_publish_delay_ms;
   //chunks::Producer::Options opts;
 };
-}
-} // namespace ns3
-
+}// namespace ndn
+}// namespace ns3

@@ -25,28 +25,33 @@ struct Options
 {
   std::string prefix;
   std::string m_id;
+  int64_t publish_delay_ms;
 };
 
 class Program
 {
 public:
-  Program(const Options &options)
-    : m_options(options), m_scheduler(face.getIoService())
+  Program(const Options& options)
+      : m_options(options)
+      , m_scheduler(face.getIoService())
   {
-    std::cerr << "SVS client " << m_options.m_id << "started" << std::endl;
+    std::cerr << "SVS client " << m_options.m_id << " started" << std::endl;
     m_signingInfo.setSha256Signing();
+  }
+
+  void
+  fetchLoop()
+  {
+    publishMsg("msg from " + m_options.m_id);
+    m_scheduler.schedule(ndn::time::milliseconds(m_options.publish_delay_ms),
+                         [this] { fetchLoop(); });
   }
 
   void
   run()
   {
-
-    m_scheduler.schedule(ndn::time::milliseconds(100), [this] { publishMsg("testmsg1 from "+m_options.m_id); });
-
-    m_scheduler.schedule(ndn::time::milliseconds(300), [this] {publishMsg("testmsg2 from "+m_options.m_id); });
-
+    fetchLoop();
     face.processEvents();
-
   }
 
 protected:
@@ -58,12 +63,15 @@ protected:
       for (ndn::svs::SeqNo s = v[i].low; s <= v[i].high; ++s)
       {
         ndn::svs::NodeID nid = v[i].nodeId;
-        m_svs->fetchData(nid, s, [this,nid] (const ndn::Data& data)
-          {
-            const std::string content(reinterpret_cast<const char*>(data.getContent().value()),
-                                      data.getContent().value_size());
-            std::cout <<m_options.m_id <<" received data#" << data.getName()[-1].toNumber() <<" from:"<<data.getName()[0]  << " at "<< ndn::time::steady_clock::now()<< std::endl;
-          });
+        m_svs->fetchData(nid, s, [this, nid](const ndn::Data& data) {
+          const std::string content(
+                  reinterpret_cast<const char*>(data.getContent().value()),
+                  data.getContent().value_size());
+          std::cout << m_options.m_id << " received data#"
+                    << data.getName()[-1].toNumber()
+                    << " from:" << data.getName()[0] << " at "
+                    << ndn::time::steady_clock::now() << std::endl;
+        });
       }
     }
   }
@@ -72,9 +80,11 @@ protected:
   publishMsg(const std::string& msg)
   {
     // Content block
-    auto block = ndn::encoding::makeBinaryBlock(ndn::tlv::Content, msg.data(), msg.size());
+    auto block = ndn::encoding::makeBinaryBlock(ndn::tlv::Content, msg.data(),
+                                                msg.size());
     auto seq = m_svs->publishData(block, ndn::time::milliseconds(5000));
-    std::cout <<m_options.m_id <<" publish data#" << seq <<" at "<< ndn::time::steady_clock::now()<< std::endl;
+    std::cout << m_options.m_id << " publish data#" << seq << " at "
+              << ndn::time::steady_clock::now() << std::endl;
   }
 
 public:
@@ -86,11 +96,12 @@ public:
   ndn::Scheduler m_scheduler;
 };
 
-template <typename T>
+template<typename T>
 int
-callMain(int argc, char **argv)
+callMain(int argc, char** argv)
 {
-  if (argc != 2) {
+  if (argc != 2)
+  {
     std::cout << "Usage: client <prefix>" << std::endl;
     exit(1);
   }
