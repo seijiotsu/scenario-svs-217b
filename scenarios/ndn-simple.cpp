@@ -26,26 +26,6 @@
 
 namespace ns3 {
 
-/**
- * This scenario simulates a very simple network topology:
- *
- *
- *      +----------+     1Mbps      +--------+     1Mbps      +----------+
- *      | consumer | <------------> | router | <------------> | producer |
- *      +----------+         10ms   +--------+          10ms  +----------+
- *
- *
- * Consumer requests data from producer with frequency 10 interests per second
- * (interests contain constantly increasing sequence number).
- *
- * For every received interest, producer replies with a data packet, containing
- * 1024 bytes of virtual payload.
- *
- * To run scenario and see what is happening, use the following command:
- *
- *     NS_LOG=ndn.Consumer:ndn.Producer ./waf --run=ndn-simple
- */
-
 int
 main(int argc, char* argv[])
 {
@@ -76,6 +56,11 @@ main(int argc, char* argv[])
   // Choosing forwarding strategy
   ndn::StrategyChoiceHelper::InstallAll("/ndn/svs",
                                         "/localhost/nfd/strategy/multicast");
+  ndn::StrategyChoiceHelper::InstallAll("/", "/localhost/nfd/strategy/best-route");
+
+  // Installing global routing interface on all nodes
+  ndn::GlobalRoutingHelper ndnGlobalRoutingHelper;
+  ndnGlobalRoutingHelper.InstallAll();
 
   // Installing applications
 
@@ -85,6 +70,7 @@ main(int argc, char* argv[])
   consumerHelper1.SetAttribute("PublishDelayMs", IntegerValue(500));
   auto apps = consumerHelper1.Install(nodes.Get(0));
   apps.Stop(Seconds(10.0));// stop the consumer app at 10 seconds mark
+  ndnGlobalRoutingHelper.AddOrigins("/node1", nodes.Get(0));
 
   ndn::AppHelper consumerHelper2("Chat");
   consumerHelper2.SetPrefix("/node2");
@@ -92,6 +78,7 @@ main(int argc, char* argv[])
   auto apps2 = consumerHelper2.Install(nodes.Get(2));
   apps2.Start(Seconds(0.04));
   apps2.Stop(Seconds(10.0));// stop the consumer app at 10 seconds mark
+  ndnGlobalRoutingHelper.AddOrigins("/node2", nodes.Get(2));
 
 
   ndn::FibHelper::AddRoute(nodes.Get(2), "/ndn/svs", nodes.Get(1), 1);
@@ -99,6 +86,7 @@ main(int argc, char* argv[])
   ndn::FibHelper::AddRoute(nodes.Get(1), "/ndn/svs", nodes.Get(0), 1);
   ndn::FibHelper::AddRoute(nodes.Get(0), "/ndn/svs", nodes.Get(1), 1);
 
+  ndn::GlobalRoutingHelper::CalculateRoutes();
 
   Simulator::Stop(Seconds(10.0));
 

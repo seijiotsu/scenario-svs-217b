@@ -36,7 +36,7 @@ public:
       : m_options(options)
       , m_scheduler(face.getIoService())
   {
-    std::cerr << "SVS client " << m_options.m_id << " started" << std::endl;
+    std::cerr << "SVS client " << m_options.m_id << " started" << "\n";
     m_signingInfo.setSha256Signing();
   }
 
@@ -78,7 +78,7 @@ protected:
                   << " from:" << data.getName()[0] << " at "
                   << ndn::time::steady_clock::now().time_since_epoch().count() /
                              1e6
-                  << "ms since start of simulation" << std::endl;
+                  << "ms since start of simulation" << "\n";
         });
       }
     }
