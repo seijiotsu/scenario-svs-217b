@@ -82,12 +82,13 @@ main(int argc, char* argv[])
   // Consumer
   ndn::AppHelper consumerHelper1("Chat");
   consumerHelper1.SetPrefix("/node1");
-  consumerHelper1.SetAttribute("PublishDelayMs", IntegerValue(1000));
+  consumerHelper1.SetAttribute("PublishDelayMs", IntegerValue(500));
   auto apps = consumerHelper1.Install(nodes.Get(0));
   apps.Stop(Seconds(10.0));// stop the consumer app at 10 seconds mark
 
   ndn::AppHelper consumerHelper2("Chat");
   consumerHelper2.SetPrefix("/node2");
+  consumerHelper2.SetAttribute("PublishDelayMs", IntegerValue(1000));
   auto apps2 = consumerHelper2.Install(nodes.Get(2));
   apps2.Start(Seconds(0.04));
   apps2.Stop(Seconds(10.0));// stop the consumer app at 10 seconds mark

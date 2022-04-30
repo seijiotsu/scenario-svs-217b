@@ -14,9 +14,10 @@
  * PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
  */
 
+#include <functional>
 #include <iostream>
+#include <random>
 #include <string>
-#include <thread>
 #include <vector>
 
 #include "../ndn-svs/svsync-base.hpp"
@@ -43,13 +44,17 @@ public:
   fetchLoop()
   {
     publishMsg("msg from " + m_options.m_id);
-    m_scheduler.schedule(ndn::time::milliseconds(m_options.publish_delay_ms),
+    std::uniform_int_distribution<int64_t> rd(-m_options.publish_delay_ms / 4,
+                                              m_options.publish_delay_ms / 4);
+    m_scheduler.schedule(ndn::time::milliseconds(m_options.publish_delay_ms +
+                                                 rd(m_random_engine)),
                          [this] { fetchLoop(); });
   }
 
   void
   run()
   {
+    m_random_engine.seed(std::hash<std::string>()(m_options.m_id));
     fetchLoop();
     face.processEvents();
   }
@@ -67,10 +72,13 @@ protected:
           const std::string content(
                   reinterpret_cast<const char*>(data.getContent().value()),
                   data.getContent().value_size());
-          std::cout << m_options.m_id << " received data#"
-                    << data.getName()[-1].toNumber()
-                    << " from:" << data.getName()[0] << " at "
-                    << ndn::time::steady_clock::now() << std::endl;
+          std::cout
+                  << m_options.m_id << " received data#"
+                  << data.getName()[-1].toNumber()
+                  << " from:" << data.getName()[0] << " at "
+                  << ndn::time::steady_clock::now().time_since_epoch().count() /
+                             1e6
+                  << "ms since start of simulation" << std::endl;
         });
       }
     }
@@ -84,7 +92,8 @@ protected:
                                                 msg.size());
     auto seq = m_svs->publishData(block, ndn::time::milliseconds(5000));
     std::cout << m_options.m_id << " publish data#" << seq << " at "
-              << ndn::time::steady_clock::now() << std::endl;
+              << ndn::time::steady_clock::now().time_since_epoch().count() / 1e6
+              << "ms since start of simulation" << std::endl;
   }
 
 public:
@@ -94,6 +103,7 @@ public:
   ndn::KeyChain m_keyChain;
   ndn::security::SigningInfo m_signingInfo;
   ndn::Scheduler m_scheduler;
+  std::default_random_engine m_random_engine;
 };
 
 template<typename T>
