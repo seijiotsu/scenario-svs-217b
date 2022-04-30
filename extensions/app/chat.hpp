@@ -62,7 +62,7 @@ protected:
           {
             const std::string content(reinterpret_cast<const char*>(data.getContent().value()),
                                       data.getContent().value_size());
-            std::cout <<m_options.m_id <<" received data with name:"<<data.getName() << " and content: " << content << std::endl;
+            std::cout <<m_options.m_id <<" received data#" << data.getName()[-1].toNumber() <<" from:"<<data.getName()[0]  << " at "<< ndn::time::steady_clock::now()<< std::endl;
           });
       }
     }
@@ -73,7 +73,8 @@ protected:
   {
     // Content block
     auto block = ndn::encoding::makeBinaryBlock(ndn::tlv::Content, msg.data(), msg.size());
-    m_svs->publishData(block, ndn::time::milliseconds(100));
+    auto seq = m_svs->publishData(block, ndn::time::milliseconds(5000));
+    std::cout <<m_options.m_id <<" publish data#" << seq <<" at "<< ndn::time::steady_clock::now()<< std::endl;
   }
 
 public:
