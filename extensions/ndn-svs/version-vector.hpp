@@ -46,6 +46,9 @@ public:
   ndn::Block
   encode() const;
 
+  std::vector<ndn::Block>
+  encodeToVec(std::size_t chunkSize) const;
+
   /** Get a human-readable representation */
   std::string
   toStr() const;
@@ -80,6 +83,12 @@ public:
   has(const NodeID& nid) const
   {
     return m_map.find(nid) != end();
+  }
+
+  std::size_t
+  size() const
+  {
+    return m_map.size();
   }
 
 private:

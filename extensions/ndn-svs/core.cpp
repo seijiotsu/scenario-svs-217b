@@ -130,9 +130,19 @@ SVSyncCore::retxSyncInterest(bool send, unsigned int delay)
 
     // Only send interest if in steady state or local vector has newer state
     // than recorded interests
+
+    // Regular sendSyncInterest
     if (!m_recordedVv || mergeStateVector(*m_recordedVv).first)
       sendSyncInterest();
     m_recordedVv = nullptr;
+
+    /*
+    // sendSyncInterestFrag, fragmented by MTU, which is defined within the sendSyncInterestFrag function for now
+    if (!m_recordedVv || mergeStateVector(*m_recordedVv).first)
+      sendSyncInterestFrag();
+    m_recordedVv = nullptr;
+    */
+
   }
 
   if (delay == 0)
@@ -177,6 +187,35 @@ SVSyncCore::sendSyncInterest()
   interest.setMustBeFresh(true);
 
   m_face.expressInterest(interest, nullptr, nullptr, nullptr);
+}
+
+void
+SVSyncCore::sendSyncInterestFrag()
+{
+  if (!m_initialized)
+    return;
+
+  // Random select based on an artificial mtu
+  std::size_t mtu = 20;
+  // Ceiling of integeer division
+
+  {
+    std::lock_guard<std::mutex> lock(m_vvMutex);
+    std::cerr<<"DEBUG: Size for splitted vec is "<< m_vv.encodeToVec(mtu).size()<<std::endl;
+    for (auto const& single_block : m_vv.encodeToVec(mtu)) {
+      Name syncName(m_syncPrefix);
+      Interest interest;
+      syncName.append(Name::Component(single_block));
+      interest.setName(syncName);
+      interest.setInterestLifetime(time::milliseconds(1000));
+      interest.setCanBePrefix(true);
+      interest.setMustBeFresh(true);
+
+      m_face.expressInterest(interest, nullptr, nullptr, nullptr);
+    }
+
+
+  }
 }
 
 std::pair<bool, bool>

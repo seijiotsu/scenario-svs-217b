@@ -63,6 +63,43 @@ VersionVector::encode() const
   return enc.block();
 }
 
+
+std::vector<ndn::Block>
+VersionVector::encodeToVec(std::size_t chunkSize) const
+{
+  //Ceiling int division
+  int numIter = m_map.size() / chunkSize + (((m_map.size()  < 0) ^ (chunkSize > 0)) && (m_map.size() % chunkSize)); 
+  std::vector<ndn::Block> _ret;
+  auto it = m_map.rbegin();
+
+  for (std::size_t i = 0; i < numIter; i++) {
+    ndn::encoding::EncodingBuffer enc;
+
+    size_t totalLength = 0;
+
+    for (int ct = 0; it != m_map.rend() && ct < chunkSize; it++)
+    {
+      // SeqNo
+      size_t entryLength = ndn::encoding::prependNonNegativeIntegerBlock(enc, tlv::SeqNo, it->second);
+
+      // NodeID (Name)
+      entryLength += enc.prependBlock(it->first.wireEncode());
+
+      totalLength += enc.prependVarNumber(entryLength);
+      totalLength += enc.prependVarNumber(tlv::StateVectorEntry);
+      totalLength += entryLength;
+    }
+
+    enc.prependVarNumber(totalLength);
+    enc.prependVarNumber(tlv::StateVector);
+    _ret.push_back(enc.block());
+  }
+
+  return _ret;
+
+
+}
+
 std::string
 VersionVector::toStr() const
 {
