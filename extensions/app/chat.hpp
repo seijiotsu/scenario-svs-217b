@@ -68,18 +68,12 @@ protected:
       for (ndn::svs::SeqNo s = v[i].low; s <= v[i].high; ++s)
       {
         ndn::svs::NodeID nid = v[i].nodeId;
-        m_svs->fetchData(nid, s, [this, nid](const ndn::Data& data) {
-          const std::string content(
-                  reinterpret_cast<const char*>(data.getContent().value()),
-                  data.getContent().value_size());
-          std::cout
-                  << m_options.m_id << " received data#"
-                  << data.getName()[-1].toNumber()
-                  << " from:" << data.getName()[0] << " at "
-                  << ndn::time::steady_clock::now().time_since_epoch().count() /
-                             1e6
-                  << "ms since start of simulation" << "\n";
-        });
+        std::cout <<
+                ndn::time::steady_clock::now().time_since_epoch().count() / 1e6 << "," <<
+                m_options.m_id << "," <<
+                "RECV," <<
+                nid.toUri() << "::" << s <<
+            std::endl;
       }
     }
   }
@@ -91,9 +85,13 @@ protected:
     auto block = ndn::encoding::makeBinaryBlock(ndn::tlv::Content, msg.data(),
                                                 msg.size());
     auto seq = m_svs->publishData(block, ndn::time::milliseconds(5000));
-    std::cout << m_options.m_id << " publish data#" << seq << " at "
-              << ndn::time::steady_clock::now().time_since_epoch().count() / 1e6
-              << "ms since start of simulation" << std::endl;
+
+    std::cout <<
+        ndn::time::steady_clock::now().time_since_epoch().count() / 1e6 << "," <<
+        m_options.m_id << "," <<
+        "PUB," <<
+        m_options.m_id << "::" << seq <<
+      std::endl;
   }
 
 public:

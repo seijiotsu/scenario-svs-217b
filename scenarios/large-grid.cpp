@@ -13,13 +13,13 @@ main(int argc, char* argv[])
   // Setting default parameters for PointToPoint links and channels
   Config::SetDefault("ns3::PointToPointNetDevice::DataRate",
                      StringValue("10Mbps"));
-  Config::SetDefault("ns3::PointToPointChannel::Delay", StringValue("5ms"));
+  Config::SetDefault("ns3::PointToPointChannel::Delay", StringValue("10ms"));
   // Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("1000p"));
 
   //constants and configurations
   int nRows = 6, nCols = 6;
-  double stopSecond = 10;
-  int interPubMsSlow = 2000;
+  double stopSecond = 20;
+  int interPubMsSlow = atoi(argv[1]);
   int interPubMsFast = 300;
   int nFastPublishNodes = 3;
   assert(nFastPublishNodes <= nRows * nCols);

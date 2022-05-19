@@ -8,3 +8,4 @@ build/
 *.pyc
 .idea
 cmake-build-debug
+*-checkpoint.ipynb
