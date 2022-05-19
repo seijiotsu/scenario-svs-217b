@@ -107,7 +107,7 @@ main(int argc, char* argv[])
         ndn::FibHelper::AddRoute(participant, "/ndn/svs",
                                  grid.GetNode(row + 1, col), 1);
       }
-      if (col < nRows - 1)
+      if (col < nCols - 1)
       {
         ndn::FibHelper::AddRoute(participant, "/ndn/svs",
                                  grid.GetNode(row, col + 1), 1);
