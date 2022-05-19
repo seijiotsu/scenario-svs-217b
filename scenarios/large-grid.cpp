@@ -14,7 +14,7 @@ main(int argc, char* argv[])
   Config::SetDefault("ns3::PointToPointNetDevice::DataRate",
                      StringValue("10Mbps"));
   Config::SetDefault("ns3::PointToPointChannel::Delay", StringValue("5ms"));
-  Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("1000p"));
+  // Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("1000p"));
 
   //constants and configurations
   int nRows = 6, nCols = 6;

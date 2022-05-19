@@ -1,4 +1,4 @@
 Prerequisites
 =============
 
-Install latest version of ndnSim.
+Install latest version of ndnSim and configure/build with waf.

@@ -33,8 +33,8 @@ main(int argc, char* argv[])
   Config::SetDefault("ns3::PointToPointNetDevice::DataRate",
                      StringValue("10Mbps"));
   Config::SetDefault("ns3::PointToPointChannel::Delay", StringValue("10ms"));
-  Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("20p"));
-  ndn::Interest::setDefaultCanBePrefix(false);
+  // Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("20p"));
+  // ndn::Interest::setDefaultCanBePrefix(false);
   // Read optional command-line parameters (e.g., enable visualizer with ./waf --run=<> --visualize
   CommandLine cmd;
   cmd.Parse(argc, argv);
@@ -56,7 +56,8 @@ main(int argc, char* argv[])
   // Choosing forwarding strategy
   ndn::StrategyChoiceHelper::InstallAll("/ndn/svs",
                                         "/localhost/nfd/strategy/multicast");
-  ndn::StrategyChoiceHelper::InstallAll("/", "/localhost/nfd/strategy/best-route");
+  ndn::StrategyChoiceHelper::InstallAll("/",
+                                        "/localhost/nfd/strategy/best-route");
 
   // Installing global routing interface on all nodes
   ndn::GlobalRoutingHelper ndnGlobalRoutingHelper;

@@ -72,7 +72,7 @@ public:
    * @returns Sequence number of the published data packet
    */
   SeqNo
-  publishData(const uint8_t* buf, size_t len, const ndn::time::milliseconds& freshness,
+  publishData(const char* buf, size_t len, const ndn::time::milliseconds& freshness,
               const NodeID& id = EMPTY_NODE_ID);
 
   /**

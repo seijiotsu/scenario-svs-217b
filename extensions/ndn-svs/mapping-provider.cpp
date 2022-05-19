@@ -147,7 +147,7 @@ MappingList::encode() const
   for (const auto& p : pairs)
   {
     // Name
-    size_t entryLength = enc.prependBlock(p.second.wireEncode());
+    size_t entryLength = enc.prependBytes(p.second.wireEncode());
 
     // SeqNo
     entryLength += ndn::encoding::prependNonNegativeIntegerBlock(enc, tlv::SeqNo, p.first);
@@ -157,7 +157,7 @@ MappingList::encode() const
     totalLength += entryLength;
   }
 
-  totalLength += enc.prependBlock(nodeId.wireEncode());
+  totalLength += enc.prependBytes(nodeId.wireEncode());
 
   enc.prependVarNumber(totalLength);
   enc.prependVarNumber(tlv::MappingData);

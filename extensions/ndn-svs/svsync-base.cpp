@@ -55,7 +55,7 @@ SVSyncBase::SVSyncBase(const Name& syncPrefix,
 }
 
 SeqNo
-SVSyncBase::publishData(const uint8_t* buf, size_t len, const ndn::time::milliseconds& freshness,
+SVSyncBase::publishData(const char* buf, size_t len, const ndn::time::milliseconds& freshness,
                         const NodeID& nid)
 {
   return publishData(ndn::encoding::makeBinaryBlock(ndn::tlv::Content, buf, len), freshness, nid);
