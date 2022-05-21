@@ -17,7 +17,7 @@ main(int argc, char* argv[])
   // Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("1000p"));
 
   //constants and configurations
-  int nRows = 6, nCols = 6;
+  int nRows = atoi(argv[2]), nCols = atoi(argv[3]);
   double stopSecond = 20;
   int interPubMsSlow = atoi(argv[1]);
   int interPubMsFast = 300;

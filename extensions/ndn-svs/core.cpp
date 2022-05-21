@@ -132,17 +132,14 @@ SVSyncCore::retxSyncInterest(bool send, unsigned int delay)
     // than recorded interests
 
     // Regular sendSyncInterest
-    if (!m_recordedVv || mergeStateVector(*m_recordedVv).first)
-      sendSyncInterest();
-    m_recordedVv = nullptr;
+    // if (!m_recordedVv || mergeStateVector(*m_recordedVv).first)
+    //   sendSyncInterest();
+    // m_recordedVv = nullptr;
 
-    /*
     // sendSyncInterestFrag, fragmented by MTU, which is defined within the sendSyncInterestFrag function for now
     if (!m_recordedVv || mergeStateVector(*m_recordedVv).first)
       sendSyncInterestFrag();
     m_recordedVv = nullptr;
-    */
-
   }
 
   if (delay == 0)
@@ -196,12 +193,12 @@ SVSyncCore::sendSyncInterestFrag()
     return;
 
   // Random select based on an artificial mtu
-  std::size_t mtu = 20;
+  std::size_t mtu = 80;
   // Ceiling of integeer division
 
   {
     std::lock_guard<std::mutex> lock(m_vvMutex);
-    std::cerr<<"DEBUG: Size for splitted vec is "<< m_vv.encodeToVec(mtu).size()<<std::endl;
+    // std::cerr<<"DEBUG: Size for splitted vec is "<< m_vv.encodeToVec(mtu).size()<<std::endl;
     for (auto const& single_block : m_vv.encodeToVec(mtu)) {
       Name syncName(m_syncPrefix);
       Interest interest;
@@ -212,6 +209,7 @@ SVSyncCore::sendSyncInterestFrag()
       interest.setMustBeFresh(true);
 
       m_face.expressInterest(interest, nullptr, nullptr, nullptr);
+      // std::cerr << interest << std::endl;
     }
 
 

@@ -68,16 +68,15 @@ std::vector<ndn::Block>
 VersionVector::encodeToVec(std::size_t chunkSize) const
 {
   //Ceiling int division
-  int numIter = m_map.size() / chunkSize + (((m_map.size()  < 0) ^ (chunkSize > 0)) && (m_map.size() % chunkSize));
   std::vector<ndn::Block> _ret;
   auto it = m_map.rbegin();
 
-  for (std::size_t i = 0; i < numIter; i++) {
+  while (it != m_map.rend()) {
     ndn::encoding::EncodingBuffer enc;
 
     size_t totalLength = 0;
 
-    for (int ct = 0; it != m_map.rend() && ct < chunkSize; it++)
+    while (it != m_map.rend() && totalLength < chunkSize)
     {
       // SeqNo
       size_t entryLength = ndn::encoding::prependNonNegativeIntegerBlock(enc, tlv::SeqNo, it->second);
@@ -88,6 +87,8 @@ VersionVector::encodeToVec(std::size_t chunkSize) const
       totalLength += enc.prependVarNumber(entryLength);
       totalLength += enc.prependVarNumber(tlv::StateVectorEntry);
       totalLength += entryLength;
+
+      it++;
     }
 
     enc.prependVarNumber(totalLength);
