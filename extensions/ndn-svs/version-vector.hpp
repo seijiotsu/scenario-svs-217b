@@ -18,6 +18,7 @@
 #define NDN_SVS_VERSION_VECTOR_HPP
 
 #include "common.hpp"
+#include "lrucache.h"
 
 #include <map>
 
@@ -57,6 +58,7 @@ public:
   set(const NodeID& nid, SeqNo seqNo)
   {
     m_map[nid] = seqNo;
+    m_lru.update(nid);
     return seqNo;
   }
 
@@ -93,6 +95,7 @@ public:
 
 private:
   std::map<NodeID, SeqNo> m_map;
+  cache::lru_cache<NodeID> m_lru;
 };
 
 } // namespace ndn
