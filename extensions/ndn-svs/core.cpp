@@ -43,6 +43,7 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
   , m_keyChainMem("pib-memory:", "tpm-memory:")
   , m_scheduler(m_face.getIoService())
   , m_instanceId(s_instanceCounter++)
+  , m_subsetSelect(15,15)
 {
   // Register sync interest filter
   m_syncRegisteredPrefix =
@@ -199,7 +200,7 @@ SVSyncCore::sendSyncInterestFrag()
   {
     std::lock_guard<std::mutex> lock(m_vvMutex);
     // std::cerr<<"DEBUG: Size for splitted vec is "<< m_vv.encodeToVec(mtu).size()<<std::endl;
-    for (auto const& single_block : m_vv.encodeToVec(mtu)) {
+    for (auto const& single_block : m_subsetSelect.select(m_vv).encodeToVec(mtu)) {
       Name syncName(m_syncPrefix);
       Interest interest;
       syncName.append(Name::Component(single_block));

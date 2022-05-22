@@ -69,6 +69,11 @@ public:
     return elem == m_map.end() ? 0 : elem->second;
   }
 
+  std::list<NodeID>
+  getLru(){
+    return m_lru.get();
+  }
+
   const_iterator
   begin() const
   {

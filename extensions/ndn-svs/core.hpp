@@ -19,6 +19,7 @@
 
 #include "common.hpp"
 #include "security-options.hpp"
+#include "subset-selector.h"
 #include "version-vector.hpp"
 
 #include <ndn-cxx/util/random.hpp>
@@ -299,6 +300,9 @@ private:
 
   // Prevent sending interests before initialization
   bool m_initialized = false;
+
+  //subset
+  SubsetSelector m_subsetSelect;
 };
 
 }  // namespace svs
