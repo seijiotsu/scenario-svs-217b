@@ -200,7 +200,11 @@ SVSyncCore::sendSyncInterestFrag()
   {
     std::lock_guard<std::mutex> lock(m_vvMutex);
     // std::cerr<<"DEBUG: Size for splitted vec is "<< m_vv.encodeToVec(mtu).size()<<std::endl;
-    for (auto const& single_block : m_subsetSelect.select(m_vv).encodeToVec(mtu)) {
+    /* TODO: m_subsetSelect seems to select a mixture of random and LRU states, I thought 
+    * "sendSyncInterestFrag" should serve as a simple baseline to just brute-force split based on MTU
+    */
+    //for (auto const& single_block : m_subsetSelect.select(m_vv).encodeToVec(mtu)) {
+    for (auto const& single_block : m_vv.encodeToVec(mtu)) {
       Name syncName(m_syncPrefix);
       Interest interest;
       syncName.append(Name::Component(single_block));
@@ -215,6 +219,103 @@ SVSyncCore::sendSyncInterestFrag()
 
 
   }
+}
+
+void
+SVSyncCore::sendSyncInterestRand(size_t nRand)
+{
+  if (!m_initialized)
+    return;
+
+  std::size_t mtu = 80;
+  // Note that the size is determined by the min of the two, this will make the comparison with sendSyncInterestFrag easier
+  std::size_t to_select = std::min(mtu, nRand);
+  m_subsetSelect.setNRecent(0);
+  m_subsetSelect.setNRandom(to_select);
+
+
+  Name syncName(m_syncPrefix);
+  Interest interest;
+
+  {
+    std::lock_guard<std::mutex> lock(m_vvMutex);
+    // At this point the size of subselected vv is already <= MTU
+    syncName.append(Name::Component(m_subsetSelect.select(m_vv).encode()));
+  }
+
+  interest.setName(syncName);
+  interest.setInterestLifetime(time::milliseconds(1000));
+  interest.setCanBePrefix(true);
+  interest.setMustBeFresh(true);
+
+  m_face.expressInterest(interest, nullptr, nullptr, nullptr);
+
+}
+
+void
+SVSyncCore::sendSyncInterestRecent(size_t nRecent)
+{
+  if (!m_initialized)
+    return;
+
+  std::size_t mtu = 80;
+  // Note that the size is determined by the min of the two, this will make the comparison with sendSyncInterestFrag easier
+  std::size_t to_select = std::min(mtu, nRecent);
+  m_subsetSelect.setNRecent(to_select);
+  m_subsetSelect.setNRandom(0);
+
+
+  Name syncName(m_syncPrefix);
+  Interest interest;
+
+  {
+    std::lock_guard<std::mutex> lock(m_vvMutex);
+    // At this point the size of subselected vv is already <= MTU
+    syncName.append(Name::Component(m_subsetSelect.select(m_vv).encode()));
+  }
+
+  interest.setName(syncName);
+  interest.setInterestLifetime(time::milliseconds(1000));
+  interest.setCanBePrefix(true);
+  interest.setMustBeFresh(true);
+
+  m_face.expressInterest(interest, nullptr, nullptr, nullptr);
+
+}
+
+void
+SVSyncCore::sendSyncInterestMix(float pRecent, float pRand)
+{
+  assert(pRand + pRecent == 1.0 && pRand >= 0 && pRecent >= 0);
+
+  if (!m_initialized)
+    return;
+
+  std::size_t mtu = 80;
+  std::size_t nRand = (size_t)(mtu * pRand);
+  std::size_t nRecent = mtu - nRand;
+
+
+  m_subsetSelect.setNRecent(nRecent);
+  m_subsetSelect.setNRandom(nRand);
+
+
+  Name syncName(m_syncPrefix);
+  Interest interest;
+
+  {
+    std::lock_guard<std::mutex> lock(m_vvMutex);
+    // At this point the size of subselected vv is already <= MTU
+    syncName.append(Name::Component(m_subsetSelect.select(m_vv).encode()));
+  }
+
+  interest.setName(syncName);
+  interest.setInterestLifetime(time::milliseconds(1000));
+  interest.setCanBePrefix(true);
+  interest.setMustBeFresh(true);
+
+  m_face.expressInterest(interest, nullptr, nullptr, nullptr);
+
 }
 
 std::pair<bool, bool>

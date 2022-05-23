@@ -18,10 +18,19 @@ namespace ndn::svs {
 class SubsetSelector
 {
 public:
-  SubsetSelector(int nRecent, int nRandom)
+  SubsetSelector(size_t nRecent, size_t nRandom)
       : m_numRecent(nRandom)
       , m_numRandom(nRecent)
   {}
+
+  void
+  setNRecent(size_t num)
+  {m_numRecent = num;}
+
+
+  void
+  setNRandom(size_t num)
+  {m_numRandom = num;}
 
   VersionVector
   select(VersionVector vv)
