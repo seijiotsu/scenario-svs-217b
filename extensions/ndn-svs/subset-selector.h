@@ -153,9 +153,9 @@ public:
   }
 
 private:
-  size_t m_numBucketSize;
   size_t m_numRecent;
   size_t m_numRandom;
+  size_t m_numBucketSize;
   size_t bucket_counter;
 };
 
