@@ -18,9 +18,11 @@ namespace ndn::svs {
 class SubsetSelector
 {
 public:
-  SubsetSelector(size_t nRecent, size_t nRandom)
-      : m_numRecent(nRandom)
-      , m_numRandom(nRecent)
+  SubsetSelector(size_t nRecent, size_t nRandom, size_t nBucketSize)
+      : m_numRecent(nRecent)
+      , m_numRandom(nRandom)
+      , m_numBucketSize(nBucketSize)
+      , bucket_counter(0)
   {}
 
   void
@@ -32,8 +34,74 @@ public:
   setNRandom(size_t num)
   {m_numRandom = num;}
 
+  void
+  setNBucketSize(size_t num)
+  {m_numBucketSize = num;}
+
+
+
+  void
+  findBucket(const std::vector<NodeID>& bucketSelectionCandidate, std::unordered_set<NodeID>& selectedBucket)
+  {
+    for (size_t i = m_numBucketSize; i > 0; i++, bucket_counter++)
+    {
+        bucket_counter = (bucket_counter > bucketSelectionCandidate.size()) ? 0 : bucket_counter;
+        selectedBucket.insert(bucketSelectionCandidate[bucket_counter]);
+    }
+  }
+
   VersionVector
-  select(VersionVector vv)
+  selectBucketRecent(VersionVector vv, bool g_order = false)
+  {
+    VersionVector result;
+    std::unordered_set<NodeID> selectedRecent;
+    std::unordered_set<NodeID> selectedBucket;
+
+
+    std::list<NodeID> recentUpdated = std::move(vv.getLru());
+    for (size_t numRecentSelected = std::min(m_numRecent, recentUpdated.size());
+         numRecentSelected > 0; numRecentSelected--)
+    {
+      selectedRecent.insert(*recentUpdated.begin());
+      recentUpdated.pop_front();
+    }
+
+    std::vector<NodeID> bucketSelectionCandidate;
+    for (auto i: vv)
+    {
+      if (selectedRecent.find(i.first) == selectedRecent.end())
+      {
+        bucketSelectionCandidate.push_back(i.first);
+      }
+    }
+
+    if (g_order) 
+    {
+      // The method for sort should not matter as long as all nodes use the same method.
+      std::sort(bucketSelectionCandidate.begin(), bucketSelectionCandidate.end());
+    } 
+
+    //TODO: why checking m_numRefcent != 0 here? If users want full-random (by setting m_numRecent = 0), we no longer inser random?
+    if (!bucketSelectionCandidate.empty() && m_numRecent != 0)
+    {
+      findBucket(bucketSelectionCandidate, selectedBucket);
+    }
+
+    for (auto i: vv)
+    {
+      if (selectedRecent.find(i.first) != selectedRecent.end() ||
+          selectedBucket.find(i.first) != selectedBucket.end())
+      {
+        result.set(i.first, i.second);
+      }
+    }
+
+    return result;
+
+  }
+
+  VersionVector
+  selectRandRecent(VersionVector vv)
   {
     VersionVector result;
     std::unordered_set<NodeID> selectedRecent;
@@ -56,6 +124,8 @@ public:
       }
     }
 
+    
+    //TODO: why checking m_numRefcent != 0 here? If users want full-random (by setting m_numRecent = 0), we no longer inser random?
     if (!randomSelectionCandidate.empty() && m_numRecent != 0)
     {
       std::default_random_engine engine = std::default_random_engine(
@@ -63,7 +133,10 @@ public:
       std::sample(randomSelectionCandidate.begin(),
                   randomSelectionCandidate.end(),
                   std::inserter(selectedRandom, selectedRandom.begin()),
-                  m_numRandom, engine);
+                  //TODO: what if recentUpdated size is smaller than n_Recent? should we auto-fill the empty spaces with random? Here the size of selectedRecent <= m_numRecent so we 
+                  //can do subtraction 
+                  (m_numRandom), engine);
+                  //(m_numRandom + (m_numRecent - selectedRecent.size())), engine);
     }
 
 
@@ -80,8 +153,10 @@ public:
   }
 
 private:
+  size_t m_numBucketSize;
   size_t m_numRecent;
   size_t m_numRandom;
+  size_t bucket_counter;
 };
 
 }// namespace ndn::svs
