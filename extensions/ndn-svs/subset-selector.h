@@ -43,6 +43,7 @@ public:
   void
   findBucket(const std::vector<NodeID>& bucketSelectionCandidate, std::unordered_set<NodeID>& selectedBucket)
   {
+    //todo: i--?
     for (size_t i = m_numBucketSize; i > 0; i++, bucket_counter++)
     {
         bucket_counter = (bucket_counter > bucketSelectionCandidate.size()) ? 0 : bucket_counter;
@@ -124,9 +125,8 @@ public:
       }
     }
 
-    
-    //TODO: why checking m_numRefcent != 0 here? If users want full-random (by setting m_numRecent = 0), we no longer inser random?
-    if (!randomSelectionCandidate.empty() && m_numRecent != 0)
+    //the condition is added to avoid a division by 0 bug in STL
+    if (!randomSelectionCandidate.empty() && m_numRandom != 0)
     {
       std::default_random_engine engine = std::default_random_engine(
               ndn::time::steady_clock::now().time_since_epoch().count());

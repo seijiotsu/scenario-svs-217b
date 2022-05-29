@@ -287,7 +287,7 @@ SVSyncCore::sendSyncInterestRecent(size_t nRecent)
 void
 SVSyncCore::sendSyncInterestRandMix(float pRecent, float pRand)
 {
-  assert(pRand + pRecent == 1.0 && pRand >= 0 && pRecent >= 0);
+  //assert(pRand + pRecent == 1.0 && pRand >= 0 && pRecent >= 0);
 
   if (!m_initialized)
     return;
