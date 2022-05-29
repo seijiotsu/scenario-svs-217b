@@ -22,6 +22,8 @@ main(int argc, char* argv[])
   int interPubMsSlow = atoi(argv[1]);
   int interPubMsFast = 300;
   int nFastPublishNodes = 3;
+  int nRecent = 0;
+  int nRandom = 4;
   assert(nFastPublishNodes <= nRows * nCols);
 
   //select fast publishers
@@ -79,6 +81,9 @@ main(int argc, char* argv[])
       svsHelper.SetAttribute(
               "PublishDelayMs",
               IntegerValue(isFastPublisher ? interPubMsFast : interPubMsSlow));
+      svsHelper.SetAttribute("NRecent",IntegerValue(nRecent));
+      svsHelper.SetAttribute("NRand",IntegerValue(nRandom));
+
       auto apps = svsHelper.Install(participant);
       apps.Stop(Seconds(stopSecond));// stop the consumer app at 10 seconds mark
       ndnGlobalRoutingHelper.AddOrigins(prefix, participant);

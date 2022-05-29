@@ -32,7 +32,9 @@ SVSyncBase::SVSyncBase(const Name& syncPrefix,
                        ndn::Face& face,
                        const UpdateCallback& updateCallback,
                        const SecurityOptions& securityOptions,
-                       std::shared_ptr<DataStore> dataStore)
+                       std::shared_ptr<DataStore> dataStore,
+                       uint64_t numRand,
+                       uint64_t numRecent)
   : m_syncPrefix(syncPrefix)
   , m_dataPrefix(dataPrefix)
   , m_securityOptions(securityOptions)
@@ -41,7 +43,7 @@ SVSyncBase::SVSyncBase(const Name& syncPrefix,
   , m_fetcher(face, securityOptions)
   , m_onUpdate(updateCallback)
   , m_dataStore(std::move(dataStore))
-  , m_core(m_face, m_syncPrefix, m_onUpdate, securityOptions, m_id)
+  , m_core(m_face, m_syncPrefix, m_onUpdate, securityOptions, m_id, numRand,numRecent)
 {
   // Register new data store
   if (m_dataStore == DEFAULT_DATASTORE)

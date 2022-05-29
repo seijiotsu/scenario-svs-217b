@@ -27,6 +27,8 @@ struct Options
   std::string prefix;
   std::string m_id;
   int64_t publish_delay_ms;
+  int64_t nRand;
+  int64_t nRecent;
 };
 
 class Program

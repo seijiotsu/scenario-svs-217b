@@ -18,11 +18,12 @@ namespace ndn::svs {
 class SubsetSelector
 {
 public:
-  SubsetSelector(size_t nRecent, size_t nRandom, size_t nBucketSize)
+  SubsetSelector(size_t nRecent, size_t nRandom, size_t nBucketSize, uint64_t seed)
       : m_numRecent(nRecent)
       , m_numRandom(nRandom)
       , m_numBucketSize(nBucketSize)
       , bucket_counter(0)
+      , m_engine(seed)
   {}
 
   void
@@ -76,11 +77,11 @@ public:
       }
     }
 
-    if (g_order) 
+    if (g_order)
     {
       // The method for sort should not matter as long as all nodes use the same method.
       std::sort(bucketSelectionCandidate.begin(), bucketSelectionCandidate.end());
-    } 
+    }
 
     //TODO: why checking m_numRefcent != 0 here? If users want full-random (by setting m_numRecent = 0), we no longer inser random?
     if (!bucketSelectionCandidate.empty() && m_numRecent != 0)
@@ -128,14 +129,12 @@ public:
     //the condition is added to avoid a division by 0 bug in STL
     if (!randomSelectionCandidate.empty() && m_numRandom != 0)
     {
-      std::default_random_engine engine = std::default_random_engine(
-              ndn::time::steady_clock::now().time_since_epoch().count());
       std::sample(randomSelectionCandidate.begin(),
                   randomSelectionCandidate.end(),
                   std::inserter(selectedRandom, selectedRandom.begin()),
-                  //TODO: what if recentUpdated size is smaller than n_Recent? should we auto-fill the empty spaces with random? Here the size of selectedRecent <= m_numRecent so we 
-                  //can do subtraction 
-                  (m_numRandom), engine);
+                  //TODO: what if recentUpdated size is smaller than n_Recent? should we auto-fill the empty spaces with random? Here the size of selectedRecent <= m_numRecent so we
+                  //can do subtraction
+                  (m_numRandom), m_engine);
                   //(m_numRandom + (m_numRecent - selectedRecent.size())), engine);
     }
 
@@ -148,7 +147,6 @@ public:
         result.set(i.first, i.second);
       }
     }
-
     return result;
   }
 
@@ -157,6 +155,7 @@ private:
   size_t m_numRandom;
   size_t m_numBucketSize;
   size_t bucket_counter;
+  std::default_random_engine m_engine;
 };
 
 }// namespace ndn::svs

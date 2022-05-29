@@ -30,7 +30,9 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
                        const Name& syncPrefix,
                        const UpdateCallback& onUpdate,
                        const SecurityOptions& securityOptions,
-                       const NodeID& nid)
+                       const NodeID& nid,
+                       uint64_t numRand,
+                       uint64_t numRecent)
   : m_face(face)
   , m_syncPrefix(syncPrefix)
   , m_securityOptions(securityOptions)
@@ -43,8 +45,7 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
   , m_keyChainMem("pib-memory:", "tpm-memory:")
   , m_scheduler(m_face.getIoService())
   , m_instanceId(s_instanceCounter++)
-  , m_subsetSelect(15,15, 10)
-  , bucket_counter(0)
+  , m_subsetSelect(numRecent,numRand, 10,std::hash<std::string>()(nid.toUri()))
 {
   // Register sync interest filter
   m_syncRegisteredPrefix =
@@ -140,7 +141,7 @@ SVSyncCore::retxSyncInterest(bool send, unsigned int delay)
 
     // sendSyncInterestFrag, fragmented by MTU, which is defined within the sendSyncInterestFrag function for now
     if (!m_recordedVv || mergeStateVector(*m_recordedVv).first)
-      sendSyncInterestFrag();
+      sendSyncInterestRandRecent(); //sendSyncInterestFrag();
     m_recordedVv = nullptr;
   }
 
@@ -222,6 +223,7 @@ SVSyncCore::sendSyncInterestFrag()
   }
 }
 
+/*
 void
 SVSyncCore::sendSyncInterestRand(size_t nRand)
 {
@@ -283,23 +285,15 @@ SVSyncCore::sendSyncInterestRecent(size_t nRecent)
   m_face.expressInterest(interest, nullptr, nullptr, nullptr);
 
 }
+ */
 
 void
-SVSyncCore::sendSyncInterestRandMix(float pRecent, float pRand)
+SVSyncCore::sendSyncInterestRandRecent()
 {
   //assert(pRand + pRecent == 1.0 && pRand >= 0 && pRecent >= 0);
 
   if (!m_initialized)
     return;
-
-  std::size_t mtu = this_mtu;
-  std::size_t nRand = (size_t)(mtu * pRand);
-  std::size_t nRecent = mtu - nRand;
-
-
-  m_subsetSelect.setNRecent(nRecent);
-  m_subsetSelect.setNRandom(nRand);
-
 
   Name syncName(m_syncPrefix);
   Interest interest;
@@ -311,7 +305,7 @@ SVSyncCore::sendSyncInterestRandMix(float pRecent, float pRand)
   }
 
   interest.setName(syncName);
-  interest.setInterestLifetime(time::milliseconds(1000));
+  interest.setInterestLifetime(time::milliseconds(300));
   interest.setCanBePrefix(true);
   interest.setMustBeFresh(true);
 

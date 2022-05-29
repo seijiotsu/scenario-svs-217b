@@ -77,7 +77,9 @@ public:
              const Name& syncPrefix,
              const UpdateCallback& onUpdate,
              const SecurityOptions& securityOptions = SecurityOptions::DEFAULT,
-             const NodeID& nid = EMPTY_NODE_ID);
+             const NodeID& nid = EMPTY_NODE_ID,
+             uint64_t numRand =128,
+             uint64_t numRecent = 128);
 
   /**
    * @brief Reset the sync tree (and restart synchronization again)
@@ -174,7 +176,7 @@ NDN_SVS_PUBLIC_WITH_TESTS_ELSE_PRIVATE:
   sendInitialInterest();
 
   /**
-   * @brief sendSyncInterest and schedule a new retxSyncInterest event.
+   * @brief sendSyncInterestRandRecent and schedule a new retxSyncInterest event.
    *
    * @param send Send a sync interest immediately
    * @param delay Delay in milliseconds to schedule next interest (0 for default).
@@ -233,8 +235,7 @@ NDN_SVS_PUBLIC_WITH_TESTS_ELSE_PRIVATE:
    * @param pRecent Percent of randomly-selected states to include in the interest
    * @param pRand Percent of randomly-selected states to include in the interest
    */
-  void
-  sendSyncInterestRandMix(float pRecent, float pRand);
+  void sendSyncInterestRandRecent();
 
 
   /**
@@ -337,8 +338,6 @@ private:
   // Aggregates incoming vectors while in suppression state
   std::unique_ptr<VersionVector> m_recordedVv = nullptr;
   mutable std::mutex m_recordedVvMutex;
-  // Used by bucketing-method
-  size_t bucket_counter;
 
   // Extra block
   GetExtraBlockCallback m_getExtraBlock;

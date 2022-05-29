@@ -52,7 +52,9 @@ public:
              ndn::Face& face,
              const UpdateCallback& updateCallback,
              const SecurityOptions& securityOptions = SecurityOptions::DEFAULT,
-             std::shared_ptr<DataStore> dataStore = DEFAULT_DATASTORE);
+             std::shared_ptr<DataStore> dataStore = DEFAULT_DATASTORE,
+             uint64_t numRand = 128,
+             uint64_t numRecent = 128);
 
   virtual
   ~SVSyncBase() = default;

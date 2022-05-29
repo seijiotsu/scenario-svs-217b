@@ -20,7 +20,8 @@ public:
     m_svs = std::make_shared<ndn::svs::SVSync>(
             ndn::Name(m_options.prefix), ndn::Name(m_options.m_id), face,
             std::bind(&ProgramPrefix::onMissingData, this, _1),
-            securityOptions);
+            securityOptions,ndn::svs::SVSyncBase::DEFAULT_DATASTORE,
+            m_options.nRand,m_options.nRecent);
   }
 };
 
@@ -43,6 +44,16 @@ public:
                             IntegerValue(1000),
                             MakeIntegerAccessor(&Chat::m_publish_delay_ms),
                             MakeIntegerChecker<int64_t>())
+                    .AddAttribute(
+                            "NRand", "num rand",
+                            IntegerValue(128),
+                            MakeIntegerAccessor(&Chat::m_nRand),
+                            MakeIntegerChecker<int64_t>())
+                    .AddAttribute(
+                            "NRecent", "num recent",
+                            IntegerValue(128),
+                            MakeIntegerAccessor(&Chat::m_nRecent),
+                            MakeIntegerChecker<int64_t>())
                     .AddAttribute("Prefix", "Prefix",
                                   StringValue("default_prefix"),
                                   MakeStringAccessor(&Chat::m_id),
@@ -60,6 +71,8 @@ protected:
     opt.prefix = "/ndn/svs";
     opt.m_id = m_id;
     opt.publish_delay_ms = m_publish_delay_ms;
+    opt.nRecent = m_nRecent;
+    opt.nRand = m_nRand;
     m_instance.reset(new ProgramPrefix(opt));
     m_instance->run();
   }
@@ -75,6 +88,8 @@ private:
   std::unique_ptr<ProgramPrefix> m_instance;
   std::string m_id;
   int64_t m_publish_delay_ms;
+  int64_t m_nRand;
+  int64_t m_nRecent;
   //chunks::Producer::Options opts;
 };
 }// namespace ndn
