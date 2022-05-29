@@ -17,13 +17,13 @@ main(int argc, char* argv[])
   // Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("1000p"));
 
   //constants and configurations
-  int nRows = atoi(argv[2]), nCols = atoi(argv[3]);
-  double stopSecond = 20;
-  int interPubMsSlow = atoi(argv[1]);
-  int interPubMsFast = 300;
-  int nFastPublishNodes = 3;
-  int nRecent = 0;
-  int nRandom = 4;
+  int nRows = atoi(argv[1]), nCols = atoi(argv[2]);
+  double stopSecond = atoi(argv[8]);
+  int interPubMsSlow = atoi(argv[3]);
+  int interPubMsFast = atoi(argv[4]);
+  int nFastPublishNodes = atoi(argv[5]);
+  int nRecent = atoi(argv[6]);
+  int nRandom = atoi(argv[7]);
   assert(nFastPublishNodes <= nRows * nCols);
 
   //select fast publishers

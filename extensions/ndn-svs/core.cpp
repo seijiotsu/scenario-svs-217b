@@ -38,7 +38,7 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
   , m_securityOptions(securityOptions)
   , m_id(nid)
   , m_onUpdate(onUpdate)
-  , m_rng(ndn::random::getRandomNumberEngine())
+  , m_rng(std::hash<std::string>()("SALT_WHATEVER"+nid.toUri()+"SALT"))
   , m_packetDist(10, 15)
   , m_retxDist(30000 * 0.9, 30000 * 1.1)
   , m_intrReplyDist(50 * 0.9, 50 * 1.1)

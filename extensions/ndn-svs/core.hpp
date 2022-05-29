@@ -344,7 +344,7 @@ private:
   RecvExtraBlockCallback m_recvExtraBlock;
 
   // Random Engine
-  ndn::random::RandomNumberEngine& m_rng;
+  ndn::random::RandomNumberEngine m_rng;
   // Milliseconds between sending two packets in the queues
   std::uniform_int_distribution<> m_packetDist;
   // Milliseconds between sending two sync interests
