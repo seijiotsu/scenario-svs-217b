@@ -18,12 +18,13 @@ namespace ndn::svs {
 class SubsetSelector
 {
 public:
-  SubsetSelector(size_t nRecent, size_t nRandom, size_t nBucketSize, uint64_t seed)
+  SubsetSelector(size_t nRecent, size_t nRandom, size_t nBucketSize,const NodeID& nid)
       : m_numRecent(nRecent)
       , m_numRandom(nRandom)
       , m_numBucketSize(nBucketSize)
       , bucket_counter(0)
-      , m_engine(seed)
+      , m_nid (nid)
+      , m_engine(std::hash<std::string>()(nid.toUri()))
   {}
 
   void
@@ -44,8 +45,7 @@ public:
   void
   findBucket(const std::vector<NodeID>& bucketSelectionCandidate, std::unordered_set<NodeID>& selectedBucket)
   {
-    //todo: i--?
-    for (size_t i = m_numBucketSize; i > 0; i++, bucket_counter++)
+    for (size_t i = m_numBucketSize; i > 0; i--, bucket_counter++)
     {
         bucket_counter = (bucket_counter > bucketSelectionCandidate.size()) ? 0 : bucket_counter;
         selectedBucket.insert(bucketSelectionCandidate[bucket_counter]);
@@ -103,7 +103,7 @@ public:
   }
 
   VersionVector
-  selectRandRecent(VersionVector vv)
+  selectRandRecent(VersionVector vv, bool includeSelf = true)
   {
     VersionVector result;
     std::unordered_set<NodeID> selectedRecent;
@@ -115,6 +115,11 @@ public:
     {
       selectedRecent.insert(*recentUpdated.begin());
       recentUpdated.pop_front();
+    }
+
+    if (includeSelf && selectedRecent.find(m_nid)==selectedRecent.end()){
+      //this works even if self is not in vv. See the last loop in this function
+      selectedRecent.insert(m_nid);
     }
 
     std::vector<NodeID> randomSelectionCandidate;
@@ -156,6 +161,7 @@ private:
   size_t m_numBucketSize;
   size_t bucket_counter;
   std::default_random_engine m_engine;
+  NodeID m_nid;
 };
 
 }// namespace ndn::svs

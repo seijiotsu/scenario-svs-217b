@@ -5,6 +5,8 @@
 #include "ns3/point-to-point-module.h"
 #include <random>
 
+#include "../extensions/ndn-svs/global.h"
+
 namespace ns3 {
 
 int
@@ -81,8 +83,8 @@ main(int argc, char* argv[])
       svsHelper.SetAttribute(
               "PublishDelayMs",
               IntegerValue(isFastPublisher ? interPubMsFast : interPubMsSlow));
-      svsHelper.SetAttribute("NRecent",IntegerValue(nRecent));
-      svsHelper.SetAttribute("NRand",IntegerValue(nRandom));
+      svsHelper.SetAttribute("NRecent", IntegerValue(nRecent));
+      svsHelper.SetAttribute("NRand", IntegerValue(nRandom));
 
       auto apps = svsHelper.Install(participant);
       apps.Stop(Seconds(stopSecond));// stop the consumer app at 10 seconds mark
@@ -124,6 +126,9 @@ main(int argc, char* argv[])
 
   Simulator::Run();
   Simulator::Destroy();
+
+  std::cerr << "total " << total_sync_interest_count << " sync interest pkts"
+            << "\ntotal " << total_sync_interest_sz << " sync interest in bytes" << std::endl;
 
   return 0;
 }

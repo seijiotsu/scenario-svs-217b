@@ -15,6 +15,7 @@
  */
 
 #include "core.hpp"
+#include "global.h"
 
 #include <ndn-cxx/security/signing-helpers.hpp>
 #include <ndn-cxx/security/verification-helpers.hpp>
@@ -45,7 +46,7 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
   , m_keyChainMem("pib-memory:", "tpm-memory:")
   , m_scheduler(m_face.getIoService())
   , m_instanceId(s_instanceCounter++)
-  , m_subsetSelect(numRecent,numRand, 10,std::hash<std::string>()(nid.toUri()))
+  , m_subsetSelect(numRecent,numRand, 10,nid)
 {
   // Register sync interest filter
   m_syncRegisteredPrefix =
@@ -140,7 +141,7 @@ SVSyncCore::retxSyncInterest(bool send, unsigned int delay)
     // m_recordedVv = nullptr;
 
     // sendSyncInterestFrag, fragmented by MTU, which is defined within the sendSyncInterestFrag function for now
-    if (!m_recordedVv || mergeStateVector(*m_recordedVv).first)
+    if (!m_recordedVv || mergeStateVector(*m_recordedVv).first){}
       sendSyncInterestRandRecent(); //sendSyncInterestFrag();
     m_recordedVv = nullptr;
   }
@@ -308,6 +309,8 @@ SVSyncCore::sendSyncInterestRandRecent()
   interest.setInterestLifetime(time::milliseconds(300));
   interest.setCanBePrefix(true);
   interest.setMustBeFresh(true);
+  total_sync_interest_count++;
+  total_sync_interest_sz += interest.wireEncode().size();
 
   m_face.expressInterest(interest, nullptr, nullptr, nullptr);
 
