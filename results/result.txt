@@ -1,0 +1,24 @@
+./waf && ./build/large-grid 6row 6col 1000ms_inter_slow 1000ms_inter_fast 2nodes_publish_fast 0RecentPublishedToInclude 36RandomToInclude 7s_stop > results/36rand
+0-0 start at 3s. We care about
+1. 0-0's delay to learn others' states
+-----------------------------------------
+2rand
+total 1362 sync interest pkts
+total 89052 sync interest in bytes
+----------------------------------------
+10rand
+total 1362 sync interest pkts
+total 216444 sync interest in bytes
+----------------------------------------
+20rand
+total 1362 sync interest pkts
+total 380992 sync interest in bytes
+----------------------------------------
+30rand
+total 1362 sync interest pkts
+total 542886 sync interest in bytes
+----------------------------------------
+36rand
+total 1087 sync interest pkts
+total 489462 sync interest in bytes
+

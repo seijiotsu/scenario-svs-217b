@@ -14,8 +14,8 @@ main(int argc, char* argv[])
 {
   // Setting default parameters for PointToPoint links and channels
   Config::SetDefault("ns3::PointToPointNetDevice::DataRate",
-                     StringValue("10Mbps"));
-  Config::SetDefault("ns3::PointToPointChannel::Delay", StringValue("10ms"));
+                     StringValue("50Mbps"));
+  Config::SetDefault("ns3::PointToPointChannel::Delay", StringValue("5ms"));
   // Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("1000p"));
 
   //constants and configurations
@@ -87,7 +87,10 @@ main(int argc, char* argv[])
       svsHelper.SetAttribute("NRand", IntegerValue(nRandom));
 
       auto apps = svsHelper.Install(participant);
-      apps.Stop(Seconds(stopSecond));// stop the consumer app at 10 seconds mark
+      if (row == 0 && col == 0){
+        apps.Start(Seconds(3));
+      }
+      apps.Stop(Seconds(stopSecond));
       ndnGlobalRoutingHelper.AddOrigins(prefix, participant);
     }
   }
