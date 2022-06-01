@@ -141,8 +141,13 @@ SVSyncCore::retxSyncInterest(bool send, unsigned int delay)
     // m_recordedVv = nullptr;
 
     // sendSyncInterestFrag, fragmented by MTU, which is defined within the sendSyncInterestFrag function for now
-    if (!m_recordedVv || mergeStateVector(*m_recordedVv).first){}
-      sendSyncInterestRandRecent(); //sendSyncInterestFrag();
+    if (!m_recordedVv || mergeStateVector(*m_recordedVv).first){
+      if (fragmentation_mtu != 0){
+        sendSyncInterestFrag();
+      }else{
+        sendSyncInterestRandRecent(); //sendSyncInterestFrag();
+      }
+    }
     m_recordedVv = nullptr;
   }
 
@@ -197,17 +202,13 @@ SVSyncCore::sendSyncInterestFrag()
     return;
 
   // Random select based on an artificial mtu
-  std::size_t mtu = this_mtu;
+  std::size_t mtu = fragmentation_mtu;
   // Ceiling of integeer division
 
   {
     std::lock_guard<std::mutex> lock(m_vvMutex);
     // std::cerr<<"DEBUG: Size for splitted vec is "<< m_vv.encodeToVec(mtu).size()<<std::endl;
-    /* TODO: m_subsetSelect seems to select a mixture of random and LRU states, I thought 
-    * "sendSyncInterestFrag" should serve as a simple baseline to just brute-force split based on MTU
-    */
-    //for (auto const& single_block : m_subsetSelect.selectRandRecent(m_vv).encodeToVec(mtu)) {
-    for (auto const& single_block : m_vv.encodeToVec(mtu)) {
+    for (auto const& single_block : m_subsetSelect.selectRandRecent(m_vv).encodeToVec(mtu)) {
       Name syncName(m_syncPrefix);
       Interest interest;
       syncName.append(Name::Component(single_block));
@@ -215,6 +216,8 @@ SVSyncCore::sendSyncInterestFrag()
       interest.setInterestLifetime(time::milliseconds(1000));
       interest.setCanBePrefix(true);
       interest.setMustBeFresh(true);
+      total_sync_interest_count++;
+      total_sync_interest_sz += interest.wireEncode().size();
 
       m_face.expressInterest(interest, nullptr, nullptr, nullptr);
       // std::cerr << interest << std::endl;

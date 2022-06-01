@@ -12,20 +12,37 @@ namespace ns3 {
 int
 main(int argc, char* argv[])
 {
+
+  //constants and configurations
+  int nRows = atoi(argv[1]), nCols = atoi(argv[2]);
+  int interPubMsSlow = atoi(argv[3]);
+  int interPubMsFast = atoi(argv[4]);
+  int nFastPublishNodes = atoi(argv[5]);
+  int nRecent = atoi(argv[6]);
+  int nRandom = atoi(argv[7]);
+  double stopSecond = atoi(argv[8]);
+  double dropRate = atof(argv[9]);
+  fragmentation_mtu = 0;
+  bool frag = argc == 11;
+  if (frag){
+    fragmentation_mtu = atoi(argv[10]);
+  }
+
+  Ptr<UniformRandomVariable> uv = CreateObject<UniformRandomVariable> ();
+  uv->SetStream (50);
+  RateErrorModel error_model;
+  error_model.SetRandomVariable(uv);
+  error_model.SetUnit(RateErrorModel::ERROR_UNIT_PACKET);
+  error_model.SetRate(dropRate);
+
+  //pkt drop rate
+  Config::SetDefault("ns3::PointToPointNetDevice::ReceiveErrorModel", PointerValue(&error_model));
   // Setting default parameters for PointToPoint links and channels
   Config::SetDefault("ns3::PointToPointNetDevice::DataRate",
                      StringValue("50Mbps"));
   Config::SetDefault("ns3::PointToPointChannel::Delay", StringValue("5ms"));
   // Config::SetDefault("ns3::QueueBase::MaxSize", StringValue("1000p"));
 
-  //constants and configurations
-  int nRows = atoi(argv[1]), nCols = atoi(argv[2]);
-  double stopSecond = atoi(argv[8]);
-  int interPubMsSlow = atoi(argv[3]);
-  int interPubMsFast = atoi(argv[4]);
-  int nFastPublishNodes = atoi(argv[5]);
-  int nRecent = atoi(argv[6]);
-  int nRandom = atoi(argv[7]);
   assert(nFastPublishNodes <= nRows * nCols);
 
   //select fast publishers
