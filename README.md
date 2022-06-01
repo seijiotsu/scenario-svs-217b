@@ -8,6 +8,9 @@ Install latest version of ndnSim and configure/build with waf.
 ./waf
 ```
 
+## Implementation detail
+The prefix of the current participant is ALWAYS included in the state vector, no matter how other parameters are set.
+
 ## Examples
 1. ``./build/large-grid 6row 6col 1000ms_inter_slow 100ms_inter_fast 4nodes_publish_fast 0RecentPublishedToInclude 30RandomToInclude 7s_stop 0.02_pkt_drop_rate``
 2. ``./build/large-grid 6row 6col 1000ms_inter_slow 100ms_inter_fast 4nodes_publish_fast 0RecentPublishedToInclude 99999RandomToInclude 7s_stop 0.02_pkt_drop_rate``
