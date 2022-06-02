@@ -48,7 +48,7 @@ public:
   encode() const;
 
   std::vector<ndn::Block>
-  encodeToVec(std::size_t chunkSize) const;
+  encodeToVec(std::size_t numSv) const;
 
   /** Get a human-readable representation */
   std::string

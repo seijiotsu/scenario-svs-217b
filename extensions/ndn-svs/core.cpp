@@ -213,7 +213,7 @@ SVSyncCore::sendSyncInterestFrag()
       Interest interest;
       syncName.append(Name::Component(single_block));
       interest.setName(syncName);
-      interest.setInterestLifetime(time::milliseconds(1000));
+      interest.setInterestLifetime(time::milliseconds(300));
       interest.setCanBePrefix(true);
       interest.setMustBeFresh(true);
       total_sync_interest_count++;
@@ -226,70 +226,6 @@ SVSyncCore::sendSyncInterestFrag()
 
   }
 }
-
-/*
-void
-SVSyncCore::sendSyncInterestRand(size_t nRand)
-{
-  if (!m_initialized)
-    return;
-
-  std::size_t mtu = this_mtu;
-  // Note that the size is determined by the min of the two, this will make the comparison with sendSyncInterestFrag easier
-  std::size_t to_select = std::min(mtu, nRand);
-  m_subsetSelect.setNRecent(0);
-  m_subsetSelect.setNRandom(to_select);
-
-
-  Name syncName(m_syncPrefix);
-  Interest interest;
-
-  {
-    std::lock_guard<std::mutex> lock(m_vvMutex);
-    // At this point the size of subselected vv is already <= MTU
-    syncName.append(Name::Component(m_subsetSelect.selectRandRecent(m_vv).encode()));
-  }
-
-  interest.setName(syncName);
-  interest.setInterestLifetime(time::milliseconds(1000));
-  interest.setCanBePrefix(true);
-  interest.setMustBeFresh(true);
-
-  m_face.expressInterest(interest, nullptr, nullptr, nullptr);
-
-}
-
-void
-SVSyncCore::sendSyncInterestRecent(size_t nRecent)
-{
-  if (!m_initialized)
-    return;
-
-  std::size_t mtu = this_mtu;
-  // Note that the size is determined by the min of the two, this will make the comparison with sendSyncInterestFrag easier
-  std::size_t to_select = std::min(mtu, nRecent);
-  m_subsetSelect.setNRecent(to_select);
-  m_subsetSelect.setNRandom(0);
-
-
-  Name syncName(m_syncPrefix);
-  Interest interest;
-
-  {
-    std::lock_guard<std::mutex> lock(m_vvMutex);
-    // At this point the size of subselected vv is already <= MTU
-    syncName.append(Name::Component(m_subsetSelect.selectRandRecent(m_vv).encode()));
-  }
-
-  interest.setName(syncName);
-  interest.setInterestLifetime(time::milliseconds(1000));
-  interest.setCanBePrefix(true);
-  interest.setMustBeFresh(true);
-
-  m_face.expressInterest(interest, nullptr, nullptr, nullptr);
-
-}
- */
 
 void
 SVSyncCore::sendSyncInterestRandRecent()
