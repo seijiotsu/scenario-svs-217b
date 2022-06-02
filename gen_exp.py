@@ -12,7 +12,7 @@ GENFILEPATH = './generated_exps.sh'
 LOGPATH = './exp_log_files/'
 
 # How many processes to run in parallel
-PERGROUP = 3
+PERGROUP = 64
 
 # N by N grid, each element stands for N
 TOPO_LIST = [4, 6, 8]
@@ -22,9 +22,9 @@ TOPO_LIST = [4, 6, 8]
 DROP_RATE = [0, 0.5]
 
 # Fast publishers
-# TODO: according to our last discussion, set up 1) All frequent, 2) All infrequent, 3) 10% frequent 
-FAST_PUB = [[TOPO_LIST[0] ** 2, 0, int((TOPO_LIST[0] ** 2) * 0.1)], 
-        [TOPO_LIST[1] ** 2, 0, int((TOPO_LIST[1] ** 2) * 0.1)], 
+# TODO: according to our last discussion, set up 1) All frequent, 2) All infrequent, 3) 10% frequent
+FAST_PUB = [[TOPO_LIST[0] ** 2, 0, int((TOPO_LIST[0] ** 2) * 0.1)],
+        [TOPO_LIST[1] ** 2, 0, int((TOPO_LIST[1] ** 2) * 0.1)],
         [TOPO_LIST[2] ** 2, 0, int((TOPO_LIST[2] ** 2) * 0.1)]]
 
 # Frag or not, if false then there we just send out the whole sync-interest
@@ -57,6 +57,7 @@ def gen_script():
     head = '#!/bin/sh'
     build = ''
     prefix = './build/large-grid '
+    suffixMethod = '_Method '
     suffixRow = '_Row '
     suffixCol = '_Col '
     suffixPub = '_Nodes_Pub_Fast '
@@ -66,14 +67,17 @@ def gen_script():
     mtuSuf = '_MTU'
 
 
-    def gen_line(N, intSlow, intFast, fastPub, recentIncl, randIncl, secStop, dropRate, MTU = -1):
-        mid = str(N) + suffixRow + str(N) + suffixCol + str(intSlow) + intSlowSuf + str(intFast) + intFastSuf \
+    def gen_line(N, intSlow, intFast, fastPub, recentIncl, randIncl, secStop, dropRate, method, MTU = -1):
+        mid = str(N) + suffixRow + str(N) + suffixCol \
+            + str(intSlow) + intSlowSuf + str(intFast) + intFastSuf \
             + str(fastPub) + suffixPub + str(recentIncl) + recentSuf + str(randIncl) + randomSuf \
             + str(secStop) + secStopSuf + str(dropRate) + dropRateSuf
         if MTU != -1:
             mid += ' ' + str(MTU) + mtuSuf
 
-        return (prefix + mid + ' > ' + LOGPATH + mid.replace(' ', '-') + '.log &')
+        log_prefix =  method + suffixMethod
+
+        return (prefix + mid + ' > ' + LOGPATH + (log_prefix + mid).replace(' ', '-') + '.log &')
 
 
 
@@ -88,25 +92,25 @@ def gen_script():
                             if m == 'FULL':
                                 # Baseline(frag): still send out entire states, fragmented
                                 cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
-                                        numFastPub, 0, 99999, SEC_STOP, dr, mtu))
+                                        numFastPub, 0, 99999, SEC_STOP, dr, m, mtu))
                             elif m == 'RAND':
                                 # Random, only send out SINGLE interest, size == mtu
                                 cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
-                                        numFastPub, 0, mtu, SEC_STOP, dr))
+                                        numFastPub, 0, mtu, SEC_STOP, dr, m))
                             else:
                                 # Mix: recent = freq + RECENT_EXTRA, rest is random
                                 if numFastPub == grid_size:
                                     # All frequent
                                     cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
-                                            numFastPub, grid_size, 0, SEC_STOP, dr))
+                                            numFastPub, grid_size, 0, SEC_STOP, dr, m))
                                 else:
                                     cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
-                                            numFastPub, (numFastPub + RECENT_EXTRA), (mtu - numFastPub - RECENT_EXTRA), 
-                                            SEC_STOP, dr))
+                                            numFastPub, (numFastPub + RECENT_EXTRA), (mtu - numFastPub - RECENT_EXTRA),
+                                            SEC_STOP, dr, m))
                 else:
                     for dr in DROP_RATE:
                         cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
-                                numFastPub, 0, 99999, SEC_STOP, dr))
+                                numFastPub, 0, 99999, SEC_STOP, dr, "BASE"))
 
 
     # Process lines:
@@ -115,11 +119,11 @@ def gen_script():
     cmdLinesProcessed.append('\n\n')
     cmdLinesProcessed.append('./waf configure')
     cmdLinesProcessed.append('./waf')
-    cmdLinesProcessed.append('mkdir ' + LOGPATH) 
+    cmdLinesProcessed.append('mkdir -p ' + LOGPATH)
     cmdLinesProcessed.append('\n\n')
     cmdLinesProcessed += [x for y in (cmdList[i:i+PERGROUP] + ['wait'] * (i < len(cmdList) - (PERGROUP - 1)) for \
                 i in range(0, len(cmdList), PERGROUP)) for x in y]
-    
+
 
     with open(GENFILEPATH, 'w+') as f:
         f.writelines(l + '\n' for l in cmdLinesProcessed)
