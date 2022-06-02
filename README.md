@@ -33,8 +33,8 @@ You can also set the parallel level by setting the PERGROUP parameter in the gen
 
 2) Baseline (frag) //Send multiple sync-interest fragmented by MTU
 
-3) Random (frag)  //Send ONE sync-interest based on mtu
+3) Random  //Send ONE sync-interest based on mtu
 
-4) Mix (rand + recent) (frag) //Send ONE sync-interest based on mtu, recent can be tuned inside gen_exp.py
+4) Mix (rand + recent) //Send ONE sync-interest based on mtu, recent can be tuned inside gen_exp.py
 
 Run the configured gen_exp.py and you will get a shell script. In which it will run waf and create a log folders, in which the log flies will be named by the parameters for each experiment
