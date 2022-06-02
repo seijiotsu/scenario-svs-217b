@@ -147,8 +147,8 @@ main(int argc, char* argv[])
   Simulator::Run();
   Simulator::Destroy();
 
-  std::cerr << "total " << total_sync_interest_count << " sync interest pkts"
-            << "\ntotal " << total_sync_interest_sz << " sync interest in bytes" << std::endl;
+  std::cout << "SYNC_PACK=" << total_sync_interest_count << std::endl
+            << "SYNC_BYTE=" << total_sync_interest_sz << std::endl;
 
   return 0;
 }
