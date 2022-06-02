@@ -92,17 +92,17 @@ def gen_script():
                             elif m == 'RAND':
                                 # Random, only send out SINGLE interest, size == mtu
                                 cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
-                                        numFastPub, 0, mtu, SEC_STOP, dr, mtu))
+                                        numFastPub, 0, mtu, SEC_STOP, dr))
                             else:
                                 # Mix: recent = freq + RECENT_EXTRA, rest is random
                                 if numFastPub == grid_size:
                                     # All frequent
                                     cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
-                                            numFastPub, grid_size, 0, SEC_STOP, dr, mtu))
+                                            numFastPub, grid_size, 0, SEC_STOP, dr))
                                 else:
                                     cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
                                             numFastPub, (numFastPub + RECENT_EXTRA), (mtu - numFastPub - RECENT_EXTRA), 
-                                            SEC_STOP, dr, mtu))
+                                            SEC_STOP, dr))
                 else:
                     for dr in DROP_RATE:
                         cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
