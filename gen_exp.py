@@ -102,7 +102,7 @@ def gen_script():
                                 if numFastPub == grid_size:
                                     # All frequent
                                     cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
-                                            numFastPub, mtu, 0, SEC_STOP, dr))
+                                            numFastPub, mtu, 0, SEC_STOP, dr, m))
                                 else:
                                     cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
                                             numFastPub, (numFastPub + RECENT_EXTRA), (mtu - numFastPub - RECENT_EXTRA),
