@@ -15,7 +15,7 @@ LOGPATH = './exp_log_files/'
 PERGROUP = 64
 
 # N by N grid, each element stands for N
-TOPO_LIST = [4, 6, 8]
+TOPO_LIST = [4, 8]
 
 # Packet Loss or not
 # TODO: according to our last discussion, set up a high drop-rate, maybe try something different
@@ -23,9 +23,11 @@ DROP_RATE = [0, 0.5]
 
 # Fast publishers
 # TODO: according to our last discussion, set up 1) All frequent, 2) All infrequent, 3) 10% frequent
-FAST_PUB = [[TOPO_LIST[0] ** 2, 0, int((TOPO_LIST[0] ** 2) * 0.1)],
-        [TOPO_LIST[1] ** 2, 0, int((TOPO_LIST[1] ** 2) * 0.1)],
-        [TOPO_LIST[2] ** 2, 0, int((TOPO_LIST[2] ** 2) * 0.1)]]
+FAST_PUB = []
+
+for x in TOPO_LIST:
+    n = int(x**2)
+    FAST_PUB.append([0, int(n*0.1), int(n*0.2), int(n*0.3), int(n*0.4), int(n*0.5), int(n*0.6)])
 
 # Frag or not, if false then there we just send out the whole sync-interest
 FRAG = [True, False]
@@ -83,7 +85,7 @@ def gen_script():
 
     for topoN, fastPubGroup in zip(TOPO_LIST, FAST_PUB):
         grid_size = topoN ** 2
-        mtu = int(grid_size * 0.5)
+        mtu = int(grid_size * 0.3)
         for numFastPub in fastPubGroup:
             for frag in FRAG:
                 if frag:
@@ -104,8 +106,9 @@ def gen_script():
                                     cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
                                             numFastPub, mtu, 0, SEC_STOP, dr, m))
                                 else:
+                                    numRecent = max(min(numFastPub + RECENT_EXTRA, mtu - 5), 2)
                                     cmdList.append(gen_line(topoN, INTER_SLOW, INTER_FAST,
-                                            numFastPub, (numFastPub + RECENT_EXTRA), (mtu - numFastPub - RECENT_EXTRA),
+                                            numFastPub, numRecent, (mtu - numRecent),
                                             SEC_STOP, dr, m))
                 else:
                     for dr in DROP_RATE:
