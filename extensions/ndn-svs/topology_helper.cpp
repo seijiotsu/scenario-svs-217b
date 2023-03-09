@@ -17,6 +17,12 @@ namespace ndn
         class TopologyHelper
         {
             public:
+                // All the nodes, mapped by index.
+                std::vector<std::string> nodes;
+                // tuples referencing node names containing the
+                // indices of adjacent nodes A and B
+                std::vector<std::tuple<int, int>> adjacencies;
+
                 TopologyHelper(std::string filepath)
                 {
                     // Read the input file
@@ -28,82 +34,83 @@ namespace ndn
                         std::istringstream iss(line);
 
                         //
-                        // We have to parse the [nodes], the [switches], and the [links]. [switches] should be empty.
-                        // We implement a simple state machine.
-                        //
+                        // We have to parse the nodes under "router", and the
+                        // links under "link"
 
-                        // STATE 1: "none", or we haven't started parsing the file yet.
+                        // STATE 1: "none", or we haven't started parsing the
+                        // file yet.
                         if(stage == "none")
                         {
                             std::string token;
                             iss >> token;
-                            if(token == "[nodes]")
+                            if(token == "router")
                             {
                                 stage = "nodes";
                                 continue;
                             }
                         }
 
-                        // STATE 2: "nodes", or we are parsing the file for nodes.
+                        // STATE 2: "nodes", or we are parsing the file for
+                        // node names.
                         if(stage == "nodes")
                         {
                             std::string nodeName;
                             iss >> nodeName;
 
-                            // Edge case: we are out of node names, jump to stage 3
-                            if(nodeName == "[switches]")
+                            // Edge case: we are out of node names, jump to
+                            // stage 3
+                            if(nodeName == "link")
                             {
-                                stage = "switches";
+                                stage = "links";
+                                continue;
+                            }
+
+                            // Edge case: comment or empty
+                            if(nodeName.length() == 0 || nodeName[0] == '#')
+                            {
                                 continue;
                             }
 
                             // Otherwise, add to our internal datastructures
                             // Remove the trailing ':'
-                            nodeName = nodeName.substr(0, nodeName.length() - 1);
                             nameToIndex[nodeName] = nodes.size();
                             nodes.push_back(nodeName);
                         }
 
-                        // STATE 3: "switches", which we don't support. So just skip over them.
-                        if(stage == "switches")
-                        {
-                            std::string token;
-                            iss >> token;
-
-                            if(token == "[links]")
-                            {
-                                stage = "links";
-                                continue;
-                            }
-                        }
-
-                        // STATE 4: "links". This is where our adjacency links are! Important!
+                        // STATE 3: "links". This is where our adjacency links
+                        // are! Important!
                         if(stage == "links")
                         {
-                            std::string nodes, delay;
-                            iss >> nodes;
-                            iss >> delay;
 
-                            int A, B, delay_ms;
-                            A = nameToIndex[nodes.substr(0, nodes.find(":"))];
-                            B = nameToIndex[nodes.substr(nodes.find(":") + 1, nodes.length())];
-                            delay_ms = atoi(delay.substr(6, delay.length() - 2).c_str()); // always of the format "delay=Xms"
 
-                            adjacencies.push_back(std::tuple<int, int, int>(A, B, delay_ms));
+                            std::string A;
+                            std::string B;
+                            std::string bandwidth;
+                            int metric;
+                            std::string delay;
+                            int queue;
+
+                            iss >> A >> B >> bandwidth >> metric >> delay >> queue;
+
+                            // Edge case: comment or empty
+                            if(A.length() == 0 || A[0] == '#')
+                            {
+                                continue;
+                            }
+
+                            adjacencies.push_back(
+                                std::tuple<int, int>(nameToIndex[A], nameToIndex[B]));
                         }
                     }
                 }
                 
             private:
-                // All the nodes, mapped by index.
-                std::vector<std::string> nodes;
+                // Needed by ns3 in certain places
+                std::string m_path = "";
 
                 // Mapping of node names to index
                 std::map<std::string, int> nameToIndex;
                 
-                // (index, index) tuples referencing `nodes` containing the indexes of the adjacent nodes A and B,
-                // as well as the delay for this link in milliseconds.
-                std::vector<std::tuple<int, int, int>> adjacencies;
         };
     }
 }
