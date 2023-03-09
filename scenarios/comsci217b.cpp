@@ -77,39 +77,6 @@ namespace ns3
 
   int main(int argc, char* argv[])
   {
-      // // Arguments
-      // std::string graph_path = argv[1];
-      // double scale = 25; // idk what this is
-
-      // // Read in the topology. The nodes will be added into the 'system' via
-      // // this class, I'm not really sure how or where, but we will be able to
-      // // access them with Names::Find.
-      // AnnotatedTopologyReader topologyReader("", scale);
-      // topologyReader.SetFileName(graph_path);
-      // topologyReader.Read();
-
-      // //
-      // // Install NDN on all nodes
-      // //
-      // ndn::StackHelper ndnHelper;
-      // ndnHelper.InstallAll();
-      // ndn::StrategyChoiceHelper::InstallAll("/ndn/svs",
-      //                                       "/localhost/nfd/strategy/multicast");
-      // ndn::StrategyChoiceHelper::InstallAll("/",
-      //                                       "/localhost/nfd/strategy/best-route");
-      // ndn::GlobalRoutingHelper ndnGlobalRoutingHelper;
-      // ndnGlobalRoutingHelper.InstallAll();
-
-      // // // For some reason we need to do this manually even though links are created
-      // // // inside of AnnotatedTopologyLoader...?
-      // // // "Fine, I'll do it myself" - Thanos
-      // // TopologyHelper topologyHelper(graph_path);
-      // // for (auto const& [A, B, delay] : topologyHelper.adjacencies)
-      // // {
-      // //   ndn::FibHelper::AddRoute(A, "/ndn/svs", B, 1);
-      // // }
-
-      // return 0;
     //
     // Initial configuration
     //
