@@ -2,15 +2,16 @@
 Generates an N-N grid in the format of MiniNDN (See https://play.ndn.today/)
 """
 
-N = 10
+N = 6
 NODE_PREFIX = 'A'
 
 with open(f'/home/developer/scenario-svs-217b/topologies/src/{N}-{N}-grid', 'w') as hdl:
 
     hdl.write('[nodes]\n')
-    for i in range(N*N):
-        name = f'{NODE_PREFIX}{i}'
-        hdl.write(f'{name}: _ network=/world router=/{name}.Router/\n')
+    for i in range(N):
+        for j in range(N):
+            name = f'{NODE_PREFIX}{i*10 + j}'
+            hdl.write(f'{name}: _ network=/world router=/{name}.Router/\n')
     
     hdl.write('[switches]\n')
 
