@@ -1,0 +1,564 @@
+[nodes]
+A0: _ network=/world router=/A0.Router/
+A1: _ network=/world router=/A1.Router/
+A2: _ network=/world router=/A2.Router/
+A3: _ network=/world router=/A3.Router/
+A4: _ network=/world router=/A4.Router/
+A5: _ network=/world router=/A5.Router/
+A6: _ network=/world router=/A6.Router/
+A7: _ network=/world router=/A7.Router/
+A8: _ network=/world router=/A8.Router/
+A9: _ network=/world router=/A9.Router/
+A10: _ network=/world router=/A10.Router/
+A11: _ network=/world router=/A11.Router/
+A12: _ network=/world router=/A12.Router/
+A13: _ network=/world router=/A13.Router/
+A14: _ network=/world router=/A14.Router/
+A15: _ network=/world router=/A15.Router/
+A16: _ network=/world router=/A16.Router/
+A17: _ network=/world router=/A17.Router/
+A18: _ network=/world router=/A18.Router/
+A19: _ network=/world router=/A19.Router/
+A20: _ network=/world router=/A20.Router/
+A21: _ network=/world router=/A21.Router/
+A22: _ network=/world router=/A22.Router/
+A23: _ network=/world router=/A23.Router/
+A24: _ network=/world router=/A24.Router/
+A25: _ network=/world router=/A25.Router/
+A26: _ network=/world router=/A26.Router/
+A27: _ network=/world router=/A27.Router/
+A28: _ network=/world router=/A28.Router/
+A29: _ network=/world router=/A29.Router/
+A30: _ network=/world router=/A30.Router/
+A31: _ network=/world router=/A31.Router/
+A32: _ network=/world router=/A32.Router/
+A33: _ network=/world router=/A33.Router/
+A34: _ network=/world router=/A34.Router/
+A35: _ network=/world router=/A35.Router/
+A36: _ network=/world router=/A36.Router/
+A37: _ network=/world router=/A37.Router/
+A38: _ network=/world router=/A38.Router/
+A39: _ network=/world router=/A39.Router/
+A40: _ network=/world router=/A40.Router/
+A41: _ network=/world router=/A41.Router/
+A42: _ network=/world router=/A42.Router/
+A43: _ network=/world router=/A43.Router/
+A44: _ network=/world router=/A44.Router/
+A45: _ network=/world router=/A45.Router/
+A46: _ network=/world router=/A46.Router/
+A47: _ network=/world router=/A47.Router/
+A48: _ network=/world router=/A48.Router/
+A49: _ network=/world router=/A49.Router/
+A50: _ network=/world router=/A50.Router/
+A51: _ network=/world router=/A51.Router/
+A52: _ network=/world router=/A52.Router/
+A53: _ network=/world router=/A53.Router/
+A54: _ network=/world router=/A54.Router/
+A55: _ network=/world router=/A55.Router/
+A56: _ network=/world router=/A56.Router/
+A57: _ network=/world router=/A57.Router/
+A58: _ network=/world router=/A58.Router/
+A59: _ network=/world router=/A59.Router/
+A60: _ network=/world router=/A60.Router/
+A61: _ network=/world router=/A61.Router/
+A62: _ network=/world router=/A62.Router/
+A63: _ network=/world router=/A63.Router/
+A64: _ network=/world router=/A64.Router/
+A65: _ network=/world router=/A65.Router/
+A66: _ network=/world router=/A66.Router/
+A67: _ network=/world router=/A67.Router/
+A68: _ network=/world router=/A68.Router/
+A69: _ network=/world router=/A69.Router/
+A70: _ network=/world router=/A70.Router/
+A71: _ network=/world router=/A71.Router/
+A72: _ network=/world router=/A72.Router/
+A73: _ network=/world router=/A73.Router/
+A74: _ network=/world router=/A74.Router/
+A75: _ network=/world router=/A75.Router/
+A76: _ network=/world router=/A76.Router/
+A77: _ network=/world router=/A77.Router/
+A78: _ network=/world router=/A78.Router/
+A79: _ network=/world router=/A79.Router/
+A80: _ network=/world router=/A80.Router/
+A81: _ network=/world router=/A81.Router/
+A82: _ network=/world router=/A82.Router/
+A83: _ network=/world router=/A83.Router/
+A84: _ network=/world router=/A84.Router/
+A85: _ network=/world router=/A85.Router/
+A86: _ network=/world router=/A86.Router/
+A87: _ network=/world router=/A87.Router/
+A88: _ network=/world router=/A88.Router/
+A89: _ network=/world router=/A89.Router/
+A90: _ network=/world router=/A90.Router/
+A91: _ network=/world router=/A91.Router/
+A92: _ network=/world router=/A92.Router/
+A93: _ network=/world router=/A93.Router/
+A94: _ network=/world router=/A94.Router/
+A95: _ network=/world router=/A95.Router/
+A96: _ network=/world router=/A96.Router/
+A97: _ network=/world router=/A97.Router/
+A98: _ network=/world router=/A98.Router/
+A99: _ network=/world router=/A99.Router/
+B0: _ network=/world router=/B0.Router/
+B1: _ network=/world router=/B1.Router/
+B2: _ network=/world router=/B2.Router/
+B3: _ network=/world router=/B3.Router/
+B4: _ network=/world router=/B4.Router/
+B5: _ network=/world router=/B5.Router/
+B6: _ network=/world router=/B6.Router/
+B7: _ network=/world router=/B7.Router/
+B8: _ network=/world router=/B8.Router/
+B9: _ network=/world router=/B9.Router/
+B10: _ network=/world router=/B10.Router/
+B11: _ network=/world router=/B11.Router/
+B12: _ network=/world router=/B12.Router/
+B13: _ network=/world router=/B13.Router/
+B14: _ network=/world router=/B14.Router/
+B15: _ network=/world router=/B15.Router/
+B16: _ network=/world router=/B16.Router/
+B17: _ network=/world router=/B17.Router/
+B18: _ network=/world router=/B18.Router/
+B19: _ network=/world router=/B19.Router/
+B20: _ network=/world router=/B20.Router/
+B21: _ network=/world router=/B21.Router/
+B22: _ network=/world router=/B22.Router/
+B23: _ network=/world router=/B23.Router/
+B24: _ network=/world router=/B24.Router/
+B25: _ network=/world router=/B25.Router/
+B26: _ network=/world router=/B26.Router/
+B27: _ network=/world router=/B27.Router/
+B28: _ network=/world router=/B28.Router/
+B29: _ network=/world router=/B29.Router/
+B30: _ network=/world router=/B30.Router/
+B31: _ network=/world router=/B31.Router/
+B32: _ network=/world router=/B32.Router/
+B33: _ network=/world router=/B33.Router/
+B34: _ network=/world router=/B34.Router/
+B35: _ network=/world router=/B35.Router/
+B36: _ network=/world router=/B36.Router/
+B37: _ network=/world router=/B37.Router/
+B38: _ network=/world router=/B38.Router/
+B39: _ network=/world router=/B39.Router/
+B40: _ network=/world router=/B40.Router/
+B41: _ network=/world router=/B41.Router/
+B42: _ network=/world router=/B42.Router/
+B43: _ network=/world router=/B43.Router/
+B44: _ network=/world router=/B44.Router/
+B45: _ network=/world router=/B45.Router/
+B46: _ network=/world router=/B46.Router/
+B47: _ network=/world router=/B47.Router/
+B48: _ network=/world router=/B48.Router/
+B49: _ network=/world router=/B49.Router/
+B50: _ network=/world router=/B50.Router/
+B51: _ network=/world router=/B51.Router/
+B52: _ network=/world router=/B52.Router/
+B53: _ network=/world router=/B53.Router/
+B54: _ network=/world router=/B54.Router/
+B55: _ network=/world router=/B55.Router/
+B56: _ network=/world router=/B56.Router/
+B57: _ network=/world router=/B57.Router/
+B58: _ network=/world router=/B58.Router/
+B59: _ network=/world router=/B59.Router/
+B60: _ network=/world router=/B60.Router/
+B61: _ network=/world router=/B61.Router/
+B62: _ network=/world router=/B62.Router/
+B63: _ network=/world router=/B63.Router/
+B64: _ network=/world router=/B64.Router/
+B65: _ network=/world router=/B65.Router/
+B66: _ network=/world router=/B66.Router/
+B67: _ network=/world router=/B67.Router/
+B68: _ network=/world router=/B68.Router/
+B69: _ network=/world router=/B69.Router/
+B70: _ network=/world router=/B70.Router/
+B71: _ network=/world router=/B71.Router/
+B72: _ network=/world router=/B72.Router/
+B73: _ network=/world router=/B73.Router/
+B74: _ network=/world router=/B74.Router/
+B75: _ network=/world router=/B75.Router/
+B76: _ network=/world router=/B76.Router/
+B77: _ network=/world router=/B77.Router/
+B78: _ network=/world router=/B78.Router/
+B79: _ network=/world router=/B79.Router/
+B80: _ network=/world router=/B80.Router/
+B81: _ network=/world router=/B81.Router/
+B82: _ network=/world router=/B82.Router/
+B83: _ network=/world router=/B83.Router/
+B84: _ network=/world router=/B84.Router/
+B85: _ network=/world router=/B85.Router/
+B86: _ network=/world router=/B86.Router/
+B87: _ network=/world router=/B87.Router/
+B88: _ network=/world router=/B88.Router/
+B89: _ network=/world router=/B89.Router/
+B90: _ network=/world router=/B90.Router/
+B91: _ network=/world router=/B91.Router/
+B92: _ network=/world router=/B92.Router/
+B93: _ network=/world router=/B93.Router/
+B94: _ network=/world router=/B94.Router/
+B95: _ network=/world router=/B95.Router/
+B96: _ network=/world router=/B96.Router/
+B97: _ network=/world router=/B97.Router/
+B98: _ network=/world router=/B98.Router/
+B99: _ network=/world router=/B99.Router/
+[switches]
+[links]
+A0:B0 delay=10ms
+A72:A82 delay=10ms
+A5:A6 delay=10ms
+A60:A61 delay=10ms
+A47:A57 delay=10ms
+A76:A77 delay=10ms
+A88:A98 delay=10ms
+A22:A32 delay=10ms
+A27:A37 delay=10ms
+A32:A42 delay=10ms
+A66:A76 delay=10ms
+A10:A20 delay=10ms
+A55:A65 delay=10ms
+A83:A84 delay=10ms
+A70:A80 delay=10ms
+A31:A41 delay=10ms
+A80:A90 delay=10ms
+A36:A46 delay=10ms
+A47:A48 delay=10ms
+A2:A3 delay=10ms
+A41:A42 delay=10ms
+A57:A58 delay=10ms
+A75:A76 delay=10ms
+A30:A31 delay=10ms
+A33:A34 delay=10ms
+A78:A79 delay=10ms
+A40:A50 delay=10ms
+A65:A75 delay=10ms
+A16:A17 delay=10ms
+A79:A89 delay=10ms
+A72:A73 delay=10ms
+A18:A19 delay=10ms
+A51:A61 delay=10ms
+A64:A65 delay=10ms
+A19:A29 delay=10ms
+A20:A30 delay=10ms
+A22:A23 delay=10ms
+A40:A41 delay=10ms
+A30:A40 delay=10ms
+A50:A51 delay=10ms
+A53:A54 delay=10ms
+A82:A83 delay=10ms
+A97:A98 delay=10ms
+A87:A88 delay=10ms
+A84:A94 delay=10ms
+A28:A29 delay=10ms
+A74:A75 delay=10ms
+A49:A59 delay=10ms
+A45:A46 delay=10ms
+A54:A64 delay=10ms
+A98:A99 delay=10ms
+A15:A25 delay=10ms
+A37:A38 delay=10ms
+A26:A27 delay=10ms
+A38:A39 delay=10ms
+A6:A16 delay=10ms
+A53:A63 delay=10ms
+A8:A18 delay=10ms
+A29:A39 delay=10ms
+A93:A94 delay=10ms
+A81:A82 delay=10ms
+A58:A68 delay=10ms
+A39:A49 delay=10ms
+A14:A15 delay=10ms
+A77:A87 delay=10ms
+A5:A15 delay=10ms
+A82:A92 delay=10ms
+A87:A97 delay=10ms
+A0:A10 delay=10ms
+A11:A12 delay=10ms
+A51:A52 delay=10ms
+A26:A36 delay=10ms
+A46:A56 delay=10ms
+A76:A86 delay=10ms
+A56:A66 delay=10ms
+A68:A78 delay=10ms
+A86:A96 delay=10ms
+A20:A21 delay=10ms
+A34:A44 delay=10ms
+A37:A47 delay=10ms
+A91:A92 delay=10ms
+A96:A97 delay=10ms
+A85:A86 delay=10ms
+A88:A89 delay=10ms
+A4:A14 delay=10ms
+A14:A24 delay=10ms
+A66:A67 delay=10ms
+A83:A93 delay=10ms
+A10:A11 delay=10ms
+A0:A1 delay=10ms
+A2:A12 delay=10ms
+A89:A99 delay=10ms
+A46:A47 delay=10ms
+A31:A32 delay=10ms
+A52:A62 delay=10ms
+A36:A37 delay=10ms
+A24:A25 delay=10ms
+A33:A43 delay=10ms
+A12:A13 delay=10ms
+A4:A5 delay=10ms
+A75:A85 delay=10ms
+A62:A63 delay=10ms
+A77:A78 delay=10ms
+A85:A95 delay=10ms
+A63:A73 delay=10ms
+A56:A57 delay=10ms
+A11:A21 delay=10ms
+A61:A71 delay=10ms
+A64:A74 delay=10ms
+A95:A96 delay=10ms
+A21:A22 delay=10ms
+A13:A23 delay=10ms
+A42:A52 delay=10ms
+A71:A81 delay=10ms
+A12:A22 delay=10ms
+A45:A55 delay=10ms
+A35:A36 delay=10ms
+A92:A93 delay=10ms
+A50:A60 delay=10ms
+A84:A85 delay=10ms
+A60:A70 delay=10ms
+A21:A31 delay=10ms
+A43:A53 delay=10ms
+A94:A95 delay=10ms
+A25:A35 delay=10ms
+A27:A28 delay=10ms
+A15:A16 delay=10ms
+A74:A84 delay=10ms
+A42:A43 delay=10ms
+A58:A59 delay=10ms
+A57:A67 delay=10ms
+A70:A71 delay=10ms
+A23:A33 delay=10ms
+A41:A51 delay=10ms
+A44:A54 delay=10ms
+A48:A49 delay=10ms
+A9:A19 delay=10ms
+A59:A69 delay=10ms
+A55:A56 delay=10ms
+A35:A45 delay=10ms
+A43:A44 delay=10ms
+A68:A69 delay=10ms
+A86:A87 delay=10ms
+A78:A88 delay=10ms
+A34:A35 delay=10ms
+A23:A24 delay=10ms
+A16:A26 delay=10ms
+A69:A79 delay=10ms
+A65:A66 delay=10ms
+A7:A17 delay=10ms
+A44:A45 delay=10ms
+A67:A68 delay=10ms
+A90:A91 delay=10ms
+A18:A28 delay=10ms
+A25:A26 delay=10ms
+A1:A2 delay=10ms
+A17:A18 delay=10ms
+A48:A58 delay=10ms
+A3:A13 delay=10ms
+A24:A34 delay=10ms
+A7:A8 delay=10ms
+A8:A9 delay=10ms
+A54:A55 delay=10ms
+A52:A53 delay=10ms
+A62:A72 delay=10ms
+A73:A74 delay=10ms
+A67:A77 delay=10ms
+A28:A38 delay=10ms
+A1:A11 delay=10ms
+A63:A64 delay=10ms
+A38:A48 delay=10ms
+A61:A62 delay=10ms
+A81:A91 delay=10ms
+A32:A33 delay=10ms
+A71:A72 delay=10ms
+A17:A27 delay=10ms
+A13:A14 delay=10ms
+A3:A4 delay=10ms
+A6:A7 delay=10ms
+A73:A83 delay=10ms
+A80:A81 delay=10ms
+B72:B82 delay=10ms
+B5:B6 delay=10ms
+B60:B61 delay=10ms
+B47:B57 delay=10ms
+B76:B77 delay=10ms
+B88:B98 delay=10ms
+B22:B32 delay=10ms
+B27:B37 delay=10ms
+B32:B42 delay=10ms
+B66:B76 delay=10ms
+B10:B20 delay=10ms
+B55:B65 delay=10ms
+B83:B84 delay=10ms
+B70:B80 delay=10ms
+B31:B41 delay=10ms
+B80:B90 delay=10ms
+B36:B46 delay=10ms
+B47:B48 delay=10ms
+B2:B3 delay=10ms
+B41:B42 delay=10ms
+B57:B58 delay=10ms
+B75:B76 delay=10ms
+B30:B31 delay=10ms
+B33:B34 delay=10ms
+B78:B79 delay=10ms
+B40:B50 delay=10ms
+B65:B75 delay=10ms
+B16:B17 delay=10ms
+B79:B89 delay=10ms
+B72:B73 delay=10ms
+B18:B19 delay=10ms
+B51:B61 delay=10ms
+B64:B65 delay=10ms
+B19:B29 delay=10ms
+B20:B30 delay=10ms
+B22:B23 delay=10ms
+B40:B41 delay=10ms
+B30:B40 delay=10ms
+B50:B51 delay=10ms
+B53:B54 delay=10ms
+B82:B83 delay=10ms
+B97:B98 delay=10ms
+B87:B88 delay=10ms
+B84:B94 delay=10ms
+B28:B29 delay=10ms
+B74:B75 delay=10ms
+B49:B59 delay=10ms
+B45:B46 delay=10ms
+B54:B64 delay=10ms
+B98:B99 delay=10ms
+B15:B25 delay=10ms
+B37:B38 delay=10ms
+B26:B27 delay=10ms
+B38:B39 delay=10ms
+B6:B16 delay=10ms
+B53:B63 delay=10ms
+B8:B18 delay=10ms
+B29:B39 delay=10ms
+B93:B94 delay=10ms
+B81:B82 delay=10ms
+B58:B68 delay=10ms
+B39:B49 delay=10ms
+B14:B15 delay=10ms
+B77:B87 delay=10ms
+B5:B15 delay=10ms
+B82:B92 delay=10ms
+B87:B97 delay=10ms
+B0:B10 delay=10ms
+B11:B12 delay=10ms
+B51:B52 delay=10ms
+B26:B36 delay=10ms
+B46:B56 delay=10ms
+B76:B86 delay=10ms
+B56:B66 delay=10ms
+B68:B78 delay=10ms
+B86:B96 delay=10ms
+B20:B21 delay=10ms
+B34:B44 delay=10ms
+B37:B47 delay=10ms
+B91:B92 delay=10ms
+B96:B97 delay=10ms
+B85:B86 delay=10ms
+B88:B89 delay=10ms
+B4:B14 delay=10ms
+B14:B24 delay=10ms
+B66:B67 delay=10ms
+B83:B93 delay=10ms
+B10:B11 delay=10ms
+B0:B1 delay=10ms
+B2:B12 delay=10ms
+B89:B99 delay=10ms
+B46:B47 delay=10ms
+B31:B32 delay=10ms
+B52:B62 delay=10ms
+B36:B37 delay=10ms
+B24:B25 delay=10ms
+B33:B43 delay=10ms
+B12:B13 delay=10ms
+B4:B5 delay=10ms
+B75:B85 delay=10ms
+B62:B63 delay=10ms
+B77:B78 delay=10ms
+B85:B95 delay=10ms
+B63:B73 delay=10ms
+B56:B57 delay=10ms
+B11:B21 delay=10ms
+B61:B71 delay=10ms
+B64:B74 delay=10ms
+B95:B96 delay=10ms
+B21:B22 delay=10ms
+B13:B23 delay=10ms
+B42:B52 delay=10ms
+B71:B81 delay=10ms
+B12:B22 delay=10ms
+B45:B55 delay=10ms
+B35:B36 delay=10ms
+B92:B93 delay=10ms
+B50:B60 delay=10ms
+B84:B85 delay=10ms
+B60:B70 delay=10ms
+B21:B31 delay=10ms
+B43:B53 delay=10ms
+B94:B95 delay=10ms
+B25:B35 delay=10ms
+B27:B28 delay=10ms
+B15:B16 delay=10ms
+B74:B84 delay=10ms
+B42:B43 delay=10ms
+B58:B59 delay=10ms
+B57:B67 delay=10ms
+B70:B71 delay=10ms
+B23:B33 delay=10ms
+B41:B51 delay=10ms
+B44:B54 delay=10ms
+B48:B49 delay=10ms
+B9:B19 delay=10ms
+B59:B69 delay=10ms
+B55:B56 delay=10ms
+B35:B45 delay=10ms
+B43:B44 delay=10ms
+B68:B69 delay=10ms
+B86:B87 delay=10ms
+B78:B88 delay=10ms
+B34:B35 delay=10ms
+B23:B24 delay=10ms
+B16:B26 delay=10ms
+B69:B79 delay=10ms
+B65:B66 delay=10ms
+B7:B17 delay=10ms
+B44:B45 delay=10ms
+B67:B68 delay=10ms
+B90:B91 delay=10ms
+B18:B28 delay=10ms
+B25:B26 delay=10ms
+B1:B2 delay=10ms
+B17:B18 delay=10ms
+B48:B58 delay=10ms
+B3:B13 delay=10ms
+B24:B34 delay=10ms
+B7:B8 delay=10ms
+B8:B9 delay=10ms
+B54:B55 delay=10ms
+B52:B53 delay=10ms
+B62:B72 delay=10ms
+B73:B74 delay=10ms
+B67:B77 delay=10ms
+B28:B38 delay=10ms
+B1:B11 delay=10ms
+B63:B64 delay=10ms
+B38:B48 delay=10ms
+B61:B62 delay=10ms
+B81:B91 delay=10ms
+B32:B33 delay=10ms
+B71:B72 delay=10ms
+B17:B27 delay=10ms
+B13:B14 delay=10ms
+B3:B4 delay=10ms
+B6:B7 delay=10ms
+B73:B83 delay=10ms
+B80:B81 delay=10ms
