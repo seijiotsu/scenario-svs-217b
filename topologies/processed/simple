@@ -1,0 +1,11 @@
+router
+# node	comment	yPos	xPos
+Bertrand	NA	0	43242342342
+Alice	NA	0	0
+Coral	NA	0	0
+
+link
+# src	dest	bandwidth	metric	delay	queue
+Coral	Alice	10Mbps	1 10ms	20
+Bertrand	Alice	10Mbps	1 10ms	20
+Bertrand	Coral	10Mbps	1 10ms	20

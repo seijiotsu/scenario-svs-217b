@@ -1,0 +1,9 @@
+[nodes]
+Bertrand: _ network=/world router=/Bertrand.Router/
+Alice: _ network=/world router=/Alice.Router/
+Coral: _ network=/world router=/Coral.Router/
+[switches]
+[links]
+Coral:Alice delay=10ms
+Bertrand:Alice delay=10ms
+Bertrand:Coral delay=10ms

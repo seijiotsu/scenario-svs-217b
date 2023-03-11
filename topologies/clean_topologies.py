@@ -5,7 +5,7 @@ if you copy-pasted into processed.
 
 import os
 
-for filepath in os.scandir('./processed'):
+for filepath in os.scandir('/home/developer/scenario-svs-217b/topologies/processed'):
     with open(filepath, 'r') as hdl:
         data = hdl.read()
         data.replace('\r', '')
