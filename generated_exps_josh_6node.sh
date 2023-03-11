@@ -1,0 +1,9 @@
+#!/bin/sh
+python3 ./topologies/build.py
+python3 ./topologies/clean-topologies.py
+
+./waf
+mkdir -p ./exp_log_files_josh/
+
+./build/comsci217b 4_Row 4_Col 1000_MS_INTER_SLOW 100_MS_INTER_FAST 0_Nodes_Pub_Fast 0_RECENT_PUB 99999_RANDOM_PUB 20_S_STOP 0_DROP_RATE /home/developer/scenario-svs-217b/topologies/processed/topo-6 4_MTU > ./exp_log_files_josh/FULL_Method-6nodeV1-1000_MS_INTER_SLOW-100_MS_INTER_FAST-0_Nodes_Pub_Fast-0_RECENT_PUB-99999_RANDOM_PUB-10_S_STOP-0_DROP_RATE-4_MTU.log &
+./build/comsci217b 4_Row 4_Col 1000_MS_INTER_SLOW 100_MS_INTER_FAST 0_Nodes_Pub_Fast 0_RECENT_PUB 99999_RANDOM_PUB 20_S_STOP 0_DROP_RATE /home/developer/scenario-svs-217b/topologies/processed/topo-6-zeroPos 4_MTU > ./exp_log_files_josh/FULL_Method-6node_zeroPos-1000_MS_INTER_SLOW-100_MS_INTER_FAST-0_Nodes_Pub_Fast-0_RECENT_PUB-99999_RANDOM_PUB-10_S_STOP-0_DROP_RATE-4_MTU.log &
