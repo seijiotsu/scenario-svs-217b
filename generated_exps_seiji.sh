@@ -1,4 +1,5 @@
 python3 ./topologies/build.py
+python3 ./topologies/clean-topologies.py
 
 ./waf
 
