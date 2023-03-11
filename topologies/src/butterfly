@@ -1,0 +1,72 @@
+[nodes]
+c1: _ network=/world router=/c1.Router/
+c3: _ network=/world router=/c3.Router/
+c2: _ network=/world router=/c2.Router/
+c9: _ network=/world router=/c9.Router/
+c5: _ network=/world router=/c5.Router/
+c7: _ network=/world router=/c7.Router/
+c8: _ network=/world router=/c8.Router/
+c6: _ network=/world router=/c6.Router/
+c4: _ network=/world router=/c4.Router/
+c10: _ network=/world router=/c10.Router/
+b: _ network=/world router=/b.Router/
+a4: _ network=/world router=/a4.Router/
+a3: _ network=/world router=/a3.Router/
+a2: _ network=/world router=/a2.Router/
+a6: _ network=/world router=/a6.Router/
+a5: _ network=/world router=/a5.Router/
+a7: _ network=/world router=/a7.Router/
+a8: _ network=/world router=/a8.Router/
+a9: _ network=/world router=/a9.Router/
+a10: _ network=/world router=/a10.Router/
+a1: _ network=/world router=/a1.Router/
+d1: _ network=/world router=/d1.Router/
+d2: _ network=/world router=/d2.Router/
+d3: _ network=/world router=/d3.Router/
+d4: _ network=/world router=/d4.Router/
+[switches]
+[links]
+c2:c1 delay=10ms
+c2:c3 delay=10ms
+c3:c4 delay=10ms
+c4:c5 delay=10ms
+c5:c6 delay=10ms
+c6:c7 delay=10ms
+c8:c9 delay=10ms
+c1:c10 delay=10ms
+c10:c9 delay=10ms
+a3:a2 delay=10ms
+a4:a3 delay=10ms
+a4:a5 delay=10ms
+a5:a6 delay=10ms
+a6:a7 delay=10ms
+a8:a7 delay=10ms
+a9:a8 delay=10ms
+a10:a9 delay=10ms
+a1:a2 delay=10ms
+a1:a10 delay=10ms
+a1:b delay=10ms
+b:c1 delay=10ms
+a4:a2 delay=10ms
+a5:a7 delay=10ms
+a8:a10 delay=10ms
+a5:a8 delay=10ms
+a1:a8 delay=10ms
+a1:a4 delay=10ms
+a1:a3 delay=10ms
+a6:a8 delay=10ms
+a9:a1 delay=10ms
+c1:c4 delay=10ms
+c1:c3 delay=10ms
+c2:c4 delay=10ms
+c5:c7 delay=10ms
+c1:c9 delay=10ms
+c1:c8 delay=10ms
+c5:c8 delay=10ms
+c8:c7 delay=10ms
+c10:c8 delay=10ms
+c8:c6 delay=10ms
+d1:a3 delay=10ms
+d3:c3 delay=10ms
+d2:a6 delay=10ms
+c6:d4 delay=10ms
