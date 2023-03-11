@@ -23,7 +23,7 @@ namespace ns3
   void configureDatalinks(double dropRate)
   {
     Ptr<UniformRandomVariable> uv = CreateObject<UniformRandomVariable>();
-    uv->SetStream (0);
+    uv->SetStream(0);
     error_model.SetRandomVariable(uv);
     error_model.SetUnit(RateErrorModel::ERROR_UNIT_PACKET);
     error_model.SetRate(dropRate);
@@ -67,10 +67,7 @@ namespace ns3
 
       ndnGlobalRoutingHelper.AddOrigins(prefix, participant);
       auto apps = svsHelper.Install(participant);
-    
-      if (i==0){
-        apps.Start(Seconds(3));
-      }  
+      
       apps.Stop(Seconds(stopSecond));
     }
   }
