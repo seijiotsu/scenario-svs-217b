@@ -1,0 +1,74 @@
+router
+# node	comment	yPos	xPos
+c1	NA	0	0
+c3	NA	0	0
+c2	NA	0	0
+c9	NA	0	0
+c5	NA	0	0
+c7	NA	0	0
+c8	NA	0	0
+c6	NA	0	0
+c4	NA	0	0
+c10	NA	0	0
+b	NA	0	0
+a4	NA	0	0
+a3	NA	0	0
+a2	NA	0	0
+a6	NA	0	0
+a5	NA	0	0
+a7	NA	0	0
+a8	NA	0	0
+a9	NA	0	0
+a10	NA	0	0
+a1	NA	0	0
+d1	NA	0	0
+d2	NA	0	0
+d3	NA	0	0
+d4	NA	0	0
+
+link
+# src	dest	bandwidth	metric	delay	queue
+c2	c1	10Mbps	1 10ms	20
+c2	c3	10Mbps	1 10ms	20
+c3	c4	10Mbps	1 10ms	20
+c4	c5	10Mbps	1 10ms	20
+c5	c6	10Mbps	1 10ms	20
+c6	c7	10Mbps	1 10ms	20
+c8	c9	10Mbps	1 10ms	20
+c1	c10	10Mbps	1 10ms	20
+c10	c9	10Mbps	1 10ms	20
+a3	a2	10Mbps	1 10ms	20
+a4	a3	10Mbps	1 10ms	20
+a4	a5	10Mbps	1 10ms	20
+a5	a6	10Mbps	1 10ms	20
+a6	a7	10Mbps	1 10ms	20
+a8	a7	10Mbps	1 10ms	20
+a9	a8	10Mbps	1 10ms	20
+a10	a9	10Mbps	1 10ms	20
+a1	a2	10Mbps	1 10ms	20
+a1	a10	10Mbps	1 10ms	20
+a1	b	10Mbps	1 10ms	20
+b	c1	10Mbps	1 10ms	20
+a4	a2	10Mbps	1 10ms	20
+a5	a7	10Mbps	1 10ms	20
+a8	a10	10Mbps	1 10ms	20
+a5	a8	10Mbps	1 10ms	20
+a1	a8	10Mbps	1 10ms	20
+a1	a4	10Mbps	1 10ms	20
+a1	a3	10Mbps	1 10ms	20
+a6	a8	10Mbps	1 10ms	20
+a9	a1	10Mbps	1 10ms	20
+c1	c4	10Mbps	1 10ms	20
+c1	c3	10Mbps	1 10ms	20
+c2	c4	10Mbps	1 10ms	20
+c5	c7	10Mbps	1 10ms	20
+c1	c9	10Mbps	1 10ms	20
+c1	c8	10Mbps	1 10ms	20
+c5	c8	10Mbps	1 10ms	20
+c8	c7	10Mbps	1 10ms	20
+c10	c8	10Mbps	1 10ms	20
+c8	c6	10Mbps	1 10ms	20
+d1	a3	10Mbps	1 10ms	20
+d3	c3	10Mbps	1 10ms	20
+d2	a6	10Mbps	1 10ms	20
+c6	d4	10Mbps	1 10ms	20
