@@ -10,3 +10,4 @@ build/
 cmake-build-debug
 *-checkpoint.ipynb
 waf3*
+__pycache__

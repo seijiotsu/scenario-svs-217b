@@ -1,0 +1,43 @@
+[nodes]
+A0: _ network=/world router=/A0.Router/
+A1: _ network=/world router=/A1.Router/
+A2: _ network=/world router=/A2.Router/
+A3: _ network=/world router=/A3.Router/
+A10: _ network=/world router=/A10.Router/
+A11: _ network=/world router=/A11.Router/
+A12: _ network=/world router=/A12.Router/
+A13: _ network=/world router=/A13.Router/
+A20: _ network=/world router=/A20.Router/
+A21: _ network=/world router=/A21.Router/
+A22: _ network=/world router=/A22.Router/
+A23: _ network=/world router=/A23.Router/
+A30: _ network=/world router=/A30.Router/
+A31: _ network=/world router=/A31.Router/
+A32: _ network=/world router=/A32.Router/
+A33: _ network=/world router=/A33.Router/
+[switches]
+[links]
+A12:A13 delay=10ms
+A22:A32 delay=10ms
+A11:A21 delay=10ms
+A10:A20 delay=10ms
+A21:A22 delay=10ms
+A13:A23 delay=10ms
+A1:A2 delay=10ms
+A11:A12 delay=10ms
+A12:A22 delay=10ms
+A0:A10 delay=10ms
+A2:A3 delay=10ms
+A30:A31 delay=10ms
+A3:A13 delay=10ms
+A21:A31 delay=10ms
+A20:A21 delay=10ms
+A1:A11 delay=10ms
+A23:A33 delay=10ms
+A10:A11 delay=10ms
+A0:A1 delay=10ms
+A2:A12 delay=10ms
+A32:A33 delay=10ms
+A31:A32 delay=10ms
+A20:A30 delay=10ms
+A22:A23 delay=10ms

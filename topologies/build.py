@@ -19,6 +19,7 @@ for file in os.scandir('/home/developer/scenario-svs-217b/topologies/src'):
     # directions)"
     # Links are originally formatted as e.g. 'new_1:new_4 delay=10ms'
     links = [link.replace(' delay=', ':').split(':') for link in links]
+    links = [link for link in links if link[0]]
     links = [
         (link[0], link[1], '10Mbps', 1, link[2], 20)
         for link in links
