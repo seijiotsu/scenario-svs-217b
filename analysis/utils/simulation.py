@@ -23,7 +23,8 @@ def randrecent(topology_name, n_random, n_recent, publish_rate_ms,
                         str(stop_second), str(drop_rate)], stdout=hdl, stderr=DEVNULL)
     print('done')
     return output_file
-
+def base_full():
+    return output_file
 if __name__ == '__main__':
     randrecent(
         sys.argv[1],
