@@ -146,9 +146,21 @@ namespace ns3
     Simulator::Run();
     Simulator::Destroy();
 
+    // Calculate MTU size
+    int mtu_size;
+    if(fragmentation_mtu != 0)
+    {
+      mtu_size = fragmentation_mtu;
+    }
+    else
+    {
+      mtu_size = nRandom + nRecent;
+    }
+
     // Print other statistics
     std::cout << "SYNC_PACK=" << total_sync_interest_count << std::endl
-              << "SYNC_BYTE=" << total_sync_interest_sz << std::endl;
+              << "SYNC_BYTE=" << total_sync_interest_sz << std::endl
+              << "MTU_SIZE=" << mtu_size << std::endl;
 
     return 0;
   }

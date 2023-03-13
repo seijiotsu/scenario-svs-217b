@@ -19,7 +19,7 @@ def get_log_data(filepath) -> LogData:
         cache[filepath] = read_log_file(filepath)
     return cache[filepath]
 
-def _plot_versus_publications(experiment_dir, strategies, topology_label, graph_type):
+def plot_versus_publications(experiment_dir, strategies, topology_label, graph_type):
     """
     Plot a `graph_type` against the total number of publications per second.
 
@@ -32,9 +32,9 @@ def _plot_versus_publications(experiment_dir, strategies, topology_label, graph_
     """
     fig = matplotlib.pyplot.gcf()
     markers = ['o', '^', 'v', 's']
-    for i, method in enumerate(strategies):
+    for i, strategy in enumerate(strategies):
         points = []
-        for log in glob.glob(experiment_dir + f'{method}-*'):
+        for log in glob.glob(experiment_dir + f'{strategy}-*'):
             log_data = get_log_data(log)
             if graph_type == 'bytes':
                 points.append((log_data.total_pubs_per_second(), log_data.sync_bytes))
@@ -42,7 +42,7 @@ def _plot_versus_publications(experiment_dir, strategies, topology_label, graph_
                 points.append((log_data.total_pubs_per_second(), log_data.sync_pack))
             elif graph_type == 'latency':
                 points.append((log_data.total_pubs_per_second(), log_data.latency_percentile_averages()[1]))
-        plot_line(points, label=f'{topology_label}, {method}', marker=markers[i])
+        plot_line(points, label=f'{topology_label}, {strategy}', marker=markers[i])
 
 
     plt.xlabel("Total publications per second")
@@ -58,7 +58,7 @@ def _plot_versus_publications(experiment_dir, strategies, topology_label, graph_
     plt.show()
     plt.clf()
 
-def _plot_versus_latency(experiment_dir, strategies, topology_label, graph_type):
+def plot_versus_latency(experiment_dir, strategies, topology_label, graph_type):
     """
     args:
     -   experiment_dir: the directory where all of the logs we want to use are
@@ -69,15 +69,15 @@ def _plot_versus_latency(experiment_dir, strategies, topology_label, graph_type)
     """
     fig = matplotlib.pyplot.gcf()
     markers = ['o', '^', 'v', 's']
-    for i, method in enumerate(strategies):
+    for i, strategy in enumerate(strategies):
         points = []
-        for log in glob.glob(experiment_dir + f'{method}-*'):
+        for log in glob.glob(experiment_dir + f'{strategy}-*'):
             log_data = get_log_data(log)
             if graph_type == 'bytes':
                 points.append((log_data.latency_percentile_averages()[1], log_data.sync_bytes))
             if graph_type == 'packets':
                 points.append((log_data.latency_percentile_averages()[1], log_data.sync_pack))
-        plot_line(points, label=f'{topology_label}, {method}', marker=markers[i])
+        plot_line(points, label=f'{topology_label}, {strategy}', marker=markers[i])
 
 
     plt.xlabel("Latency (ms)")
@@ -90,7 +90,57 @@ def _plot_versus_latency(experiment_dir, strategies, topology_label, graph_type)
     plt.show()
     plt.clf()
 
-def run_full_xiao_plots(dir, topology_label):
+def plot_latency_vs_mtu(experiment_dir, topology_label):
+    """
+    Holding stop second, publish rate, drop rate constant.
+    """
+    strategies = ['base', 'fullfrag', 'randrec', 'rand']
+    fig = matplotlib.pyplot.gcf()
+    markers = ['o', '^', 'v', 's']
+    for i, strategy in enumerate(strategies):
+        points = []
+        for log in glob.glob(experiment_dir + f'{strategy}-*'):
+            log_data = get_log_data(log)
+            points.append((log_data.mtu_size / len(log_data.nodes) * 100, log_data.latency_percentile_averages()[1]))
+        plot_line(points, label=f'{topology_label}, {strategy}', marker=markers[i])
+
+
+    plt.xlabel("MTU size (as a % of total nodes)")
+    plt.ylabel(f"Latency (ms)")
+    fig.set_size_inches(6, 2.5)
+    plt.grid()
+    plt.legend()
+    experiment_name = os.path.basename(os.path.normpath(experiment_dir))
+    plt.savefig(f'{experiment_dir}/{experiment_name}_mtu_vs_latency.png',bbox_inches='tight', pad_inches=0)  
+    plt.show()
+    plt.clf()
+
+def plot_byte_overhead_vs_mtu(experiment_dir, topology_label):
+    """
+    Holding stop second, publish rate, drop rate constant.
+    """
+    strategies = ['base', 'fullfrag', 'randrec', 'rand']
+    fig = matplotlib.pyplot.gcf()
+    markers = ['o', '^', 'v', 's']
+    for i, strategy in enumerate(strategies):
+        points = []
+        for log in glob.glob(experiment_dir + f'{strategy}-*'):
+            log_data = get_log_data(log)
+            points.append((log_data.mtu_size / len(log_data.nodes) * 100, log_data.sync_bytes))
+        plot_line(points, label=f'{topology_label}, {strategy}', marker=markers[i])
+
+
+    plt.xlabel("MTU size (as a % of total nodes)")
+    plt.ylabel(f"Overhead (bytes)")
+    fig.set_size_inches(6, 2.5)
+    plt.grid()
+    plt.legend()
+    experiment_name = os.path.basename(os.path.normpath(experiment_dir))
+    plt.savefig(f'{experiment_dir}/{experiment_name}_mtu_vs_bytes.png',bbox_inches='tight', pad_inches=0)  
+    plt.show()
+    plt.clf()
+
+def run_full_xiao_plots(experiment_dir, topology_label):
     """
     Generate all plots in the style of Appendix A, B and C from Xiao et al., and
     also generate new plots vs. latency
@@ -99,18 +149,31 @@ def run_full_xiao_plots(dir, topology_label):
     If you don't do this then these functions won't work.
     """
     strategies = ['base', 'fullfrag', 'randrec', 'rand']
-    _plot_versus_publications(dir, strategies, topology_label, 'bytes')
-    _plot_versus_publications(dir, strategies, topology_label, 'packets')
-    _plot_versus_publications(dir, strategies, topology_label, 'latency')
-    _plot_versus_latency(dir, strategies, topology_label, 'bytes')
-    _plot_versus_latency(dir, strategies, topology_label, 'packets')
+    plot_versus_publications(experiment_dir, strategies, topology_label, 'bytes')
+    plot_versus_publications(experiment_dir, strategies, topology_label, 'packets')
+    plot_versus_publications(experiment_dir, strategies, topology_label, 'latency')
+    plot_versus_latency(experiment_dir, strategies, topology_label, 'bytes')
+    plot_versus_latency(experiment_dir, strategies, topology_label, 'packets')
+
 
 if __name__ == '__main__':
-    run_full_xiao_plots(
-        dir='/home/developer/scenario-svs-217b/analysis/logs/6x6_grid_plot1/',
-        topology_label='6x6'
+    # run_full_xiao_plots(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/6x6_grid_plot1/',
+    #     topology_label='6x6'
+    # )
+    # run_full_xiao_plots(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/small_clusters_plot1/',
+    #     topology_label='Small Clusters'
+    # )
+    # run_full_xiao_plots(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/med_clusters_plot1/',
+    #     topology_label='Medium Clusters'
+    # )
+    plot_latency_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_mtu_1/',
+        topology_label='8x8'
     )
-    run_full_xiao_plots(
-        dir='/home/developer/scenario-svs-217b/analysis/logs/small_clusters_plot1/',
-        topology_label='Small Clusters'
+    plot_byte_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_mtu_1/',
+        topology_label='8x8'
     )

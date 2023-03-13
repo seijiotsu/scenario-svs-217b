@@ -7,7 +7,7 @@ from typing import Tuple
 
 class LogData:
     def __init__(self, nodes, messages, publish_times, receive_times, latencies,
-                 end_time, sync_pack, sync_bytes):
+                 end_time, sync_pack, sync_bytes, mtu_size):
         self.nodes = nodes
         self.messages = messages
         self.publish_times = publish_times
@@ -16,6 +16,7 @@ class LogData:
         self.end_time = end_time
         self.sync_pack = sync_pack
         self.sync_bytes = sync_bytes
+        self.mtu_size = mtu_size
 
     def _get_message_latency_percentiles(self, message: Tuple[str, int]) -> Tuple[float, float]:
         """
@@ -69,6 +70,7 @@ def read_log_file(filepath) -> LogData:
     end_time = 0
     sync_byte = 0
     sync_pack = 0
+    mtu_size = 0
     with open(filepath, 'r') as hdl:
         for line in hdl:
             # Edge case: end of the file, printing stats and stuff.
@@ -78,6 +80,9 @@ def read_log_file(filepath) -> LogData:
                     sync_pack = val
                 if line.startswith('SYNC_BYTE'):
                     sync_byte = val
+                continue
+            if line.startswith('MTU_SIZE'):
+                mtu_size = min(int(line.split('=')[1]), len(nodes))
                 continue
 
             # Normal case: line is either a PUB or a RECV message.
@@ -103,7 +108,7 @@ def read_log_file(filepath) -> LogData:
                 raise Exception('Unrecognized message!')
 
     return LogData(nodes, messages, publish_times, receive_times, latencies,
-                   end_time, sync_pack, sync_byte)
+                   end_time, sync_pack, sync_byte, mtu_size)
 
 
 def avg_pub_recv_delay_between_nodes(node1, node2, publish_times, receive_times):

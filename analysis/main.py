@@ -64,3 +64,16 @@ utils.simulation.conduct_full_simulation(
     mtu_sizes=[36],
     subfolder='med_clusters_plot1'
 )
+
+#
+# This simulation is designed to test MTU vs latency
+#
+utils.simulation.conduct_full_simulation(
+    topologies=['8x8_grid'],
+    publish_rates=[500],
+    stop_seconds=[3],
+    drop_rates=[0.5],
+    randrec_tuples=[(16, 16), (8, 8), (4, 4), (2, 2), (1, 1)],
+    mtu_sizes=[32, 16, 8, 4, 2],
+    subfolder='latency_vs_mtu_1'
+)

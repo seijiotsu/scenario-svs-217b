@@ -2,10 +2,10 @@
 Generates an N-N grid in the format of MiniNDN (See https://play.ndn.today/)
 """
 
-N = 6
+N = 8
 NODE_PREFIX = 'A'
 
-with open(f'/home/developer/scenario-svs-217b/topologies/src/{N}-{N}-grid', 'w') as hdl:
+with open(f'/home/developer/scenario-svs-217b/topologies/src/{N}x{N}_grid', 'w') as hdl:
 
     hdl.write('[nodes]\n')
     for i in range(N):
