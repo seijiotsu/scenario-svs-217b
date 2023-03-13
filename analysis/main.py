@@ -24,10 +24,10 @@ def simulate_and_analyze_randrecent(topology_name, n_random, n_recent, publish_r
     print()
 
 utils.simulation.conduct_full_simulation(
-    topologies=['6-6-grid'],
-    publish_rates=[300],
+    topologies=['6x6_grid'],
+    publish_rates=[100,125,150,175,200, 225,250,275,300],
     stop_seconds=[3],
-    drop_rates=[0, 0.25, 0.5],
-    randrec_tuples=[(3, 3), (6, 6), (9, 9)],
-    mtu_sizes=[6, 12, 18]
+    drop_rates=[0.25],
+    randrec_tuples=[(9, 9)],
+    mtu_sizes=[18]
     )

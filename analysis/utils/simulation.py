@@ -32,6 +32,25 @@ def randrecent(topology_name, n_random, n_recent, publish_rate_ms,
         print('done')
     return output_file
 
+def rand(topology_name, n_random, n_recent, publish_rate_ms,
+               stop_second, drop_rate) -> str:
+    """
+    Run a Random-Recent, Random or Recent simulation. Returns the output file.
+    """
+
+    output_file = LOGGING_PATH + \
+        f'rand-{topology_name}-{n_random}-{n_recent}-{publish_rate_ms}-{stop_second}-{drop_rate}'
+    print(Colors.HEADER + f'Running {output_file}...' + Colors.ENDC, end='')
+    sys.stdout.flush()
+    if _already_simulated(output_file):
+        print('already exists!')
+    else:
+        with open(output_file, 'w') as hdl:
+            subprocess.run([SIMULATOR_PATH, PROCESSED_TOPOLOGIES_PATH + topology_name,
+                            str(n_random), str(n_recent), str(publish_rate_ms),
+                            str(stop_second), str(drop_rate), '0'], stdout=hdl, stderr=DEVNULL)
+        print('done')
+    return output_file
 
 def base(topology_name, publish_rate_ms, stop_second, drop_rate) -> str:
     """
@@ -92,6 +111,8 @@ def conduct_full_simulation(topologies,
                     for mtu_size in mtu_sizes:
                         fragment(topology, publish_rate, stop_second, drop_rate,
                                  mtu_size)
+                        #simulate random, where n_random is mtu_size
+                        rand(topology, mtu_size, 0, publish_rate, stop_second, drop_rate)
                     # Simulate randrec last
                     for n_random, n_recent in randrec_tuples:
                         randrecent(topology, n_random, n_recent, publish_rate,
