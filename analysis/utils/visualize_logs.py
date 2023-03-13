@@ -19,13 +19,16 @@ def get_log_data(filepath) -> LogData:
         cache[filepath] = read_log_file(filepath)
     return cache[filepath]
 
-def plot_overhead_across_runs(experiment_dir, strategies, topology_label, overhead_type):
+def _plot_versus_publications(experiment_dir, strategies, topology_label, graph_type):
     """
+    Plot a `graph_type` against the total number of publications per second.
+
     args:
     -   experiment_dir: the directory where all of the logs we want to use are
                         stored in.
     -   methods:    the strategies that we want to plot (e.g. base, randrecent)
     -   topology_label: human-readable label for the topology in the final graph
+    -   graph_type: packet overhead, byte overhead, or latency overhead
     """
     fig = matplotlib.pyplot.gcf()
     markers = ['o', '^', 'v', 's']
@@ -33,26 +36,81 @@ def plot_overhead_across_runs(experiment_dir, strategies, topology_label, overhe
         points = []
         for log in glob.glob(experiment_dir + f'{method}-*'):
             log_data = get_log_data(log)
-            if overhead_type == 'bytes':
+            if graph_type == 'bytes':
                 points.append((log_data.total_pubs_per_second(), log_data.sync_bytes))
-            elif overhead_type == 'packets':
+            elif graph_type == 'packets':
                 points.append((log_data.total_pubs_per_second(), log_data.sync_pack))
+            elif graph_type == 'latency':
+                points.append((log_data.total_pubs_per_second(), log_data.latency_percentile_averages()[1]))
         plot_line(points, label=f'{topology_label}, {method}', marker=markers[i])
 
 
     plt.xlabel("Total publications per second")
-    plt.ylabel(f"Overhead ({overhead_type})")
+    if graph_type == 'latency':
+        plt.ylabel(f"Latency (ms)")
+    else:
+        plt.ylabel(f"Overhead ({graph_type})")
     fig.set_size_inches(6, 2.5)
     plt.grid()
     plt.legend()
     experiment_name = os.path.basename(os.path.normpath(experiment_dir))
-    plt.savefig(f'{experiment_dir}/{experiment_name}_{overhead_type}.png',bbox_inches='tight', pad_inches=0)  
+    plt.savefig(f'{experiment_dir}/{experiment_name}_{graph_type}.png',bbox_inches='tight', pad_inches=0)  
     plt.show()
     plt.clf()
 
-if __name__ == '__main__':
-    dir = "/home/developer/scenario-svs-217b/analysis/logs/6x6_grid_plot1/"
+def _plot_versus_latency(experiment_dir, strategies, topology_label, graph_type):
+    """
+    args:
+    -   experiment_dir: the directory where all of the logs we want to use are
+                        stored in.
+    -   methods:    the strategies that we want to plot (e.g. base, randrecent)
+    -   topology_label: human-readable label for the topology in the final graph
+    -   graph_type: packet overhead, or byte overhead
+    """
+    fig = matplotlib.pyplot.gcf()
+    markers = ['o', '^', 'v', 's']
+    for i, method in enumerate(strategies):
+        points = []
+        for log in glob.glob(experiment_dir + f'{method}-*'):
+            log_data = get_log_data(log)
+            if graph_type == 'bytes':
+                points.append((log_data.latency_percentile_averages()[1], log_data.sync_bytes))
+            if graph_type == 'packets':
+                points.append((log_data.latency_percentile_averages()[1], log_data.sync_pack))
+        plot_line(points, label=f'{topology_label}, {method}', marker=markers[i])
+
+
+    plt.xlabel("Latency (ms)")
+    plt.ylabel(f"Overhead ({graph_type})")
+    fig.set_size_inches(6, 2.5)
+    plt.grid()
+    plt.legend()
+    experiment_name = os.path.basename(os.path.normpath(experiment_dir))
+    plt.savefig(f'{experiment_dir}/{experiment_name}_latency_vs_{graph_type}.png',bbox_inches='tight', pad_inches=0)  
+    plt.show()
+    plt.clf()
+
+def run_full_xiao_plots(dir, topology_label):
+    """
+    Generate all plots in the style of Appendix A, B and C from Xiao et al., and
+    also generate new plots vs. latency
+
+    Note: Xiao plots keep latency, MTU and rand-rec distribution constant.
+    If you don't do this then these functions won't work.
+    """
     strategies = ['base', 'fullfrag', 'randrec', 'rand']
-    topology_label = '6x6'
-    plot_overhead_across_runs(dir, strategies, topology_label, 'bytes')
-    plot_overhead_across_runs(dir, strategies, topology_label, 'packets')
+    _plot_versus_publications(dir, strategies, topology_label, 'bytes')
+    _plot_versus_publications(dir, strategies, topology_label, 'packets')
+    _plot_versus_publications(dir, strategies, topology_label, 'latency')
+    _plot_versus_latency(dir, strategies, topology_label, 'bytes')
+    _plot_versus_latency(dir, strategies, topology_label, 'packets')
+
+if __name__ == '__main__':
+    run_full_xiao_plots(
+        dir='/home/developer/scenario-svs-217b/analysis/logs/6x6_grid_plot1/',
+        topology_label='6x6'
+    )
+    run_full_xiao_plots(
+        dir='/home/developer/scenario-svs-217b/analysis/logs/small_clusters_plot1/',
+        topology_label='Small Clusters'
+    )

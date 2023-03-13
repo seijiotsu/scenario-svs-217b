@@ -2,6 +2,7 @@ from asyncio.subprocess import DEVNULL
 import subprocess
 import sys
 import os
+import time
 
 from .colors import Colors
 
@@ -22,11 +23,13 @@ def randrecent(topology_name, n_random, n_recent, publish_rate_ms,
     if os.path.isfile(output_file):
         print('already exists!')
     else:
+        start_time = time.time()
         with open(output_file, 'w') as hdl:
             subprocess.run([SIMULATOR_PATH, PROCESSED_TOPOLOGIES_PATH + topology_name,
                             str(n_random), str(n_recent), str(publish_rate_ms),
                             str(stop_second), str(drop_rate), '0'], stdout=hdl, stderr=DEVNULL)
-        print('done')
+        end_time = time.time()
+        print(f'done in {(end_time - start_time):.2f} sec')
     return output_file
 
 def rand(topology_name, n_random, n_recent, publish_rate_ms,
@@ -42,11 +45,13 @@ def rand(topology_name, n_random, n_recent, publish_rate_ms,
     if os.path.isfile(output_file):
         print('already exists!')
     else:
+        start_time = time.time()
         with open(output_file, 'w') as hdl:
             subprocess.run([SIMULATOR_PATH, PROCESSED_TOPOLOGIES_PATH + topology_name,
                             str(n_random), str(n_recent), str(publish_rate_ms),
                             str(stop_second), str(drop_rate), '0'], stdout=hdl, stderr=DEVNULL)
-        print('done')
+        end_time = time.time()
+        print(f'done in {(end_time - start_time):.2f} sec')
     return output_file
 
 def base(topology_name, publish_rate_ms, stop_second, drop_rate, subfolder) -> str:
@@ -60,11 +65,13 @@ def base(topology_name, publish_rate_ms, stop_second, drop_rate, subfolder) -> s
     if os.path.isfile(output_file):
         print('already exists!')
     else:
+        start_time = time.time()
         with open(output_file, 'w') as hdl:
             subprocess.run([SIMULATOR_PATH, PROCESSED_TOPOLOGIES_PATH + topology_name,
                             '99999', '0', str(publish_rate_ms), str(stop_second), str(drop_rate), '0'],
                         stdout=hdl, stderr=DEVNULL)
-        print('done')
+        end_time = time.time()
+        print(f'done in {(end_time - start_time):.2f} sec')
     return output_file
 
 
@@ -80,11 +87,13 @@ def fragment(topology_name, publish_rate_ms, stop_second, drop_rate, mtu_size, s
     if os.path.isfile(output_file):
         print('already exists!')
     else:
+        start_time = time.time()
         with open(output_file, 'w') as hdl:
             subprocess.run([SIMULATOR_PATH, PROCESSED_TOPOLOGIES_PATH + topology_name,
                             '99999', '0', str(publish_rate_ms), str(stop_second), str(drop_rate), str(mtu_size)],
                         stdout=hdl, stderr=DEVNULL)
-        print('done')
+        end_time = time.time()
+        print(f'done in {(end_time - start_time):.2f} sec')
     return output_file
 
 
@@ -99,6 +108,8 @@ def conduct_full_simulation(topologies,
     Runs base, full frag, and randrec simulations for each topology, pub rate,
     stop second, and drop rate.
     """
+    if not os.path.exists(LOGGING_PATH + subfolder):
+        os.mkdir(LOGGING_PATH + subfolder)
     for topology in topologies:
         for publish_rate in publish_rates:
             for stop_second in stop_seconds:

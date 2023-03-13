@@ -23,12 +23,44 @@ def simulate_and_analyze_randrecent(topology_name, n_random, n_recent, publish_r
     # print(numpy.percentile(latencies[('A33', 13)], 50))
     print()
 
+#
+# This simulation is designed to reproduce appendix A, B and C of the paper by
+# Xiao et al.
+#
 utils.simulation.conduct_full_simulation(
     topologies=['6x6_grid'],
-    publish_rates=[100,125,150,175,200, 225,250,275,300,500,1000],
+    publish_rates=[100,125,150,175,200,225,250,275,300,500,1000],
     stop_seconds=[3],
     drop_rates=[0.25],
     randrec_tuples=[(9, 9)],
     mtu_sizes=[18],
     subfolder='6x6_grid_plot1'
-    )
+)
+
+#
+# This simulation is designed to reproduce appendix A, B and C of the paper by
+# Xiao et al. on two small clusters connected by a single bridge
+#
+utils.simulation.conduct_full_simulation(
+    topologies=['small_clusters'],
+    publish_rates=[150,175,200,225,250,275,300,500,1000],
+    stop_seconds=[3],
+    drop_rates=[0.25],
+    randrec_tuples=[(8, 8)],
+    mtu_sizes=[16],
+    subfolder='small_clusters_plot1'
+)
+
+#
+# This simulation is designed to reproduce appendix A, B and C of the paper by
+# Xiao et al. on two medium clusters connected by a single bridge
+#
+utils.simulation.conduct_full_simulation(
+    topologies=['med_clusters'],
+    publish_rates=[175,225,275,500,750,1000],
+    stop_seconds=[3],
+    drop_rates=[0.25],
+    randrec_tuples=[(18, 18)],
+    mtu_sizes=[36],
+    subfolder='med_clusters_plot1'
+)
