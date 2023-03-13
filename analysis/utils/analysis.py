@@ -1,8 +1,55 @@
 from collections import defaultdict
 import sys
 import numpy
+import math
+from typing import Tuple
 
-def read_log_file(filepath):
+
+class LogData:
+    def __init__(self, nodes, messages, publish_times, receive_times, latencies,
+                 end_time, sync_pack, sync_bytes):
+        self.nodes = nodes
+        self.messages = messages
+        self.publish_times = publish_times
+        self.receive_times = receive_times
+        self.latencies = latencies
+        self.end_time = end_time
+        self.sync_pack = sync_pack
+        self.sync_bytes = sync_bytes
+
+    def _get_message_latency_percentiles(self, message: Tuple[str, int]) -> Tuple[float, float]:
+        """
+        Returns the 50th and 90th percentile latencies for a given message
+        """
+        return (
+            numpy.percentile(self.latencies[message], 50),
+            numpy.percentile(self.latencies[message], 90)
+        )
+
+    def latency_percentile_averages(self) -> Tuple[float, float]:
+        """
+        Returns the average of each latency percentile (50th and 90th)
+        """
+        # This code is copied from somewhere else so I'm not 100% sure what some
+        # of it means (like the scale thing)
+        # I'm assuming this is  to normalize values s.t they have a standard
+        # deviation of 1; the original author did this
+        scale = math.sqrt(1)
+        nums50 = []
+        nums90 = []
+        for message in self.latencies:
+            nums50.append(numpy.percentile(self.latencies[message], 50))
+            nums90.append(numpy.percentile(self.latencies[message], 90))
+        
+        return (
+            numpy.average(nums50) / scale,
+            numpy.average(nums90) / scale
+        )
+
+    def total_pubs_per_second(self) -> float:
+        return len(self.latencies) / (self.end_time / 1000)
+
+def read_log_file(filepath) -> LogData:
     """
     Read the log file and collect some very basic data about it for further
     analysis.
@@ -18,20 +65,29 @@ def read_log_file(filepath):
     receive_times = defaultdict(lambda: defaultdict(dict))
     # Keep track of the latencies for a given message
     latencies = defaultdict(list)
+    # Keep track of some other statistics
+    end_time = 0
+    sync_byte = 0
+    sync_pack = 0
     with open(filepath, 'r') as hdl:
         for line in hdl:
             # Edge case: end of the file, printing stats and stuff.
             if line.startswith('SYNC'):
+                val = int(line.split('=')[1])
+                if line.startswith('SYNC_PACK'):
+                    sync_pack = val
+                if line.startswith('SYNC_BYTE'):
+                    sync_byte = val
                 continue
 
             # Normal case: line is either a PUB or a RECV message.
             timestamp, node, action, data = line.split(',')
             timestamp = float(timestamp)
+            end_time = max(timestamp, end_time)
             node = node[1:]
             data_node, seq_number = data.split('::')
             data_node = data_node[1:]
             seq_number = int(seq_number)
-
 
             # Add this node and the message to our list of nodes and messages
             nodes.add(node)
@@ -46,7 +102,9 @@ def read_log_file(filepath):
             else:
                 raise Exception('Unrecognized message!')
 
-    return nodes, messages, publish_times, receive_times, latencies
+    return LogData(nodes, messages, publish_times, receive_times, latencies,
+                   end_time, sync_pack, sync_byte)
+
 
 def avg_pub_recv_delay_between_nodes(node1, node2, publish_times, receive_times):
     """
@@ -74,8 +132,9 @@ if __name__ == '__main__':
     else:
         # Hardcoded to test
         filepath = '/home/developer/scenario-svs-217b/exp_log_files_seiji/med_clusters.txt'
-    
-    nodes, messages, publish_times, receive_times, latencies = read_log_file(filepath)
+
+    nodes, messages, publish_times, receive_times, latencies = read_log_file(
+        filepath)
 
     # print(sorted(list(nodes)))
     # print(sorted(list(messages)))

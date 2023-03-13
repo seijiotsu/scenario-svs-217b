@@ -25,9 +25,10 @@ def simulate_and_analyze_randrecent(topology_name, n_random, n_recent, publish_r
 
 utils.simulation.conduct_full_simulation(
     topologies=['6x6_grid'],
-    publish_rates=[100,125,150,175,200, 225,250,275,300],
+    publish_rates=[100,125,150,175,200, 225,250,275,300,500,1000],
     stop_seconds=[3],
     drop_rates=[0.25],
     randrec_tuples=[(9, 9)],
-    mtu_sizes=[18]
+    mtu_sizes=[18],
+    subfolder='6x6_grid_plot1'
     )

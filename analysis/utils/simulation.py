@@ -10,19 +10,16 @@ PROCESSED_TOPOLOGIES_PATH = ROOT_PATH + '/topologies/processed/'
 SIMULATOR_PATH = ROOT_PATH + '/build/simulate'
 LOGGING_PATH = ROOT_PATH + '/analysis/logs/'
 
-def _already_simulated(filepath):
-    return filepath.split('/')[-1] in os.listdir(LOGGING_PATH)
-
 def randrecent(topology_name, n_random, n_recent, publish_rate_ms,
-               stop_second, drop_rate) -> str:
+               stop_second, drop_rate, subfolder) -> str:
     """
     Run a Random-Recent, Random or Recent simulation. Returns the output file.
     """
-    output_file = LOGGING_PATH + \
+    output_file = LOGGING_PATH + subfolder + '/' + \
         f'randrec-{topology_name}-{n_random}-{n_recent}-{publish_rate_ms}-{stop_second}-{drop_rate}'
     print(Colors.HEADER + f'Running {output_file}...' + Colors.ENDC, end='')
     sys.stdout.flush()
-    if _already_simulated(output_file):
+    if os.path.isfile(output_file):
         print('already exists!')
     else:
         with open(output_file, 'w') as hdl:
@@ -33,16 +30,16 @@ def randrecent(topology_name, n_random, n_recent, publish_rate_ms,
     return output_file
 
 def rand(topology_name, n_random, n_recent, publish_rate_ms,
-               stop_second, drop_rate) -> str:
+               stop_second, drop_rate, subfolder) -> str:
     """
     Run a Random-Recent, Random or Recent simulation. Returns the output file.
     """
 
-    output_file = LOGGING_PATH + \
+    output_file = LOGGING_PATH + subfolder + '/' + \
         f'rand-{topology_name}-{n_random}-{n_recent}-{publish_rate_ms}-{stop_second}-{drop_rate}'
     print(Colors.HEADER + f'Running {output_file}...' + Colors.ENDC, end='')
     sys.stdout.flush()
-    if _already_simulated(output_file):
+    if os.path.isfile(output_file):
         print('already exists!')
     else:
         with open(output_file, 'w') as hdl:
@@ -52,15 +49,15 @@ def rand(topology_name, n_random, n_recent, publish_rate_ms,
         print('done')
     return output_file
 
-def base(topology_name, publish_rate_ms, stop_second, drop_rate) -> str:
+def base(topology_name, publish_rate_ms, stop_second, drop_rate, subfolder) -> str:
     """
     Run a base simulation (send the entire state vector in a single interest)
     """
-    output_file = LOGGING_PATH + \
+    output_file = LOGGING_PATH + subfolder + '/' + \
         f'base-{topology_name}-{publish_rate_ms}-{stop_second}-{drop_rate}'
     print(Colors.HEADER + f'Running {output_file}...' + Colors.ENDC, end='')
     sys.stdout.flush()
-    if _already_simulated(output_file):
+    if os.path.isfile(output_file):
         print('already exists!')
     else:
         with open(output_file, 'w') as hdl:
@@ -71,16 +68,16 @@ def base(topology_name, publish_rate_ms, stop_second, drop_rate) -> str:
     return output_file
 
 
-def fragment(topology_name, publish_rate_ms, stop_second, drop_rate, mtu_size) -> str:
+def fragment(topology_name, publish_rate_ms, stop_second, drop_rate, mtu_size, subfolder) -> str:
     """
     Run a full fragment simulation (send out the entire state vector in multiple
     sync interests, with `mtu_size` states per interest).
     """
-    output_file = LOGGING_PATH + \
+    output_file = LOGGING_PATH + subfolder + '/' + \
         f'fullfrag-{topology_name}-{publish_rate_ms}-{stop_second}-{drop_rate}-{mtu_size}'
     print(Colors.HEADER + f'Running {output_file}...' + Colors.ENDC, end='')
     sys.stdout.flush()
-    if _already_simulated(output_file):
+    if os.path.isfile(output_file):
         print('already exists!')
     else:
         with open(output_file, 'w') as hdl:
@@ -96,7 +93,8 @@ def conduct_full_simulation(topologies,
                             stop_seconds,
                             drop_rates,
                             randrec_tuples,
-                            mtu_sizes):
+                            mtu_sizes,
+                            subfolder=''):
     """
     Runs base, full frag, and randrec simulations for each topology, pub rate,
     stop second, and drop rate.
@@ -106,17 +104,18 @@ def conduct_full_simulation(topologies,
             for stop_second in stop_seconds:
                 for drop_rate in drop_rates:
                     # Simulate base first
-                    base(topology, publish_rate, stop_second, drop_rate)
+                    base(topology, publish_rate, stop_second, drop_rate, subfolder)
                     # Simulate fullfrag next
                     for mtu_size in mtu_sizes:
                         fragment(topology, publish_rate, stop_second, drop_rate,
-                                 mtu_size)
+                                 mtu_size, subfolder)
                         #simulate random, where n_random is mtu_size
-                        rand(topology, mtu_size, 0, publish_rate, stop_second, drop_rate)
+                        rand(topology, mtu_size, 0, publish_rate, stop_second,
+                            drop_rate, subfolder)
                     # Simulate randrec last
                     for n_random, n_recent in randrec_tuples:
                         randrecent(topology, n_random, n_recent, publish_rate,
-                                   stop_second, drop_rate)
+                                   stop_second, drop_rate, subfolder)
 
 
 if __name__ == '__main__':
