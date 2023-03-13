@@ -2,7 +2,7 @@
 Generates an N-N grid in the format of MiniNDN (See https://play.ndn.today/)
 """
 
-N = 4
+N = 6
 NODE_PREFIX = 'A'
 
 with open(f'/home/developer/scenario-svs-217b/topologies/src/{N}-{N}-grid', 'w') as hdl:

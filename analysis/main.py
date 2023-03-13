@@ -8,8 +8,7 @@ def simulate_and_analyze_randrecent(topology_name, n_random, n_recent, publish_r
                                     stop_second, drop_rate) -> str:
     out = utils.simulation.randrecent(topology_name, n_random, n_recent,
                                       publish_rate_ms, stop_second, drop_rate)
-    nodes, messages, publish_times, receive_times, latencies = utils.analysis.read_log_file(
-        out)
+    nodes, messages, publish_times, receive_times, latencies = utils.analysis.read_log_file(out)
 
     average_latency = numpy.average(
         [numpy.average(x) for x in latencies.values()])
@@ -24,11 +23,11 @@ def simulate_and_analyze_randrecent(topology_name, n_random, n_recent, publish_r
     # print(numpy.percentile(latencies[('A33', 13)], 50))
     print()
 
-def sim_and_analyze_base():
-    print()
-simulate_and_analyze_randrecent('med_clusters', 8, 8, 300, 3, 0.3)
-simulate_and_analyze_randrecent('med_clusters', 4, 4, 300, 3, 0.3)
-simulate_and_analyze_randrecent('med_clusters', 2, 2, 300, 3, 0.3)
-simulate_and_analyze_randrecent('med_clusters', 1, 1, 300, 3, 0.3)
-
-sim_and_analyze_base('', )
+utils.simulation.conduct_full_simulation(
+    topologies=['6-6-grid'],
+    publish_rates=[300],
+    stop_seconds=[3],
+    drop_rates=[0, 0.25, 0.5],
+    randrec_tuples=[(3, 3), (6, 6), (9, 9)],
+    mtu_sizes=[6, 12, 18]
+    )

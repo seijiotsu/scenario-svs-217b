@@ -90,12 +90,10 @@ namespace ns3
     double stopSecond = atoi(argv[5]);
     // The percent of packets to drop
     double dropRate = atof(argv[6]);
-    // We don't need to worry about this; it's not something that specifies
-    // the size of the rand-recent state vector, but rather specifies the size
-    // of the MTU when conducting full fragmentation experiments (read up on the
-    // paper to understand what this is)
-    // See fragmentation.cpp if you want an implementation of this.
-    fragmentation_mtu = 0;
+    // Specifies the size of the MTU. This is generally mutually exclusive with
+    // nRecent and nRandom; if you set this to anything other than 0, you will
+    // usually be setting nRandom to 99999.
+    fragmentation_mtu = atoi(argv[7]);
 
     configureDatalinks(dropRate);
 
