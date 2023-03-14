@@ -108,7 +108,6 @@ def plot_latency_vs_mtu(experiment_dir, topology_label):
         points = []
         for log in glob.glob(experiment_dir + f'{strategy}-*'):
             log_data = get_log_data(log)
-            print(strategy, len(log_data.nodes), log_data.mtu_size, log_data.latency_percentile_averages()[1])
             if not log_data.complete():
                 continue
             points.append((log_data.mtu_size / len(log_data.nodes) * 100, log_data.latency_percentile_averages()[1]))
@@ -241,27 +240,27 @@ if __name__ == '__main__':
     #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
     #     topology_label='6x6'
     # )
-    # plot_latency_vs_mtu(
-    #     experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
-    #     topology_label = 'Connected Spikes'
-    # )
-    # plot_byte_overhead_vs_mtu(
-    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
-    #     topology_label='Connected Spikes'
-    # )
-    # plot_packet_overhead_vs_mtu(
-    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
-    #     topology_label='Connected Spikes'
-    # )
     plot_latency_vs_mtu(
-        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS_LONG/',
+        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
         topology_label = 'Connected Spikes'
     )
-    # plot_byte_overhead_vs_mtu(
-    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS_LONG/',
-    #     topology_label='Connected Spikes'
-    # )
-    # plot_packet_overhead_vs_mtu(
-    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS_LONG/',
-    #     topology_label='Connected Spikes'
-    # )
+    plot_byte_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
+        topology_label='Connected Spikes'
+    )
+    plot_packet_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
+        topology_label='Connected Spikes'
+    )
+    plot_latency_vs_mtu(
+        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/sparse_250MS/',
+        topology_label = 'Sparse'
+    )
+    plot_byte_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/sparse_250MS/',
+        topology_label='Sparse'
+    )
+    plot_packet_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/sparse_250MS/',
+        topology_label='Sparse'
+    )

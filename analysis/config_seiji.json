@@ -42,5 +42,16 @@
         "randrec_tuples":[[24, 48], [16, 32], [12, 24], [8, 16], [3, 9], [2, 4], [1, 2]],
         "mtu_sizes":[72, 48, 36, 24, 12, 6, 3],
         "subfolder":"sparse_250MS"
+    },
+    "test_random_recent_variation": {
+        "enable": "true",
+        "metadata": "Vary the random:recent ratio. Used in paper",
+        "topologies": ["6x6_grid"],
+        "publish_rates":[250],
+        "stop_seconds":[10],
+        "drop_rates":[0.50],
+        "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
+        "mtu_sizes": [8],
+        "subfolder":"test_random_recent_variation"
     }
 }

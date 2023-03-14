@@ -61,6 +61,7 @@ class LogData:
         return self.mtu_size != 0
 
 def read_log_file(filepath) -> LogData:
+    print(filepath)
     """
     Read the log file and collect some very basic data about it for further
     analysis.
