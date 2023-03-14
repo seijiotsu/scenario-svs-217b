@@ -22,8 +22,8 @@
         "subfolder":"kite_4_5x5_1000MS"        
     },
     "kite_3_5x5_1000MS":{
-        "enable":"true",
-        "metadata":"75 node sim with 4 5x5 strung together",
+        "enable":"false",
+        "metadata":"75 node sim with 3 5x5 strung together",
         "topologies":["kite_3_5x5"],
         "publish_rates":[1000],
         "stop_seconds":[3],
@@ -31,5 +31,27 @@
         "randrec_tuples":[[4,9], [8,18], [11, 28], [16, 36], [20, 35], [23, 52]],
         "mtu_sizes":[13, 26, 39, 52, 65, 75],
         "subfolder":"kite_3_5x5_1000MS"        
-    }   
+    },   
+    "kite_2_5x5_1000MS":{
+        "enable":"false",
+        "metadata":"50 node sim with 2 5x5 strung together",
+        "topologies":["kite_2_5x5"],
+        "publish_rates":[1000],
+        "stop_seconds":[3],
+        "drop_rates":[0.25],
+        "randrec_tuples":[[4,9], [8,18], [11, 28], [15, 35]],
+        "mtu_sizes":[13, 26, 39, 50],
+        "subfolder":"kite_2_5x5_1000MS"        
+    },   
+    "kite_1_5x5_1000MS":{
+        "enable":"true",
+        "metadata":"25 node sim with 1 5x5",
+        "topologies":["kite_1_5x5"],
+        "publish_rates":[1000],
+        "stop_seconds":[3],
+        "drop_rates":[0.25],
+        "randrec_tuples":[[2, 3], [3, 7], [5, 10], [6, 14], [8,17]],
+        "mtu_sizes":[5, 10, 15, 20, 25],
+        "subfolder":"kite_1_5x5_1000MS"        
+    }    
 }

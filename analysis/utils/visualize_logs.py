@@ -178,10 +178,10 @@ if __name__ == '__main__':
     #     topology_label='8x8'
     # )
     plot_latency_vs_mtu(
-        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/kite_3_5x5_1000MS/',
-        topology_label = '75_kite_1000ms'
+        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/kite_1_5x5_1000MS/',
+        topology_label = '25_kite_1000ms'
     )
     plot_byte_overhead_vs_mtu(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_3_5x5_1000MS/',
-        topology_label='75_kite_1000ms'
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_1_5x5_1000MS/',
+        topology_label='25_kite_1000ms'
     )    
