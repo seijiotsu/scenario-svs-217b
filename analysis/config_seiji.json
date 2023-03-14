@@ -31,7 +31,7 @@
         "randrec_tuples":[[1, 2], [2, 4], [6, 12], [10, 20], [30, 60], [35, 69]],
         "mtu_sizes":[3, 6, 12, 25, 75, 104],
         "subfolder":"connected_spikes_250MS"
-    }
+    },
     "connected_spikes_250MS_LONG":{
         "enable":"true",
         "metadata":"80 node sim with 5 hubs and their spokes. Extra long for testing",
