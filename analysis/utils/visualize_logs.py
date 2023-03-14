@@ -216,27 +216,39 @@ if __name__ == '__main__':
     #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_mtu_1/',
     #     topology_label='8x8'
     # )
+    # plot_latency_vs_mtu(
+    #     experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/6x6_mtu_experiment/',
+    #     topology_label = '6x6'
+    # )
+    # plot_byte_overhead_vs_mtu(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/6x6_mtu_experiment/',
+    #     topology_label='6x6'
+    # )
+    # plot_packet_overhead_vs_mtu(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/6x6_mtu_experiment/',
+    #     topology_label='6x6'
+    # )
+    # plot_latency_vs_mtu(
+    #     experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
+    #     topology_label = '6x6'
+    # )
+    # plot_byte_overhead_vs_mtu(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
+    #     topology_label='6x6'
+    # )
+    # plot_packet_overhead_vs_mtu(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
+    #     topology_label='6x6'
+    # )
     plot_latency_vs_mtu(
-        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/6x6_mtu_experiment/',
-        topology_label = '6x6'
+        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
+        topology_label = 'Connected Spikes'
     )
     plot_byte_overhead_vs_mtu(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/6x6_mtu_experiment/',
-        topology_label='6x6'
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
+        topology_label='Connected Spikes'
     )
     plot_packet_overhead_vs_mtu(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/6x6_mtu_experiment/',
-        topology_label='6x6'
-    )
-    plot_latency_vs_mtu(
-        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
-        topology_label = '6x6'
-    )
-    plot_byte_overhead_vs_mtu(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
-        topology_label='6x6'
-    )
-    plot_packet_overhead_vs_mtu(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
-        topology_label='6x6'
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
+        topology_label='Connected Spikes'
     )
