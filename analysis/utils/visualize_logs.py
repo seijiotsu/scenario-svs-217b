@@ -252,3 +252,15 @@ if __name__ == '__main__':
         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS/',
         topology_label='Connected Spikes'
     )
+    plot_latency_vs_mtu(
+        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS_LONG/',
+        topology_label = 'Connected Spikes'
+    )
+    plot_byte_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS_LONG/',
+        topology_label='Connected Spikes'
+    )
+    plot_packet_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/connected_spikes_250MS_LONG/',
+        topology_label='Connected Spikes'
+    )

@@ -28,8 +28,8 @@
         "publish_rates":[250],
         "stop_seconds":[10],
         "drop_rates":[0.50],
-        "randrec_tuples":[[1, 2], [2, 4], [6, 12], [10, 20], [20, 40], [30, 60], [35, 69]],
-        "mtu_sizes":[3, 6, 12, 25, 60, 75, 104],
+        "randrec_tuples":[[1, 2], [2, 4], [6, 12], [10, 20], [16, 32], [20, 40], [25, 50], [30, 60], [35, 69]],
+        "mtu_sizes":[3, 6, 12, 25, 48, 60, 75, 104],
         "subfolder":"connected_spikes_250MS"
     },
     "connected_spikes_250MS_LONG":{
@@ -39,8 +39,19 @@
         "publish_rates":[250],
         "stop_seconds":[20],
         "drop_rates":[0.50],
-        "randrec_tuples":[[1, 2], [2, 4], [6, 12], [10, 20], [20, 40], [30, 60], [35, 69]],
-        "mtu_sizes":[3, 6, 12, 25, 60, 75, 104],
+        "randrec_tuples":[[35, 69], [30, 60], [25, 50], [20, 40]],
+        "mtu_sizes":[104, 75, 60],
         "subfolder":"connected_spikes_250MS_LONG"
+    },
+    "sparse_250MS":{
+        "enable":"true",
+        "metadata":"70 node sparse sim. Used in paper",
+        "topologies":["sparse"],
+        "publish_rates":[250],
+        "stop_seconds":[10],
+        "drop_rates":[0.50],
+        "randrec_tuples":[[24, 48], [16, 32], [12, 24], [8, 16], [3, 9], [2, 4], [1, 2]],
+        "mtu_sizes":[72, 48, 36, 24, 12, 6, 3],
+        "subfolder":"sparse_250MS"
     }
 }

@@ -1,0 +1,153 @@
+[nodes]
+new_1: _ network=/world router=/new_1.Router/
+new_2: _ network=/world router=/new_2.Router/
+new_3: _ network=/world router=/new_3.Router/
+new_4: _ network=/world router=/new_4.Router/
+new_5: _ network=/world router=/new_5.Router/
+new_6: _ network=/world router=/new_6.Router/
+new_7: _ network=/world router=/new_7.Router/
+new_8: _ network=/world router=/new_8.Router/
+new_9: _ network=/world router=/new_9.Router/
+new_10: _ network=/world router=/new_10.Router/
+new_11: _ network=/world router=/new_11.Router/
+new_12: _ network=/world router=/new_12.Router/
+new_13: _ network=/world router=/new_13.Router/
+new_14: _ network=/world router=/new_14.Router/
+new_15: _ network=/world router=/new_15.Router/
+new_16: _ network=/world router=/new_16.Router/
+new_17: _ network=/world router=/new_17.Router/
+new_18: _ network=/world router=/new_18.Router/
+new_19: _ network=/world router=/new_19.Router/
+new_20: _ network=/world router=/new_20.Router/
+new_21: _ network=/world router=/new_21.Router/
+new_22: _ network=/world router=/new_22.Router/
+new_23: _ network=/world router=/new_23.Router/
+new_24: _ network=/world router=/new_24.Router/
+new_25: _ network=/world router=/new_25.Router/
+new_26: _ network=/world router=/new_26.Router/
+new_27: _ network=/world router=/new_27.Router/
+new_28: _ network=/world router=/new_28.Router/
+new_29: _ network=/world router=/new_29.Router/
+new_30: _ network=/world router=/new_30.Router/
+new_31: _ network=/world router=/new_31.Router/
+new_32: _ network=/world router=/new_32.Router/
+new_33: _ network=/world router=/new_33.Router/
+new_34: _ network=/world router=/new_34.Router/
+new_35: _ network=/world router=/new_35.Router/
+new_36: _ network=/world router=/new_36.Router/
+new_37: _ network=/world router=/new_37.Router/
+new_38: _ network=/world router=/new_38.Router/
+new_39: _ network=/world router=/new_39.Router/
+new_40: _ network=/world router=/new_40.Router/
+new_41: _ network=/world router=/new_41.Router/
+new_42: _ network=/world router=/new_42.Router/
+new_43: _ network=/world router=/new_43.Router/
+new_44: _ network=/world router=/new_44.Router/
+new_45: _ network=/world router=/new_45.Router/
+new_46: _ network=/world router=/new_46.Router/
+new_47: _ network=/world router=/new_47.Router/
+new_48: _ network=/world router=/new_48.Router/
+new_49: _ network=/world router=/new_49.Router/
+new_50: _ network=/world router=/new_50.Router/
+new_51: _ network=/world router=/new_51.Router/
+new_52: _ network=/world router=/new_52.Router/
+new_53: _ network=/world router=/new_53.Router/
+new_54: _ network=/world router=/new_54.Router/
+new_55: _ network=/world router=/new_55.Router/
+new_56: _ network=/world router=/new_56.Router/
+new_57: _ network=/world router=/new_57.Router/
+new_58: _ network=/world router=/new_58.Router/
+new_59: _ network=/world router=/new_59.Router/
+new_60: _ network=/world router=/new_60.Router/
+new_61: _ network=/world router=/new_61.Router/
+new_62: _ network=/world router=/new_62.Router/
+new_63: _ network=/world router=/new_63.Router/
+new_64: _ network=/world router=/new_64.Router/
+new_65: _ network=/world router=/new_65.Router/
+new_66: _ network=/world router=/new_66.Router/
+new_67: _ network=/world router=/new_67.Router/
+new_68: _ network=/world router=/new_68.Router/
+new_69: _ network=/world router=/new_69.Router/
+new_70: _ network=/world router=/new_70.Router/
+new_71: _ network=/world router=/new_71.Router/
+new: _ network=/world router=/new.Router/
+[switches]
+[links]
+new_6:new_7 delay=10ms
+new_7:new_8 delay=10ms
+new_8:new_12 delay=10ms
+new_12:new_11 delay=10ms
+new_11:new_2 delay=10ms
+new_2:new_6 delay=10ms
+new_7:new_5 delay=10ms
+new_5:new_3 delay=10ms
+new_3:new_4 delay=10ms
+new_4:new_9 delay=10ms
+new_9:new_10 delay=10ms
+new_10:new_1 delay=10ms
+new_1:new_8 delay=10ms
+new_13:new_3 delay=10ms
+new_15:new_13 delay=10ms
+new_14:new_15 delay=10ms
+new_16:new_4 delay=10ms
+new_18:new_17 delay=10ms
+new_19:new_18 delay=10ms
+new_19:new_17 delay=10ms
+new_18:new_15 delay=10ms
+new_20:new_19 delay=10ms
+new_22:new_17 delay=10ms
+new_23:new_22 delay=10ms
+new_24:new_22 delay=10ms
+new_21:new_14 delay=10ms
+new_25:new_26 delay=10ms
+new_28:new_25 delay=10ms
+new_27:new_28 delay=10ms
+new_29:new_28 delay=10ms
+new_28:new_19 delay=10ms
+new_30:new_27 delay=10ms
+new_32:new_30 delay=10ms
+new_31:new_32 delay=10ms
+new_31:new_12 delay=10ms
+new_33:new_25 delay=10ms
+new_34:new_26 delay=10ms
+new_35:new_33 delay=10ms
+new_38:new_35 delay=10ms
+new_36:new_38 delay=10ms
+new_37:new_23 delay=10ms
+new_41:new_33 delay=10ms
+new_39:new_41 delay=10ms
+new_40:new_39 delay=10ms
+new_42:new_35 delay=10ms
+new_44:new_40 delay=10ms
+new_43:new_44 delay=10ms
+new_46:new_43 delay=10ms
+new_45:new_42 delay=10ms
+new_32:new_47 delay=10ms
+new_47:new_49 delay=10ms
+new_49:new_48 delay=10ms
+new_48:new_50 delay=10ms
+new_50:new_51 delay=10ms
+new_51:new_52 delay=10ms
+new_52:new_53 delay=10ms
+new_53:new_54 delay=10ms
+new_54:new_55 delay=10ms
+new_1:new_56 delay=10ms
+new_10:new_57 delay=10ms
+new_57:new_56 delay=10ms
+new_56:new_55 delay=10ms
+new_41:new_59 delay=10ms
+new_59:new_58 delay=10ms
+new_59:new_62 delay=10ms
+new_59:new_61 delay=10ms
+new_59:new_60 delay=10ms
+new_59:new_63 delay=10ms
+new_63:new_64 delay=10ms
+new_64:new_65 delay=10ms
+new_65:new_66 delay=10ms
+new_69:new_66 delay=10ms
+new_68:new_69 delay=10ms
+new_67:new_69 delay=10ms
+new_71:new_65 delay=10ms
+new_70:new_69 delay=10ms
+new_56:new_44 delay=10ms
+new:new_64 delay=10ms
