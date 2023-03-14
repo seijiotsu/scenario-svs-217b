@@ -28,20 +28,9 @@
         "publish_rates":[250],
         "stop_seconds":[10],
         "drop_rates":[0.50],
-        "randrec_tuples":[[1, 2], [2, 4], [6, 12], [10, 20], [16, 32], [20, 40], [25, 50], [30, 60], [35, 69]],
-        "mtu_sizes":[3, 6, 12, 25, 48, 60, 75, 104],
+        "randrec_tuples":[[28, 57], [22, 44], [18, 36], [12, 24], [6, 12], [3, 6], [1, 2]],
+        "mtu_sizes":[85, 66, 54, 36, 18, 9, 3],
         "subfolder":"connected_spikes_250MS"
-    },
-    "connected_spikes_250MS_LONG":{
-        "enable":"true",
-        "metadata":"80 node sim with 5 hubs and their spokes. Extra long for testing",
-        "topologies":["connected_spikes"],
-        "publish_rates":[250],
-        "stop_seconds":[20],
-        "drop_rates":[0.50],
-        "randrec_tuples":[[35, 69], [30, 60], [25, 50], [20, 40]],
-        "mtu_sizes":[104, 75, 60],
-        "subfolder":"connected_spikes_250MS_LONG"
     },
     "sparse_250MS":{
         "enable":"true",
