@@ -1,6 +1,6 @@
 {
     "6x6 MTU size test config": {
-        "enable": "true",
+        "enable": "false",
         "metadata": "6x6 grid to test the effects of MTU size. Used in paper",
         "topologies": ["6x6_grid"],
         "publish_rates": [250],
@@ -11,7 +11,7 @@
         "subfolder": "6x6_mtu_experiment"
     },
     "kite_4_5x5_250MS":{
-        "enable":"true",
+        "enable":"false",
         "metadata":"100 node sim with 4 5x5 strung together. Used in paper",
         "topologies":["kite_4_5x5"],
         "publish_rates":[250],
@@ -24,7 +24,7 @@
     "connected_spikes_250MS":{
         "enable":"true",
         "metadata":"80 node sim with 5 hubs and their spokes. Used in paper",
-        "topologies":["kite_4_5x5"],
+        "topologies":["connected_spikes"],
         "publish_rates":[250],
         "stop_seconds":[10],
         "drop_rates":[0.50],
