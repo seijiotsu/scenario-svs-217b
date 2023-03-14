@@ -109,7 +109,7 @@ def plot_latency_vs_mtu(experiment_dir, topology_label):
     plt.ylabel(f"Latency (ms)")
     fig.set_size_inches(6, 2.5)
     plt.grid()
-    plt.legend()
+    plt.legend(bbox_to_anchor=(1.01,1), loc='upper left')
     experiment_name = os.path.basename(os.path.normpath(experiment_dir))
     plt.savefig(f'{experiment_dir}/{experiment_name}_mtu_vs_latency.png',bbox_inches='tight', pad_inches=0)  
     plt.show()
@@ -134,7 +134,7 @@ def plot_byte_overhead_vs_mtu(experiment_dir, topology_label):
     plt.ylabel(f"Overhead (bytes)")
     fig.set_size_inches(6, 2.5)
     plt.grid()
-    plt.legend()
+    plt.legend(bbox_to_anchor=(1.01,1), loc='upper left')
     experiment_name = os.path.basename(os.path.normpath(experiment_dir))
     plt.savefig(f'{experiment_dir}/{experiment_name}_mtu_vs_bytes.png',bbox_inches='tight', pad_inches=0)  
     plt.show()
@@ -169,11 +169,19 @@ if __name__ == '__main__':
     #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/med_clusters_plot1/',
     #     topology_label='Medium Clusters'
     # )
+    # plot_latency_vs_mtu(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_mtu_1/',
+    #     topology_label='8x8'
+    # )
+    # plot_byte_overhead_vs_mtu(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_mtu_1/',
+    #     topology_label='8x8'
+    # )
     plot_latency_vs_mtu(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_mtu_1/',
-        topology_label='8x8'
+        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/kite_3_5x5_1000MS/',
+        topology_label = '75_kite_1000ms'
     )
     plot_byte_overhead_vs_mtu(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_mtu_1/',
-        topology_label='8x8'
-    )
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_3_5x5_1000MS/',
+        topology_label='75_kite_1000ms'
+    )    

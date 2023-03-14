@@ -1,0 +1,35 @@
+{
+    "6x6_grid_testconfig":{
+        "enable":"false",
+        "metadata":"6x6 grid to test config.json",
+        "topologies":["6x6_grid"],
+        "publish_rates":[100,125,150,175,200,225,250,275,300,500,1000],
+        "stop_seconds":[3],
+        "drop_rates":[0.25],
+        "randrec_tuples":[[9, 9]],
+        "mtu_sizes":[18],
+        "subfolder":"6x6_grid_testconfig"
+        },
+    "kite_4_5x5_1000MS":{
+        "enable":"false",
+        "metadata":"100 node sim with 4 5x5 strung together",
+        "topologies":["kite_4_5x5"],
+        "publish_rates":[1000],
+        "stop_seconds":[3],
+        "drop_rates":[0.25],
+        "randrec_tuples":[[4,9], [8,18], [11, 28], [16, 36], [20, 35], [23, 55],  [27,64], [30, 70]],
+        "mtu_sizes":[13, 26, 39, 52, 65, 78, 91, 100],
+        "subfolder":"kite_4_5x5_1000MS"        
+    },
+    "kite_3_5x5_1000MS":{
+        "enable":"true",
+        "metadata":"75 node sim with 4 5x5 strung together",
+        "topologies":["kite_3_5x5"],
+        "publish_rates":[1000],
+        "stop_seconds":[3],
+        "drop_rates":[0.25],
+        "randrec_tuples":[[4,9], [8,18], [11, 28], [16, 36], [20, 35], [23, 52]],
+        "mtu_sizes":[13, 26, 39, 52, 65, 75],
+        "subfolder":"kite_3_5x5_1000MS"        
+    }   
+}

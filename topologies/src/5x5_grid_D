@@ -1,0 +1,68 @@
+[nodes]
+D0: _ network=/world router=/D0.Router/
+D1: _ network=/world router=/D1.Router/
+D2: _ network=/world router=/D2.Router/
+D3: _ network=/world router=/D3.Router/
+D4: _ network=/world router=/D4.Router/
+D10: _ network=/world router=/D10.Router/
+D11: _ network=/world router=/D11.Router/
+D12: _ network=/world router=/D12.Router/
+D13: _ network=/world router=/D13.Router/
+D14: _ network=/world router=/D14.Router/
+D20: _ network=/world router=/D20.Router/
+D21: _ network=/world router=/D21.Router/
+D22: _ network=/world router=/D22.Router/
+D23: _ network=/world router=/D23.Router/
+D24: _ network=/world router=/D24.Router/
+D30: _ network=/world router=/D30.Router/
+D31: _ network=/world router=/D31.Router/
+D32: _ network=/world router=/D32.Router/
+D33: _ network=/world router=/D33.Router/
+D34: _ network=/world router=/D34.Router/
+D40: _ network=/world router=/D40.Router/
+D41: _ network=/world router=/D41.Router/
+D42: _ network=/world router=/D42.Router/
+D43: _ network=/world router=/D43.Router/
+D44: _ network=/world router=/D44.Router/
+[switches]
+[links]
+D12:D13 delay=10ms
+D23:D24 delay=10ms
+D22:D32 delay=10ms
+D11:D21 delay=10ms
+D32:D42 delay=10ms
+D10:D20 delay=10ms
+D21:D22 delay=10ms
+D13:D23 delay=10ms
+D31:D41 delay=10ms
+D1:D2 delay=10ms
+D11:D12 delay=10ms
+D12:D22 delay=10ms
+D0:D10 delay=10ms
+D2:D3 delay=10ms
+D41:D42 delay=10ms
+D30:D31 delay=10ms
+D33:D34 delay=10ms
+D3:D13 delay=10ms
+D24:D34 delay=10ms
+D21:D31 delay=10ms
+D20:D21 delay=10ms
+D34:D44 delay=10ms
+D1:D11 delay=10ms
+D42:D43 delay=10ms
+D4:D14 delay=10ms
+D14:D24 delay=10ms
+D23:D33 delay=10ms
+D10:D11 delay=10ms
+D0:D1 delay=10ms
+D2:D12 delay=10ms
+D32:D33 delay=10ms
+D13:D14 delay=10ms
+D31:D32 delay=10ms
+D3:D4 delay=10ms
+D20:D30 delay=10ms
+D22:D23 delay=10ms
+D40:D41 delay=10ms
+D30:D40 delay=10ms
+D33:D43 delay=10ms
+D43:D44 delay=10ms

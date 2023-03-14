@@ -1,0 +1,68 @@
+[nodes]
+C0: _ network=/world router=/C0.Router/
+C1: _ network=/world router=/C1.Router/
+C2: _ network=/world router=/C2.Router/
+C3: _ network=/world router=/C3.Router/
+C4: _ network=/world router=/C4.Router/
+C10: _ network=/world router=/C10.Router/
+C11: _ network=/world router=/C11.Router/
+C12: _ network=/world router=/C12.Router/
+C13: _ network=/world router=/C13.Router/
+C14: _ network=/world router=/C14.Router/
+C20: _ network=/world router=/C20.Router/
+C21: _ network=/world router=/C21.Router/
+C22: _ network=/world router=/C22.Router/
+C23: _ network=/world router=/C23.Router/
+C24: _ network=/world router=/C24.Router/
+C30: _ network=/world router=/C30.Router/
+C31: _ network=/world router=/C31.Router/
+C32: _ network=/world router=/C32.Router/
+C33: _ network=/world router=/C33.Router/
+C34: _ network=/world router=/C34.Router/
+C40: _ network=/world router=/C40.Router/
+C41: _ network=/world router=/C41.Router/
+C42: _ network=/world router=/C42.Router/
+C43: _ network=/world router=/C43.Router/
+C44: _ network=/world router=/C44.Router/
+[switches]
+[links]
+C12:C13 delay=10ms
+C23:C24 delay=10ms
+C22:C32 delay=10ms
+C11:C21 delay=10ms
+C32:C42 delay=10ms
+C10:C20 delay=10ms
+C21:C22 delay=10ms
+C13:C23 delay=10ms
+C31:C41 delay=10ms
+C1:C2 delay=10ms
+C11:C12 delay=10ms
+C12:C22 delay=10ms
+C0:C10 delay=10ms
+C2:C3 delay=10ms
+C41:C42 delay=10ms
+C30:C31 delay=10ms
+C33:C34 delay=10ms
+C3:C13 delay=10ms
+C24:C34 delay=10ms
+C21:C31 delay=10ms
+C20:C21 delay=10ms
+C34:C44 delay=10ms
+C1:C11 delay=10ms
+C42:C43 delay=10ms
+C4:C14 delay=10ms
+C14:C24 delay=10ms
+C23:C33 delay=10ms
+C10:C11 delay=10ms
+C0:C1 delay=10ms
+C2:C12 delay=10ms
+C32:C33 delay=10ms
+C13:C14 delay=10ms
+C31:C32 delay=10ms
+C3:C4 delay=10ms
+C20:C30 delay=10ms
+C22:C23 delay=10ms
+C40:C41 delay=10ms
+C30:C40 delay=10ms
+C33:C43 delay=10ms
+C43:C44 delay=10ms

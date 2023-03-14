@@ -1,0 +1,205 @@
+[nodes]
+A0: _ network=/world router=/A0.Router/
+A1: _ network=/world router=/A1.Router/
+A2: _ network=/world router=/A2.Router/
+A3: _ network=/world router=/A3.Router/
+A4: _ network=/world router=/A4.Router/
+A10: _ network=/world router=/A10.Router/
+A11: _ network=/world router=/A11.Router/
+A12: _ network=/world router=/A12.Router/
+A13: _ network=/world router=/A13.Router/
+A14: _ network=/world router=/A14.Router/
+A20: _ network=/world router=/A20.Router/
+A21: _ network=/world router=/A21.Router/
+A22: _ network=/world router=/A22.Router/
+A23: _ network=/world router=/A23.Router/
+A24: _ network=/world router=/A24.Router/
+A30: _ network=/world router=/A30.Router/
+A31: _ network=/world router=/A31.Router/
+A32: _ network=/world router=/A32.Router/
+A33: _ network=/world router=/A33.Router/
+A34: _ network=/world router=/A34.Router/
+A40: _ network=/world router=/A40.Router/
+A41: _ network=/world router=/A41.Router/
+A42: _ network=/world router=/A42.Router/
+A43: _ network=/world router=/A43.Router/
+A44: _ network=/world router=/A44.Router/
+B0: _ network=/world router=/B0.Router/
+B1: _ network=/world router=/B1.Router/
+B2: _ network=/world router=/B2.Router/
+B3: _ network=/world router=/B3.Router/
+B4: _ network=/world router=/B4.Router/
+B10: _ network=/world router=/B10.Router/
+B11: _ network=/world router=/B11.Router/
+B12: _ network=/world router=/B12.Router/
+B13: _ network=/world router=/B13.Router/
+B14: _ network=/world router=/B14.Router/
+B20: _ network=/world router=/B20.Router/
+B21: _ network=/world router=/B21.Router/
+B22: _ network=/world router=/B22.Router/
+B23: _ network=/world router=/B23.Router/
+B24: _ network=/world router=/B24.Router/
+B30: _ network=/world router=/B30.Router/
+B31: _ network=/world router=/B31.Router/
+B32: _ network=/world router=/B32.Router/
+B33: _ network=/world router=/B33.Router/
+B34: _ network=/world router=/B34.Router/
+B40: _ network=/world router=/B40.Router/
+B41: _ network=/world router=/B41.Router/
+B42: _ network=/world router=/B42.Router/
+B43: _ network=/world router=/B43.Router/
+B44: _ network=/world router=/B44.Router/
+C0: _ network=/world router=/C0.Router/
+C1: _ network=/world router=/C1.Router/
+C2: _ network=/world router=/C2.Router/
+C3: _ network=/world router=/C3.Router/
+C4: _ network=/world router=/C4.Router/
+C10: _ network=/world router=/C10.Router/
+C11: _ network=/world router=/C11.Router/
+C12: _ network=/world router=/C12.Router/
+C13: _ network=/world router=/C13.Router/
+C14: _ network=/world router=/C14.Router/
+C20: _ network=/world router=/C20.Router/
+C21: _ network=/world router=/C21.Router/
+C22: _ network=/world router=/C22.Router/
+C23: _ network=/world router=/C23.Router/
+C24: _ network=/world router=/C24.Router/
+C30: _ network=/world router=/C30.Router/
+C31: _ network=/world router=/C31.Router/
+C32: _ network=/world router=/C32.Router/
+C33: _ network=/world router=/C33.Router/
+C34: _ network=/world router=/C34.Router/
+C40: _ network=/world router=/C40.Router/
+C41: _ network=/world router=/C41.Router/
+C42: _ network=/world router=/C42.Router/
+C43: _ network=/world router=/C43.Router/
+C44: _ network=/world router=/C44.Router/
+E0: _ network=/world router=/E0.Router/
+E1: _ network=/world router=/E1.Router/
+
+[switches]
+[links]
+A12:A13 delay=10ms
+A23:A24 delay=10ms
+A22:A32 delay=10ms
+A11:A21 delay=10ms
+A32:A42 delay=10ms
+A10:A20 delay=10ms
+A21:A22 delay=10ms
+A13:A23 delay=10ms
+A31:A41 delay=10ms
+A1:A2 delay=10ms
+A11:A12 delay=10ms
+A12:A22 delay=10ms
+A0:A10 delay=10ms
+A2:A3 delay=10ms
+A41:A42 delay=10ms
+A30:A31 delay=10ms
+A33:A34 delay=10ms
+A3:A13 delay=10ms
+A24:A34 delay=10ms
+A21:A31 delay=10ms
+A20:A21 delay=10ms
+A34:A44 delay=10ms
+A1:A11 delay=10ms
+A42:A43 delay=10ms
+A4:A14 delay=10ms
+A14:A24 delay=10ms
+A23:A33 delay=10ms
+A10:A11 delay=10ms
+A0:A1 delay=10ms
+A2:A12 delay=10ms
+A32:A33 delay=10ms
+A13:A14 delay=10ms
+A31:A32 delay=10ms
+A3:A4 delay=10ms
+A20:A30 delay=10ms
+A22:A23 delay=10ms
+A40:A41 delay=10ms
+A30:A40 delay=10ms
+A33:A43 delay=10ms
+A43:A44 delay=10ms
+B12:B13 delay=10ms
+B23:B24 delay=10ms
+B22:B32 delay=10ms
+B11:B21 delay=10ms
+B32:B42 delay=10ms
+B10:B20 delay=10ms
+B21:B22 delay=10ms
+B13:B23 delay=10ms
+B31:B41 delay=10ms
+B1:B2 delay=10ms
+B11:B12 delay=10ms
+B12:B22 delay=10ms
+B0:B10 delay=10ms
+B2:B3 delay=10ms
+B41:B42 delay=10ms
+B30:B31 delay=10ms
+B33:B34 delay=10ms
+B3:B13 delay=10ms
+B24:B34 delay=10ms
+B21:B31 delay=10ms
+B20:B21 delay=10ms
+B34:B44 delay=10ms
+B1:B11 delay=10ms
+B42:B43 delay=10ms
+B4:B14 delay=10ms
+B14:B24 delay=10ms
+B23:B33 delay=10ms
+B10:B11 delay=10ms
+B0:B1 delay=10ms
+B2:B12 delay=10ms
+B32:B33 delay=10ms
+B13:B14 delay=10ms
+B31:B32 delay=10ms
+B3:B4 delay=10ms
+B20:B30 delay=10ms
+B22:B23 delay=10ms
+B40:B41 delay=10ms
+B30:B40 delay=10ms
+B33:B43 delay=10ms
+B43:B44 delay=10ms
+C12:C13 delay=10ms
+C23:C24 delay=10ms
+C22:C32 delay=10ms
+C11:C21 delay=10ms
+C32:C42 delay=10ms
+C10:C20 delay=10ms
+C21:C22 delay=10ms
+C13:C23 delay=10ms
+C31:C41 delay=10ms
+C1:C2 delay=10ms
+C11:C12 delay=10ms
+C12:C22 delay=10ms
+C0:C10 delay=10ms
+C2:C3 delay=10ms
+C41:C42 delay=10ms
+C30:C31 delay=10ms
+C33:C34 delay=10ms
+C3:C13 delay=10ms
+C24:C34 delay=10ms
+C21:C31 delay=10ms
+C20:C21 delay=10ms
+C34:C44 delay=10ms
+C1:C11 delay=10ms
+C42:C43 delay=10ms
+C4:C14 delay=10ms
+C14:C24 delay=10ms
+C23:C33 delay=10ms
+C10:C11 delay=10ms
+C0:C1 delay=10ms
+C2:C12 delay=10ms
+C32:C33 delay=10ms
+C13:C14 delay=10ms
+C31:C32 delay=10ms
+C3:C4 delay=10ms
+C20:C30 delay=10ms
+C22:C23 delay=10ms
+C40:C41 delay=10ms
+C30:C40 delay=10ms
+C33:C43 delay=10ms
+C43:C44 delay=10ms
+E0:B0 delay=10ms
+A44:E0 delay=10ms
+E1:B44 delay=10ms
+C0:E1 delay=10ms

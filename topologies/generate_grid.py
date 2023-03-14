@@ -2,8 +2,8 @@
 Generates an N-N grid in the format of MiniNDN (See https://play.ndn.today/)
 """
 
-N = 8
-NODE_PREFIX = 'A'
+N = 5
+NODE_PREFIX = 'D'
 
 with open(f'/home/developer/scenario-svs-217b/topologies/src/{N}x{N}_grid', 'w') as hdl:
 
