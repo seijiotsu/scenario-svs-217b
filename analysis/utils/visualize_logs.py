@@ -101,9 +101,9 @@ def plot_latency_vs_mtu(experiment_dir, topology_label):
     """
     Holding stop second, publish rate, drop rate constant.
     """
-    strategies = ['fullfrag', 'randrec', 'rand']
+    strategies = ['base', 'fullfrag', 'randrec', 'rand']
     fig = matplotlib.pyplot.gcf()
-    markers = ['^', 'v', 's']
+    markers = ['o', '^', 'v', 's']
     for i, strategy in enumerate(strategies):
         points = []
         for log in glob.glob(experiment_dir + f'{strategy}-*'):
@@ -128,9 +128,9 @@ def plot_byte_overhead_vs_mtu(experiment_dir, topology_label):
     """
     Holding stop second, publish rate, drop rate constant.
     """
-    strategies = ['fullfrag', 'randrec', 'rand']
+    strategies = ['base', 'fullfrag', 'randrec', 'rand']
     fig = matplotlib.pyplot.gcf()
-    markers = ['^', 'v', 's']
+    markers = ['o', '^', 'v', 's']
     for i, strategy in enumerate(strategies):
         points = []
         for log in glob.glob(experiment_dir + f'{strategy}-*'):
@@ -156,9 +156,9 @@ def plot_packet_overhead_vs_mtu(experiment_dir, topology_label):
     """
     Holding stop second, publish rate, drop rate constant.
     """
-    strategies = ['fullfrag', 'randrec', 'rand']
+    strategies = ['base', 'fullfrag', 'randrec', 'rand']
     fig = matplotlib.pyplot.gcf()
-    markers = ['^', 'v', 's']
+    markers = ['o', '^', 'v', 's']
     for i, strategy in enumerate(strategies):
         points = []
         for log in glob.glob(experiment_dir + f'{strategy}-*'):
