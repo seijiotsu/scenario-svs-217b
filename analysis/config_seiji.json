@@ -28,8 +28,8 @@
         "publish_rates":[250],
         "stop_seconds":[10],
         "drop_rates":[0.50],
-        "randrec_tuples":[[1, 2], [2, 4], [6, 12], [10, 20], [30, 60], [35, 69]],
-        "mtu_sizes":[3, 6, 12, 25, 75, 104],
+        "randrec_tuples":[[1, 2], [2, 4], [6, 12], [10, 20], [20, 40], [30, 60], [35, 69]],
+        "mtu_sizes":[3, 6, 12, 25, 60, 75, 104],
         "subfolder":"connected_spikes_250MS"
     },
     "connected_spikes_250MS_LONG":{
@@ -39,8 +39,8 @@
         "publish_rates":[250],
         "stop_seconds":[20],
         "drop_rates":[0.50],
-        "randrec_tuples":[[1, 2], [2, 4], [6, 12], [10, 20], [30, 60], [35, 69]],
-        "mtu_sizes":[3, 6, 12, 25, 75, 104],
+        "randrec_tuples":[[1, 2], [2, 4], [6, 12], [10, 20], [20, 40], [30, 60], [35, 69]],
+        "mtu_sizes":[3, 6, 12, 25, 60, 75, 104],
         "subfolder":"connected_spikes_250MS_LONG"
     }
 }
