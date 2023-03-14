@@ -1,0 +1,741 @@
+router
+# node	comment	yPos	xPos
+Ax0y0	NA	0	0
+Ax0y1	NA	0	0
+Ax0y2	NA	0	0
+Ax0y3	NA	0	0
+Ax0y4	NA	0	0
+Ax0y5	NA	0	0
+Ax0y6	NA	0	0
+Ax0y7	NA	0	0
+Ax0y8	NA	0	0
+Ax0y9	NA	0	0
+Ax0y10	NA	0	0
+Ax0y11	NA	0	0
+Ax0y12	NA	0	0
+Ax0y13	NA	0	0
+Ax0y14	NA	0	0
+Ax0y15	NA	0	0
+Ax1y0	NA	0	0
+Ax1y1	NA	0	0
+Ax1y2	NA	0	0
+Ax1y3	NA	0	0
+Ax1y4	NA	0	0
+Ax1y5	NA	0	0
+Ax1y6	NA	0	0
+Ax1y7	NA	0	0
+Ax1y8	NA	0	0
+Ax1y9	NA	0	0
+Ax1y10	NA	0	0
+Ax1y11	NA	0	0
+Ax1y12	NA	0	0
+Ax1y13	NA	0	0
+Ax1y14	NA	0	0
+Ax1y15	NA	0	0
+Ax2y0	NA	0	0
+Ax2y1	NA	0	0
+Ax2y2	NA	0	0
+Ax2y3	NA	0	0
+Ax2y4	NA	0	0
+Ax2y5	NA	0	0
+Ax2y6	NA	0	0
+Ax2y7	NA	0	0
+Ax2y8	NA	0	0
+Ax2y9	NA	0	0
+Ax2y10	NA	0	0
+Ax2y11	NA	0	0
+Ax2y12	NA	0	0
+Ax2y13	NA	0	0
+Ax2y14	NA	0	0
+Ax2y15	NA	0	0
+Ax3y0	NA	0	0
+Ax3y1	NA	0	0
+Ax3y2	NA	0	0
+Ax3y3	NA	0	0
+Ax3y4	NA	0	0
+Ax3y5	NA	0	0
+Ax3y6	NA	0	0
+Ax3y7	NA	0	0
+Ax3y8	NA	0	0
+Ax3y9	NA	0	0
+Ax3y10	NA	0	0
+Ax3y11	NA	0	0
+Ax3y12	NA	0	0
+Ax3y13	NA	0	0
+Ax3y14	NA	0	0
+Ax3y15	NA	0	0
+Ax4y0	NA	0	0
+Ax4y1	NA	0	0
+Ax4y2	NA	0	0
+Ax4y3	NA	0	0
+Ax4y4	NA	0	0
+Ax4y5	NA	0	0
+Ax4y6	NA	0	0
+Ax4y7	NA	0	0
+Ax4y8	NA	0	0
+Ax4y9	NA	0	0
+Ax4y10	NA	0	0
+Ax4y11	NA	0	0
+Ax4y12	NA	0	0
+Ax4y13	NA	0	0
+Ax4y14	NA	0	0
+Ax4y15	NA	0	0
+Ax5y0	NA	0	0
+Ax5y1	NA	0	0
+Ax5y2	NA	0	0
+Ax5y3	NA	0	0
+Ax5y4	NA	0	0
+Ax5y5	NA	0	0
+Ax5y6	NA	0	0
+Ax5y7	NA	0	0
+Ax5y8	NA	0	0
+Ax5y9	NA	0	0
+Ax5y10	NA	0	0
+Ax5y11	NA	0	0
+Ax5y12	NA	0	0
+Ax5y13	NA	0	0
+Ax5y14	NA	0	0
+Ax5y15	NA	0	0
+Ax6y0	NA	0	0
+Ax6y1	NA	0	0
+Ax6y2	NA	0	0
+Ax6y3	NA	0	0
+Ax6y4	NA	0	0
+Ax6y5	NA	0	0
+Ax6y6	NA	0	0
+Ax6y7	NA	0	0
+Ax6y8	NA	0	0
+Ax6y9	NA	0	0
+Ax6y10	NA	0	0
+Ax6y11	NA	0	0
+Ax6y12	NA	0	0
+Ax6y13	NA	0	0
+Ax6y14	NA	0	0
+Ax6y15	NA	0	0
+Ax7y0	NA	0	0
+Ax7y1	NA	0	0
+Ax7y2	NA	0	0
+Ax7y3	NA	0	0
+Ax7y4	NA	0	0
+Ax7y5	NA	0	0
+Ax7y6	NA	0	0
+Ax7y7	NA	0	0
+Ax7y8	NA	0	0
+Ax7y9	NA	0	0
+Ax7y10	NA	0	0
+Ax7y11	NA	0	0
+Ax7y12	NA	0	0
+Ax7y13	NA	0	0
+Ax7y14	NA	0	0
+Ax7y15	NA	0	0
+Ax8y0	NA	0	0
+Ax8y1	NA	0	0
+Ax8y2	NA	0	0
+Ax8y3	NA	0	0
+Ax8y4	NA	0	0
+Ax8y5	NA	0	0
+Ax8y6	NA	0	0
+Ax8y7	NA	0	0
+Ax8y8	NA	0	0
+Ax8y9	NA	0	0
+Ax8y10	NA	0	0
+Ax8y11	NA	0	0
+Ax8y12	NA	0	0
+Ax8y13	NA	0	0
+Ax8y14	NA	0	0
+Ax8y15	NA	0	0
+Ax9y0	NA	0	0
+Ax9y1	NA	0	0
+Ax9y2	NA	0	0
+Ax9y3	NA	0	0
+Ax9y4	NA	0	0
+Ax9y5	NA	0	0
+Ax9y6	NA	0	0
+Ax9y7	NA	0	0
+Ax9y8	NA	0	0
+Ax9y9	NA	0	0
+Ax9y10	NA	0	0
+Ax9y11	NA	0	0
+Ax9y12	NA	0	0
+Ax9y13	NA	0	0
+Ax9y14	NA	0	0
+Ax9y15	NA	0	0
+Ax10y0	NA	0	0
+Ax10y1	NA	0	0
+Ax10y2	NA	0	0
+Ax10y3	NA	0	0
+Ax10y4	NA	0	0
+Ax10y5	NA	0	0
+Ax10y6	NA	0	0
+Ax10y7	NA	0	0
+Ax10y8	NA	0	0
+Ax10y9	NA	0	0
+Ax10y10	NA	0	0
+Ax10y11	NA	0	0
+Ax10y12	NA	0	0
+Ax10y13	NA	0	0
+Ax10y14	NA	0	0
+Ax10y15	NA	0	0
+Ax11y0	NA	0	0
+Ax11y1	NA	0	0
+Ax11y2	NA	0	0
+Ax11y3	NA	0	0
+Ax11y4	NA	0	0
+Ax11y5	NA	0	0
+Ax11y6	NA	0	0
+Ax11y7	NA	0	0
+Ax11y8	NA	0	0
+Ax11y9	NA	0	0
+Ax11y10	NA	0	0
+Ax11y11	NA	0	0
+Ax11y12	NA	0	0
+Ax11y13	NA	0	0
+Ax11y14	NA	0	0
+Ax11y15	NA	0	0
+Ax12y0	NA	0	0
+Ax12y1	NA	0	0
+Ax12y2	NA	0	0
+Ax12y3	NA	0	0
+Ax12y4	NA	0	0
+Ax12y5	NA	0	0
+Ax12y6	NA	0	0
+Ax12y7	NA	0	0
+Ax12y8	NA	0	0
+Ax12y9	NA	0	0
+Ax12y10	NA	0	0
+Ax12y11	NA	0	0
+Ax12y12	NA	0	0
+Ax12y13	NA	0	0
+Ax12y14	NA	0	0
+Ax12y15	NA	0	0
+Ax13y0	NA	0	0
+Ax13y1	NA	0	0
+Ax13y2	NA	0	0
+Ax13y3	NA	0	0
+Ax13y4	NA	0	0
+Ax13y5	NA	0	0
+Ax13y6	NA	0	0
+Ax13y7	NA	0	0
+Ax13y8	NA	0	0
+Ax13y9	NA	0	0
+Ax13y10	NA	0	0
+Ax13y11	NA	0	0
+Ax13y12	NA	0	0
+Ax13y13	NA	0	0
+Ax13y14	NA	0	0
+Ax13y15	NA	0	0
+Ax14y0	NA	0	0
+Ax14y1	NA	0	0
+Ax14y2	NA	0	0
+Ax14y3	NA	0	0
+Ax14y4	NA	0	0
+Ax14y5	NA	0	0
+Ax14y6	NA	0	0
+Ax14y7	NA	0	0
+Ax14y8	NA	0	0
+Ax14y9	NA	0	0
+Ax14y10	NA	0	0
+Ax14y11	NA	0	0
+Ax14y12	NA	0	0
+Ax14y13	NA	0	0
+Ax14y14	NA	0	0
+Ax14y15	NA	0	0
+Ax15y0	NA	0	0
+Ax15y1	NA	0	0
+Ax15y2	NA	0	0
+Ax15y3	NA	0	0
+Ax15y4	NA	0	0
+Ax15y5	NA	0	0
+Ax15y6	NA	0	0
+Ax15y7	NA	0	0
+Ax15y8	NA	0	0
+Ax15y9	NA	0	0
+Ax15y10	NA	0	0
+Ax15y11	NA	0	0
+Ax15y12	NA	0	0
+Ax15y13	NA	0	0
+Ax15y14	NA	0	0
+Ax15y15	NA	0	0
+
+link
+# src	dest	bandwidth	metric	delay	queue
+Ax7y2	Ax8y2	10Mbps	1 10ms	20
+Ax7y12	Ax7y13	10Mbps	1 10ms	20
+Ax11y5	Ax12y5	10Mbps	1 10ms	20
+Ax14y12	Ax15y12	10Mbps	1 10ms	20
+Ax14y7	Ax15y7	10Mbps	1 10ms	20
+Ax6y12	Ax7y12	10Mbps	1 10ms	20
+Ax8y10	Ax9y10	10Mbps	1 10ms	20
+Ax11y7	Ax11y8	10Mbps	1 10ms	20
+Ax3y2	Ax4y2	10Mbps	1 10ms	20
+Ax4y13	Ax5y13	10Mbps	1 10ms	20
+Ax14y4	Ax15y4	10Mbps	1 10ms	20
+Ax5y5	Ax6y5	10Mbps	1 10ms	20
+Ax13y3	Ax14y3	10Mbps	1 10ms	20
+Ax3y6	Ax4y6	10Mbps	1 10ms	20
+Ax0y2	Ax0y3	10Mbps	1 10ms	20
+Ax5y7	Ax5y8	10Mbps	1 10ms	20
+Ax7y5	Ax7y6	10Mbps	1 10ms	20
+Ax3y3	Ax3y4	10Mbps	1 10ms	20
+Ax0y14	Ax0y15	10Mbps	1 10ms	20
+Ax6y5	Ax7y5	10Mbps	1 10ms	20
+Ax14y15	Ax15y15	10Mbps	1 10ms	20
+Ax10y8	Ax11y8	10Mbps	1 10ms	20
+Ax13y8	Ax13y9	10Mbps	1 10ms	20
+Ax7y9	Ax8y9	10Mbps	1 10ms	20
+Ax11y0	Ax11y1	10Mbps	1 10ms	20
+Ax11y12	Ax12y12	10Mbps	1 10ms	20
+Ax0y10	Ax1y10	10Mbps	1 10ms	20
+Ax10y0	Ax11y0	10Mbps	1 10ms	20
+Ax7y13	Ax8y13	10Mbps	1 10ms	20
+Ax3y9	Ax3y10	10Mbps	1 10ms	20
+Ax11y4	Ax12y4	10Mbps	1 10ms	20
+Ax5y0	Ax5y1	10Mbps	1 10ms	20
+Ax5y12	Ax6y12	10Mbps	1 10ms	20
+Ax13y6	Ax14y6	10Mbps	1 10ms	20
+Ax8y7	Ax8y8	10Mbps	1 10ms	20
+Ax12y6	Ax12y7	10Mbps	1 10ms	20
+Ax2y8	Ax2y9	10Mbps	1 10ms	20
+Ax11y8	Ax12y8	10Mbps	1 10ms	20
+Ax7y4	Ax7y5	10Mbps	1 10ms	20
+Ax4y5	Ax4y6	10Mbps	1 10ms	20
+Ax5y4	Ax6y4	10Mbps	1 10ms	20
+Ax14y14	Ax15y14	10Mbps	1 10ms	20
+Ax9y12	Ax10y12	10Mbps	1 10ms	20
+Ax5y8	Ax6y8	10Mbps	1 10ms	20
+Ax11y14	Ax11y15	10Mbps	1 10ms	20
+Ax1y4	Ax1y5	10Mbps	1 10ms	20
+Ax14y11	Ax15y11	10Mbps	1 10ms	20
+Ax12y7	Ax13y7	10Mbps	1 10ms	20
+Ax1y1	Ax1y2	10Mbps	1 10ms	20
+Ax10y1	Ax10y2	10Mbps	1 10ms	20
+Ax0y9	Ax0y10	10Mbps	1 10ms	20
+Ax5y14	Ax5y15	10Mbps	1 10ms	20
+Ax3y10	Ax3y11	10Mbps	1 10ms	20
+Ax2y0	Ax2y1	10Mbps	1 10ms	20
+Ax9y12	Ax9y13	10Mbps	1 10ms	20
+Ax6y12	Ax6y13	10Mbps	1 10ms	20
+Ax9y6	Ax9y7	10Mbps	1 10ms	20
+Ax15y4	Ax15y5	10Mbps	1 10ms	20
+Ax12y13	Ax12y14	10Mbps	1 10ms	20
+Ax10y15	Ax11y15	10Mbps	1 10ms	20
+Ax13y2	Ax14y2	10Mbps	1 10ms	20
+Ax7y11	Ax7y12	10Mbps	1 10ms	20
+Ax0y2	Ax1y2	10Mbps	1 10ms	20
+Ax10y7	Ax11y7	10Mbps	1 10ms	20
+Ax3y6	Ax3y7	10Mbps	1 10ms	20
+Ax1y11	Ax1y12	10Mbps	1 10ms	20
+Ax4y12	Ax5y12	10Mbps	1 10ms	20
+Ax7y7	Ax7y8	10Mbps	1 10ms	20
+Ax10y8	Ax10y9	10Mbps	1 10ms	20
+Ax5y6	Ax5y7	10Mbps	1 10ms	20
+Ax6y1	Ax7y1	10Mbps	1 10ms	20
+Ax11y15	Ax12y15	10Mbps	1 10ms	20
+Ax11y2	Ax11y3	10Mbps	1 10ms	20
+Ax14y3	Ax14y4	10Mbps	1 10ms	20
+Ax4y12	Ax4y13	10Mbps	1 10ms	20
+Ax5y11	Ax6y11	10Mbps	1 10ms	20
+Ax11y7	Ax12y7	10Mbps	1 10ms	20
+Ax4y5	Ax5y5	10Mbps	1 10ms	20
+Ax2y1	Ax3y1	10Mbps	1 10ms	20
+Ax2y5	Ax3y5	10Mbps	1 10ms	20
+Ax2y10	Ax2y11	10Mbps	1 10ms	20
+Ax5y7	Ax6y7	10Mbps	1 10ms	20
+Ax3y13	Ax4y13	10Mbps	1 10ms	20
+Ax11y10	Ax11y11	10Mbps	1 10ms	20
+Ax4y1	Ax5y1	10Mbps	1 10ms	20
+Ax12y3	Ax13y3	10Mbps	1 10ms	20
+Ax0y9	Ax1y9	10Mbps	1 10ms	20
+Ax13y13	Ax14y13	10Mbps	1 10ms	20
+Ax3y5	Ax4y5	10Mbps	1 10ms	20
+Ax12y9	Ax13y9	10Mbps	1 10ms	20
+Ax9y6	Ax10y6	10Mbps	1 10ms	20
+Ax2y3	Ax2y4	10Mbps	1 10ms	20
+Ax10y14	Ax11y14	10Mbps	1 10ms	20
+Ax1y8	Ax2y8	10Mbps	1 10ms	20
+Ax12y10	Ax13y10	10Mbps	1 10ms	20
+Ax13y9	Ax14y9	10Mbps	1 10ms	20
+Ax2y12	Ax3y12	10Mbps	1 10ms	20
+Ax14y1	Ax15y1	10Mbps	1 10ms	20
+Ax3y12	Ax4y12	10Mbps	1 10ms	20
+Ax10y10	Ax11y10	10Mbps	1 10ms	20
+Ax12y2	Ax13y2	10Mbps	1 10ms	20
+Ax12y12	Ax12y13	10Mbps	1 10ms	20
+Ax1y11	Ax2y11	10Mbps	1 10ms	20
+Ax4y8	Ax5y8	10Mbps	1 10ms	20
+Ax2y4	Ax3y4	10Mbps	1 10ms	20
+Ax11y14	Ax12y14	10Mbps	1 10ms	20
+Ax12y6	Ax13y6	10Mbps	1 10ms	20
+Ax13y5	Ax14y5	10Mbps	1 10ms	20
+Ax2y8	Ax3y8	10Mbps	1 10ms	20
+Ax5y15	Ax6y15	10Mbps	1 10ms	20
+Ax9y13	Ax10y13	10Mbps	1 10ms	20
+Ax3y8	Ax4y8	10Mbps	1 10ms	20
+Ax6y1	Ax6y2	10Mbps	1 10ms	20
+Ax13y0	Ax13y1	10Mbps	1 10ms	20
+Ax5y14	Ax6y14	10Mbps	1 10ms	20
+Ax3y2	Ax3y3	10Mbps	1 10ms	20
+Ax7y1	Ax7y2	10Mbps	1 10ms	20
+Ax1y7	Ax2y7	10Mbps	1 10ms	20
+Ax0y6	Ax0y7	10Mbps	1 10ms	20
+Ax0y12	Ax1y12	10Mbps	1 10ms	20
+Ax4y15	Ax5y15	10Mbps	1 10ms	20
+Ax2y11	Ax3y11	10Mbps	1 10ms	20
+Ax12y5	Ax12y6	10Mbps	1 10ms	20
+Ax14y0	Ax15y0	10Mbps	1 10ms	20
+Ax13y10	Ax13y11	10Mbps	1 10ms	20
+Ax4y14	Ax4y15	10Mbps	1 10ms	20
+Ax9y13	Ax9y14	10Mbps	1 10ms	20
+Ax15y11	Ax15y12	10Mbps	1 10ms	20
+Ax4y7	Ax5y7	10Mbps	1 10ms	20
+Ax0y12	Ax0y13	10Mbps	1 10ms	20
+Ax2y7	Ax3y7	10Mbps	1 10ms	20
+Ax3y13	Ax3y14	10Mbps	1 10ms	20
+Ax1y0	Ax2y0	10Mbps	1 10ms	20
+Ax8y9	Ax8y10	10Mbps	1 10ms	20
+Ax8y3	Ax8y4	10Mbps	1 10ms	20
+Ax2y15	Ax3y15	10Mbps	1 10ms	20
+Ax3y15	Ax4y15	10Mbps	1 10ms	20
+Ax10y0	Ax10y1	10Mbps	1 10ms	20
+Ax4y7	Ax4y8	10Mbps	1 10ms	20
+Ax4y1	Ax4y2	10Mbps	1 10ms	20
+Ax7y8	Ax7y9	10Mbps	1 10ms	20
+Ax12y4	Ax12y5	10Mbps	1 10ms	20
+Ax4y0	Ax5y0	10Mbps	1 10ms	20
+Ax15y5	Ax15y6	10Mbps	1 10ms	20
+Ax13y12	Ax14y12	10Mbps	1 10ms	20
+Ax11y3	Ax11y4	10Mbps	1 10ms	20
+Ax1y8	Ax1y9	10Mbps	1 10ms	20
+Ax5y1	Ax6y1	10Mbps	1 10ms	20
+Ax6y4	Ax6y5	10Mbps	1 10ms	20
+Ax1y14	Ax2y14	10Mbps	1 10ms	20
+Ax15y1	Ax15y2	10Mbps	1 10ms	20
+Ax2y2	Ax2y3	10Mbps	1 10ms	20
+Ax4y0	Ax4y1	10Mbps	1 10ms	20
+Ax5y3	Ax5y4	10Mbps	1 10ms	20
+Ax5y13	Ax5y14	10Mbps	1 10ms	20
+Ax14y13	Ax14y14	10Mbps	1 10ms	20
+Ax8y13	Ax9y13	10Mbps	1 10ms	20
+Ax11y9	Ax11y10	10Mbps	1 10ms	20
+Ax14y10	Ax14y11	10Mbps	1 10ms	20
+Ax3y11	Ax4y11	10Mbps	1 10ms	20
+Ax14y5	Ax14y6	10Mbps	1 10ms	20
+Ax3y8	Ax3y9	10Mbps	1 10ms	20
+Ax1y10	Ax2y10	10Mbps	1 10ms	20
+Ax0y6	Ax1y6	10Mbps	1 10ms	20
+Ax5y9	Ax5y10	10Mbps	1 10ms	20
+Ax4y14	Ax5y14	10Mbps	1 10ms	20
+Ax8y2	Ax9y2	10Mbps	1 10ms	20
+Ax10y7	Ax10y8	10Mbps	1 10ms	20
+Ax7y6	Ax8y6	10Mbps	1 10ms	20
+Ax6y8	Ax7y8	10Mbps	1 10ms	20
+Ax8y6	Ax9y6	10Mbps	1 10ms	20
+Ax12y11	Ax12y12	10Mbps	1 10ms	20
+Ax3y4	Ax4y4	10Mbps	1 10ms	20
+Ax7y12	Ax8y12	10Mbps	1 10ms	20
+Ax14y2	Ax14y3	10Mbps	1 10ms	20
+Ax13y14	Ax13y15	10Mbps	1 10ms	20
+Ax11y1	Ax12y1	10Mbps	1 10ms	20
+Ax10y13	Ax11y13	10Mbps	1 10ms	20
+Ax1y0	Ax1y1	10Mbps	1 10ms	20
+Ax8y9	Ax9y9	10Mbps	1 10ms	20
+Ax9y8	Ax10y8	10Mbps	1 10ms	20
+Ax6y11	Ax6y12	10Mbps	1 10ms	20
+Ax9y5	Ax10y5	10Mbps	1 10ms	20
+Ax15y8	Ax15y9	10Mbps	1 10ms	20
+Ax2y9	Ax2y10	10Mbps	1 10ms	20
+Ax12y13	Ax13y13	10Mbps	1 10ms	20
+Ax5y10	Ax5y11	10Mbps	1 10ms	20
+Ax7y5	Ax8y5	10Mbps	1 10ms	20
+Ax11y6	Ax11y7	10Mbps	1 10ms	20
+Ax13y11	Ax14y11	10Mbps	1 10ms	20
+Ax8y5	Ax9y5	10Mbps	1 10ms	20
+Ax13y2	Ax13y3	10Mbps	1 10ms	20
+Ax10y6	Ax11y6	10Mbps	1 10ms	20
+Ax6y4	Ax7y4	10Mbps	1 10ms	20
+Ax9y1	Ax10y1	10Mbps	1 10ms	20
+Ax13y15	Ax14y15	10Mbps	1 10ms	20
+Ax0y13	Ax1y13	10Mbps	1 10ms	20
+Ax9y5	Ax9y6	10Mbps	1 10ms	20
+Ax11y0	Ax12y0	10Mbps	1 10ms	20
+Ax7y1	Ax8y1	10Mbps	1 10ms	20
+Ax14y6	Ax15y6	10Mbps	1 10ms	20
+Ax7y10	Ax7y11	10Mbps	1 10ms	20
+Ax3y5	Ax3y6	10Mbps	1 10ms	20
+Ax5y0	Ax6y0	10Mbps	1 10ms	20
+Ax8y13	Ax8y14	10Mbps	1 10ms	20
+Ax6y0	Ax7y0	10Mbps	1 10ms	20
+Ax6y15	Ax7y15	10Mbps	1 10ms	20
+Ax2y14	Ax3y14	10Mbps	1 10ms	20
+Ax0y13	Ax0y14	10Mbps	1 10ms	20
+Ax3y11	Ax3y12	10Mbps	1 10ms	20
+Ax14y3	Ax15y3	10Mbps	1 10ms	20
+Ax7y4	Ax8y4	10Mbps	1 10ms	20
+Ax10y14	Ax10y15	10Mbps	1 10ms	20
+Ax15y0	Ax15y1	10Mbps	1 10ms	20
+Ax8y10	Ax8y11	10Mbps	1 10ms	20
+Ax7y0	Ax7y1	10Mbps	1 10ms	20
+Ax11y11	Ax12y11	10Mbps	1 10ms	20
+Ax12y8	Ax12y9	10Mbps	1 10ms	20
+Ax8y12	Ax9y12	10Mbps	1 10ms	20
+Ax4y4	Ax5y4	10Mbps	1 10ms	20
+Ax4y8	Ax4y9	10Mbps	1 10ms	20
+Ax9y0	Ax10y0	10Mbps	1 10ms	20
+Ax10y3	Ax11y3	10Mbps	1 10ms	20
+Ax14y9	Ax14y10	10Mbps	1 10ms	20
+Ax3y12	Ax3y13	10Mbps	1 10ms	20
+Ax5y5	Ax5y6	10Mbps	1 10ms	20
+Ax6y8	Ax6y9	10Mbps	1 10ms	20
+Ax8y6	Ax8y7	10Mbps	1 10ms	20
+Ax7y8	Ax8y8	10Mbps	1 10ms	20
+Ax3y4	Ax3y5	10Mbps	1 10ms	20
+Ax1y6	Ax2y6	10Mbps	1 10ms	20
+Ax6y5	Ax6y6	10Mbps	1 10ms	20
+Ax4y4	Ax4y5	10Mbps	1 10ms	20
+Ax9y0	Ax9y1	10Mbps	1 10ms	20
+Ax12y1	Ax12y2	10Mbps	1 10ms	20
+Ax10y13	Ax10y14	10Mbps	1 10ms	20
+Ax6y11	Ax7y11	10Mbps	1 10ms	20
+Ax11y13	Ax11y14	10Mbps	1 10ms	20
+Ax1y7	Ax1y8	10Mbps	1 10ms	20
+Ax0y8	Ax0y9	10Mbps	1 10ms	20
+Ax5y2	Ax5y3	10Mbps	1 10ms	20
+Ax6y7	Ax7y7	10Mbps	1 10ms	20
+Ax0y1	Ax1y1	10Mbps	1 10ms	20
+Ax14y10	Ax15y10	10Mbps	1 10ms	20
+Ax10y6	Ax10y7	10Mbps	1 10ms	20
+Ax13y9	Ax13y10	10Mbps	1 10ms	20
+Ax10y2	Ax11y2	10Mbps	1 10ms	20
+Ax0y5	Ax0y6	10Mbps	1 10ms	20
+Ax6y0	Ax6y1	10Mbps	1 10ms	20
+Ax13y1	Ax14y1	10Mbps	1 10ms	20
+Ax7y14	Ax7y15	10Mbps	1 10ms	20
+Ax12y14	Ax12y15	10Mbps	1 10ms	20
+Ax7y15	Ax8y15	10Mbps	1 10ms	20
+Ax3y1	Ax4y1	10Mbps	1 10ms	20
+Ax1y13	Ax2y13	10Mbps	1 10ms	20
+Ax4y11	Ax5y11	10Mbps	1 10ms	20
+Ax10y3	Ax10y4	10Mbps	1 10ms	20
+Ax1y14	Ax1y15	10Mbps	1 10ms	20
+Ax9y15	Ax10y15	10Mbps	1 10ms	20
+Ax1y6	Ax1y7	10Mbps	1 10ms	20
+Ax7y2	Ax7y3	10Mbps	1 10ms	20
+Ax4y11	Ax4y12	10Mbps	1 10ms	20
+Ax10y9	Ax10y10	10Mbps	1 10ms	20
+Ax14y12	Ax14y13	10Mbps	1 10ms	20
+Ax2y0	Ax3y0	10Mbps	1 10ms	20
+Ax3y0	Ax4y0	10Mbps	1 10ms	20
+Ax8y2	Ax8y3	10Mbps	1 10ms	20
+Ax14y4	Ax14y5	10Mbps	1 10ms	20
+Ax8y11	Ax9y11	10Mbps	1 10ms	20
+Ax11y3	Ax12y3	10Mbps	1 10ms	20
+Ax8y4	Ax9y4	10Mbps	1 10ms	20
+Ax7y11	Ax8y11	10Mbps	1 10ms	20
+Ax2y13	Ax2y14	10Mbps	1 10ms	20
+Ax9y8	Ax9y9	10Mbps	1 10ms	20
+Ax2y6	Ax2y7	10Mbps	1 10ms	20
+Ax13y8	Ax14y8	10Mbps	1 10ms	20
+Ax9y7	Ax10y7	10Mbps	1 10ms	20
+Ax5y3	Ax6y3	10Mbps	1 10ms	20
+Ax0y8	Ax1y8	10Mbps	1 10ms	20
+Ax5y12	Ax5y13	10Mbps	1 10ms	20
+Ax7y7	Ax8y7	10Mbps	1 10ms	20
+Ax0y5	Ax1y5	10Mbps	1 10ms	20
+Ax15y7	Ax15y8	10Mbps	1 10ms	20
+Ax0y0	Ax1y0	10Mbps	1 10ms	20
+Ax13y3	Ax13y4	10Mbps	1 10ms	20
+Ax5y6	Ax6y6	10Mbps	1 10ms	20
+Ax12y5	Ax13y5	10Mbps	1 10ms	20
+Ax11y2	Ax12y2	10Mbps	1 10ms	20
+Ax9y1	Ax9y2	10Mbps	1 10ms	20
+Ax3y7	Ax4y7	10Mbps	1 10ms	20
+Ax8y5	Ax8y6	10Mbps	1 10ms	20
+Ax13y7	Ax14y7	10Mbps	1 10ms	20
+Ax0y0	Ax0y1	10Mbps	1 10ms	20
+Ax5y2	Ax6y2	10Mbps	1 10ms	20
+Ax3y1	Ax3y2	10Mbps	1 10ms	20
+Ax12y1	Ax13y1	10Mbps	1 10ms	20
+Ax1y13	Ax1y14	10Mbps	1 10ms	20
+Ax8y15	Ax9y15	10Mbps	1 10ms	20
+Ax12y0	Ax12y1	10Mbps	1 10ms	20
+Ax13y4	Ax14y4	10Mbps	1 10ms	20
+Ax0y15	Ax1y15	10Mbps	1 10ms	20
+Ax3y3	Ax4y3	10Mbps	1 10ms	20
+Ax11y13	Ax12y13	10Mbps	1 10ms	20
+Ax10y10	Ax10y11	10Mbps	1 10ms	20
+Ax6y14	Ax7y14	10Mbps	1 10ms	20
+Ax14y11	Ax14y12	10Mbps	1 10ms	20
+Ax11y10	Ax12y10	10Mbps	1 10ms	20
+Ax12y7	Ax12y8	10Mbps	1 10ms	20
+Ax10y12	Ax11y12	10Mbps	1 10ms	20
+Ax15y14	Ax15y15	10Mbps	1 10ms	20
+Ax10y9	Ax11y9	10Mbps	1 10ms	20
+Ax13y0	Ax14y0	10Mbps	1 10ms	20
+Ax9y4	Ax10y4	10Mbps	1 10ms	20
+Ax9y14	Ax10y14	10Mbps	1 10ms	20
+Ax5y10	Ax6y10	10Mbps	1 10ms	20
+Ax1y3	Ax2y3	10Mbps	1 10ms	20
+Ax4y2	Ax5y2	10Mbps	1 10ms	20
+Ax6y10	Ax7y10	10Mbps	1 10ms	20
+Ax8y12	Ax8y13	10Mbps	1 10ms	20
+Ax13y13	Ax13y14	10Mbps	1 10ms	20
+Ax11y6	Ax12y6	10Mbps	1 10ms	20
+Ax7y14	Ax8y14	10Mbps	1 10ms	20
+Ax1y2	Ax2y2	10Mbps	1 10ms	20
+Ax11y5	Ax11y6	10Mbps	1 10ms	20
+Ax8y11	Ax8y12	10Mbps	1 10ms	20
+Ax13y6	Ax13y7	10Mbps	1 10ms	20
+Ax4y10	Ax4y11	10Mbps	1 10ms	20
+Ax8y4	Ax8y5	10Mbps	1 10ms	20
+Ax5y13	Ax6y13	10Mbps	1 10ms	20
+Ax10y5	Ax11y5	10Mbps	1 10ms	20
+Ax14y13	Ax15y13	10Mbps	1 10ms	20
+Ax9y4	Ax9y5	10Mbps	1 10ms	20
+Ax4y3	Ax5y3	10Mbps	1 10ms	20
+Ax9y14	Ax9y15	10Mbps	1 10ms	20
+Ax11y9	Ax12y9	10Mbps	1 10ms	20
+Ax3y14	Ax4y14	10Mbps	1 10ms	20
+Ax4y2	Ax4y3	10Mbps	1 10ms	20
+Ax15y13	Ax15y14	10Mbps	1 10ms	20
+Ax12y12	Ax13y12	10Mbps	1 10ms	20
+Ax2y3	Ax3y3	10Mbps	1 10ms	20
+Ax5y9	Ax6y9	10Mbps	1 10ms	20
+Ax4y3	Ax4y4	10Mbps	1 10ms	20
+Ax3y10	Ax4y10	10Mbps	1 10ms	20
+Ax9y11	Ax9y12	10Mbps	1 10ms	20
+Ax15y9	Ax15y10	10Mbps	1 10ms	20
+Ax12y8	Ax13y8	10Mbps	1 10ms	20
+Ax5y11	Ax5y12	10Mbps	1 10ms	20
+Ax7y9	Ax7y10	10Mbps	1 10ms	20
+Ax11y12	Ax11y13	10Mbps	1 10ms	20
+Ax15y6	Ax15y7	10Mbps	1 10ms	20
+Ax6y7	Ax6y8	10Mbps	1 10ms	20
+Ax14y8	Ax14y9	10Mbps	1 10ms	20
+Ax11y4	Ax11y5	10Mbps	1 10ms	20
+Ax1y9	Ax1y10	10Mbps	1 10ms	20
+Ax2y5	Ax2y6	10Mbps	1 10ms	20
+Ax0y1	Ax0y2	10Mbps	1 10ms	20
+Ax10y2	Ax10y3	10Mbps	1 10ms	20
+Ax15y2	Ax15y3	10Mbps	1 10ms	20
+Ax5y4	Ax5y5	10Mbps	1 10ms	20
+Ax14y14	Ax14y15	10Mbps	1 10ms	20
+Ax7y3	Ax7y4	10Mbps	1 10ms	20
+Ax10y12	Ax10y13	10Mbps	1 10ms	20
+Ax12y10	Ax12y11	10Mbps	1 10ms	20
+Ax14y1	Ax14y2	10Mbps	1 10ms	20
+Ax4y9	Ax4y10	10Mbps	1 10ms	20
+Ax1y10	Ax1y11	10Mbps	1 10ms	20
+Ax8y1	Ax9y1	10Mbps	1 10ms	20
+Ax6y13	Ax7y13	10Mbps	1 10ms	20
+Ax12y4	Ax13y4	10Mbps	1 10ms	20
+Ax1y3	Ax1y4	10Mbps	1 10ms	20
+Ax6y10	Ax6y11	10Mbps	1 10ms	20
+Ax4y10	Ax5y10	10Mbps	1 10ms	20
+Ax2y10	Ax3y10	10Mbps	1 10ms	20
+Ax10y5	Ax10y6	10Mbps	1 10ms	20
+Ax7y6	Ax7y7	10Mbps	1 10ms	20
+Ax12y0	Ax13y0	10Mbps	1 10ms	20
+Ax12y15	Ax13y15	10Mbps	1 10ms	20
+Ax13y14	Ax14y14	10Mbps	1 10ms	20
+Ax8y8	Ax9y8	10Mbps	1 10ms	20
+Ax2y2	Ax3y2	10Mbps	1 10ms	20
+Ax6y6	Ax7y6	10Mbps	1 10ms	20
+Ax7y0	Ax8y0	10Mbps	1 10ms	20
+Ax11y1	Ax11y2	10Mbps	1 10ms	20
+Ax8y0	Ax9y0	10Mbps	1 10ms	20
+Ax9y11	Ax10y11	10Mbps	1 10ms	20
+Ax3y0	Ax3y1	10Mbps	1 10ms	20
+Ax13y10	Ax14y10	10Mbps	1 10ms	20
+Ax14y9	Ax15y9	10Mbps	1 10ms	20
+Ax1y12	Ax2y12	10Mbps	1 10ms	20
+Ax14y5	Ax15y5	10Mbps	1 10ms	20
+Ax1y9	Ax2y9	10Mbps	1 10ms	20
+Ax12y11	Ax13y11	10Mbps	1 10ms	20
+Ax0y14	Ax1y14	10Mbps	1 10ms	20
+Ax9y3	Ax10y3	10Mbps	1 10ms	20
+Ax9y7	Ax9y8	10Mbps	1 10ms	20
+Ax14y2	Ax15y2	10Mbps	1 10ms	20
+Ax4y9	Ax5y9	10Mbps	1 10ms	20
+Ax13y5	Ax13y6	10Mbps	1 10ms	20
+Ax1y5	Ax2y5	10Mbps	1 10ms	20
+Ax3y7	Ax3y8	10Mbps	1 10ms	20
+Ax8y14	Ax8y15	10Mbps	1 10ms	20
+Ax2y9	Ax3y9	10Mbps	1 10ms	20
+Ax0y11	Ax1y11	10Mbps	1 10ms	20
+Ax9y3	Ax9y4	10Mbps	1 10ms	20
+Ax8y1	Ax8y2	10Mbps	1 10ms	20
+Ax3y9	Ax4y9	10Mbps	1 10ms	20
+Ax6y13	Ax6y14	10Mbps	1 10ms	20
+Ax2y13	Ax3y13	10Mbps	1 10ms	20
+Ax12y9	Ax12y10	10Mbps	1 10ms	20
+Ax10y11	Ax11y11	10Mbps	1 10ms	20
+Ax8y7	Ax9y7	10Mbps	1 10ms	20
+Ax15y10	Ax15y11	10Mbps	1 10ms	20
+Ax5y1	Ax5y2	10Mbps	1 10ms	20
+Ax2y6	Ax3y6	10Mbps	1 10ms	20
+Ax4y6	Ax5y6	10Mbps	1 10ms	20
+Ax6y14	Ax6y15	10Mbps	1 10ms	20
+Ax0y11	Ax0y12	10Mbps	1 10ms	20
+Ax6y9	Ax6y10	10Mbps	1 10ms	20
+Ax8y8	Ax8y9	10Mbps	1 10ms	20
+Ax0y4	Ax1y4	10Mbps	1 10ms	20
+Ax2y12	Ax2y13	10Mbps	1 10ms	20
+Ax1y4	Ax2y4	10Mbps	1 10ms	20
+Ax6y6	Ax6y7	10Mbps	1 10ms	20
+Ax8y3	Ax9y3	10Mbps	1 10ms	20
+Ax4y6	Ax4y7	10Mbps	1 10ms	20
+Ax10y4	Ax10y5	10Mbps	1 10ms	20
+Ax12y2	Ax12y3	10Mbps	1 10ms	20
+Ax12y14	Ax13y14	10Mbps	1 10ms	20
+Ax14y7	Ax14y8	10Mbps	1 10ms	20
+Ax15y3	Ax15y4	10Mbps	1 10ms	20
+Ax2y4	Ax2y5	10Mbps	1 10ms	20
+Ax1y2	Ax1y3	10Mbps	1 10ms	20
+Ax0y4	Ax0y5	10Mbps	1 10ms	20
+Ax6y2	Ax6y3	10Mbps	1 10ms	20
+Ax6y3	Ax7y3	10Mbps	1 10ms	20
+Ax1y12	Ax1y13	10Mbps	1 10ms	20
+Ax3y14	Ax3y15	10Mbps	1 10ms	20
+Ax1y1	Ax2y1	10Mbps	1 10ms	20
+Ax7y13	Ax7y14	10Mbps	1 10ms	20
+Ax2y1	Ax2y2	10Mbps	1 10ms	20
+Ax2y11	Ax2y12	10Mbps	1 10ms	20
+Ax9y10	Ax9y11	10Mbps	1 10ms	20
+Ax14y0	Ax14y1	10Mbps	1 10ms	20
+Ax13y4	Ax13y5	10Mbps	1 10ms	20
+Ax11y8	Ax11y9	10Mbps	1 10ms	20
+Ax9y2	Ax9y3	10Mbps	1 10ms	20
+Ax12y3	Ax12y4	10Mbps	1 10ms	20
+Ax1y15	Ax2y15	10Mbps	1 10ms	20
+Ax2y7	Ax2y8	10Mbps	1 10ms	20
+Ax1y5	Ax1y6	10Mbps	1 10ms	20
+Ax8y14	Ax9y14	10Mbps	1 10ms	20
+Ax5y8	Ax5y9	10Mbps	1 10ms	20
+Ax4y13	Ax4y14	10Mbps	1 10ms	20
+Ax10y11	Ax10y12	10Mbps	1 10ms	20
+Ax6y9	Ax7y9	10Mbps	1 10ms	20
+Ax14y6	Ax14y7	10Mbps	1 10ms	20
+Ax0y7	Ax1y7	10Mbps	1 10ms	20
+Ax2y14	Ax2y15	10Mbps	1 10ms	20
+Ax10y4	Ax11y4	10Mbps	1 10ms	20
+Ax0y10	Ax0y11	10Mbps	1 10ms	20
+Ax9y9	Ax10y9	10Mbps	1 10ms	20
+Ax15y12	Ax15y13	10Mbps	1 10ms	20
+Ax11y11	Ax11y12	10Mbps	1 10ms	20
+Ax0y3	Ax1y3	10Mbps	1 10ms	20
+Ax0y7	Ax0y8	10Mbps	1 10ms	20
+Ax14y8	Ax15y8	10Mbps	1 10ms	20
+Ax13y1	Ax13y2	10Mbps	1 10ms	20
+Ax6y2	Ax7y2	10Mbps	1 10ms	20
+Ax13y11	Ax13y12	10Mbps	1 10ms	20
+Ax6y3	Ax6y4	10Mbps	1 10ms	20
+Ax9y10	Ax10y10	10Mbps	1 10ms	20
+Ax9y9	Ax9y10	10Mbps	1 10ms	20
+Ax7y10	Ax8y10	10Mbps	1 10ms	20
+Ax0y3	Ax0y4	10Mbps	1 10ms	20
+Ax9y2	Ax10y2	10Mbps	1 10ms	20
+Ax13y12	Ax13y13	10Mbps	1 10ms	20
+Ax7y3	Ax8y3	10Mbps	1 10ms	20
+Ax8y0	Ax8y1	10Mbps	1 10ms	20
+Ax13y7	Ax13y8	10Mbps	1 10ms	20
+Ax10y1	Ax11y1	10Mbps	1 10ms	20

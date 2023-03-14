@@ -1,0 +1,24 @@
+{
+    "6x6 MTU size test config": {
+        "enable": "true",
+        "metadata": "6x6 grid to test the effects of MTU size. Used in paper",
+        "topologies": ["6x6_grid"],
+        "publish_rates": [250],
+        "stop_seconds": [10],
+        "drop_rates": [0.50],
+        "randrec_tuples": [[12, 24], [8, 16], [4, 8], [2, 4], [1, 2]],
+        "mtu_sizes": [36, 24, 12, 6, 3],
+        "subfolder": "6x6_mtu_experiment"
+    },
+    "kite_4_5x5_250MS":{
+        "enable":"true",
+        "metadata":"100 node sim with 4 5x5 strung together. Used in paper",
+        "topologies":["kite_4_5x5"],
+        "publish_rates":[250],
+        "stop_seconds":[10],
+        "drop_rates":[0.50],
+        "randrec_tuples":[[10, 20], [20, 40], [33, 67]],
+        "mtu_sizes":[25, 50, 75, 100],
+        "subfolder":"kite_4_5x5_250MS"
+    }
+}

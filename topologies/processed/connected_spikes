@@ -1,0 +1,180 @@
+router
+# node	comment	yPos	xPos
+A	NA	0	0
+A0	NA	0	0
+A1	NA	0	0
+A2	NA	0	0
+A3	NA	0	0
+A4	NA	0	0
+A5	NA	0	0
+A6	NA	0	0
+A7	NA	0	0
+A8	NA	0	0
+A9	NA	0	0
+A10	NA	0	0
+A11	NA	0	0
+A12	NA	0	0
+A13	NA	0	0
+A14	NA	0	0
+A15	NA	0	0
+B	NA	0	0
+B0	NA	0	0
+B1	NA	0	0
+B2	NA	0	0
+B3	NA	0	0
+B4	NA	0	0
+B5	NA	0	0
+B6	NA	0	0
+B7	NA	0	0
+B8	NA	0	0
+B9	NA	0	0
+B10	NA	0	0
+B11	NA	0	0
+B12	NA	0	0
+B13	NA	0	0
+B14	NA	0	0
+B15	NA	0	0
+C	NA	0	0
+C0	NA	0	0
+C1	NA	0	0
+C2	NA	0	0
+C3	NA	0	0
+C4	NA	0	0
+C5	NA	0	0
+C6	NA	0	0
+C7	NA	0	0
+C8	NA	0	0
+C9	NA	0	0
+C10	NA	0	0
+C11	NA	0	0
+C12	NA	0	0
+C13	NA	0	0
+C14	NA	0	0
+C15	NA	0	0
+D	NA	0	0
+D0	NA	0	0
+D1	NA	0	0
+D2	NA	0	0
+D3	NA	0	0
+D4	NA	0	0
+D5	NA	0	0
+D6	NA	0	0
+D7	NA	0	0
+D8	NA	0	0
+D9	NA	0	0
+D10	NA	0	0
+D11	NA	0	0
+D12	NA	0	0
+D13	NA	0	0
+D14	NA	0	0
+D15	NA	0	0
+E	NA	0	0
+E0	NA	0	0
+E1	NA	0	0
+E2	NA	0	0
+E3	NA	0	0
+E4	NA	0	0
+E5	NA	0	0
+E6	NA	0	0
+E7	NA	0	0
+E8	NA	0	0
+E9	NA	0	0
+E10	NA	0	0
+E11	NA	0	0
+E12	NA	0	0
+E13	NA	0	0
+E14	NA	0	0
+E15	NA	0	0
+
+link
+# src	dest	bandwidth	metric	delay	queue
+A	B	10Mbps	1 10ms	20
+A	C	10Mbps	1 10ms	20
+B	C	10Mbps	1 10ms	20
+A	D	10Mbps	1 10ms	20
+B	D	10Mbps	1 10ms	20
+D	C	10Mbps	1 10ms	20
+E	A	10Mbps	1 10ms	20
+E	B	10Mbps	1 10ms	20
+E	C	10Mbps	1 10ms	20
+E	D	10Mbps	1 10ms	20
+A	A0	10Mbps	1 10ms	20
+A	A1	10Mbps	1 10ms	20
+A	A2	10Mbps	1 10ms	20
+A	A3	10Mbps	1 10ms	20
+A	A4	10Mbps	1 10ms	20
+A	A5	10Mbps	1 10ms	20
+A	A6	10Mbps	1 10ms	20
+A	A7	10Mbps	1 10ms	20
+A	A8	10Mbps	1 10ms	20
+A	A9	10Mbps	1 10ms	20
+A	A10	10Mbps	1 10ms	20
+A	A11	10Mbps	1 10ms	20
+A	A12	10Mbps	1 10ms	20
+A	A13	10Mbps	1 10ms	20
+A	A14	10Mbps	1 10ms	20
+A	A15	10Mbps	1 10ms	20
+B	B0	10Mbps	1 10ms	20
+B	B1	10Mbps	1 10ms	20
+B	B2	10Mbps	1 10ms	20
+B	B3	10Mbps	1 10ms	20
+B	B4	10Mbps	1 10ms	20
+B	B5	10Mbps	1 10ms	20
+B	B6	10Mbps	1 10ms	20
+B	B7	10Mbps	1 10ms	20
+B	B8	10Mbps	1 10ms	20
+B	B9	10Mbps	1 10ms	20
+B	B10	10Mbps	1 10ms	20
+B	B11	10Mbps	1 10ms	20
+B	B12	10Mbps	1 10ms	20
+B	B13	10Mbps	1 10ms	20
+B	B14	10Mbps	1 10ms	20
+B	B15	10Mbps	1 10ms	20
+C	C0	10Mbps	1 10ms	20
+C	C1	10Mbps	1 10ms	20
+C	C2	10Mbps	1 10ms	20
+C	C3	10Mbps	1 10ms	20
+C	C4	10Mbps	1 10ms	20
+C	C5	10Mbps	1 10ms	20
+C	C6	10Mbps	1 10ms	20
+C	C7	10Mbps	1 10ms	20
+C	C8	10Mbps	1 10ms	20
+C	C9	10Mbps	1 10ms	20
+C	C10	10Mbps	1 10ms	20
+C	C11	10Mbps	1 10ms	20
+C	C12	10Mbps	1 10ms	20
+C	C13	10Mbps	1 10ms	20
+C	C14	10Mbps	1 10ms	20
+C	C15	10Mbps	1 10ms	20
+D	D0	10Mbps	1 10ms	20
+D	D1	10Mbps	1 10ms	20
+D	D2	10Mbps	1 10ms	20
+D	D3	10Mbps	1 10ms	20
+D	D4	10Mbps	1 10ms	20
+D	D5	10Mbps	1 10ms	20
+D	D6	10Mbps	1 10ms	20
+D	D7	10Mbps	1 10ms	20
+D	D8	10Mbps	1 10ms	20
+D	D9	10Mbps	1 10ms	20
+D	D10	10Mbps	1 10ms	20
+D	D11	10Mbps	1 10ms	20
+D	D12	10Mbps	1 10ms	20
+D	D13	10Mbps	1 10ms	20
+D	D14	10Mbps	1 10ms	20
+D	D15	10Mbps	1 10ms	20
+E	E0	10Mbps	1 10ms	20
+E	E1	10Mbps	1 10ms	20
+E	E2	10Mbps	1 10ms	20
+E	E3	10Mbps	1 10ms	20
+E	E4	10Mbps	1 10ms	20
+E	E5	10Mbps	1 10ms	20
+E	E6	10Mbps	1 10ms	20
+E	E7	10Mbps	1 10ms	20
+E	E8	10Mbps	1 10ms	20
+E	E9	10Mbps	1 10ms	20
+E	E10	10Mbps	1 10ms	20
+E	E11	10Mbps	1 10ms	20
+E	E12	10Mbps	1 10ms	20
+E	E13	10Mbps	1 10ms	20
+E	E14	10Mbps	1 10ms	20
+E	E15	10Mbps	1 10ms	20

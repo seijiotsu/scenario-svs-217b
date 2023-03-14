@@ -50,6 +50,16 @@ class LogData:
     def total_pubs_per_second(self) -> float:
         return len(self.latencies) / (self.end_time / 1000)
 
+    def complete(self) -> bool:
+        """
+        Whether or not the log data is finished and includes sync pack, sync byte,
+        mtu size, etc.
+        """
+        # If MTU_SIZE=0, that means we didn't parse to the end of the file. MTU
+        # size will never be zero normally, because then nothing would ever
+        # transmit and there would be no point to that...
+        return self.mtu_size != 0
+
 def read_log_file(filepath) -> LogData:
     """
     Read the log file and collect some very basic data about it for further
@@ -106,7 +116,6 @@ def read_log_file(filepath) -> LogData:
                 latencies[(data_node, seq_number)].append(latency)
             else:
                 raise Exception('Unrecognized message!')
-
     return LogData(nodes, messages, publish_times, receive_times, latencies,
                    end_time, sync_pack, sync_byte, mtu_size)
 

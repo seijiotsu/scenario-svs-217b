@@ -1,0 +1,38 @@
+router
+# node	comment	yPos	xPos
+A	NA	0	0
+A0	NA	0	0
+A1	NA	0	0
+A2	NA	0	0
+A3	NA	0	0
+A4	NA	0	0
+A5	NA	0	0
+A6	NA	0	0
+A7	NA	0	0
+A8	NA	0	0
+A9	NA	0	0
+A10	NA	0	0
+A11	NA	0	0
+A12	NA	0	0
+A13	NA	0	0
+A14	NA	0	0
+A15	NA	0	0
+
+link
+# src	dest	bandwidth	metric	delay	queue
+A	A0	10Mbps	1 10ms	20
+A	A1	10Mbps	1 10ms	20
+A	A2	10Mbps	1 10ms	20
+A	A3	10Mbps	1 10ms	20
+A	A4	10Mbps	1 10ms	20
+A	A5	10Mbps	1 10ms	20
+A	A6	10Mbps	1 10ms	20
+A	A7	10Mbps	1 10ms	20
+A	A8	10Mbps	1 10ms	20
+A	A9	10Mbps	1 10ms	20
+A	A10	10Mbps	1 10ms	20
+A	A11	10Mbps	1 10ms	20
+A	A12	10Mbps	1 10ms	20
+A	A13	10Mbps	1 10ms	20
+A	A14	10Mbps	1 10ms	20
+A	A15	10Mbps	1 10ms	20

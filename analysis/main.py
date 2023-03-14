@@ -1,5 +1,7 @@
 import numpy
 import json
+import sys
+
 import utils.analysis
 import utils.simulation
 
@@ -8,7 +10,8 @@ def simulate_and_analyze_randrecent(topology_name, n_random, n_recent, publish_r
                                     stop_second, drop_rate) -> str:
     out = utils.simulation.randrecent(topology_name, n_random, n_recent,
                                       publish_rate_ms, stop_second, drop_rate)
-    nodes, messages, publish_times, receive_times, latencies = utils.analysis.read_log_file(out)
+    nodes, messages, publish_times, receive_times, latencies = utils.analysis.read_log_file(
+        out)
 
     average_latency = numpy.average(
         [numpy.average(x) for x in latencies.values()])
@@ -23,6 +26,7 @@ def simulate_and_analyze_randrecent(topology_name, n_random, n_recent, publish_r
     # print(numpy.percentile(latencies[('A33', 13)], 50))
     print()
 
+
 def collapsible_main():
     #
     # This simulation is designed to reproduce appendix A, B and C of the paper by
@@ -30,7 +34,7 @@ def collapsible_main():
     #
     utils.simulation.conduct_full_simulation(
         topologies=['6x6_grid'],
-        publish_rates=[100,125,150,175,200,225,250,275,300,500,1000],
+        publish_rates=[100, 125, 150, 175, 200, 225, 250, 275, 300, 500, 1000],
         stop_seconds=[3],
         drop_rates=[0.25],
         randrec_tuples=[(9, 9)],
@@ -44,7 +48,7 @@ def collapsible_main():
     #
     utils.simulation.conduct_full_simulation(
         topologies=['small_clusters'],
-        publish_rates=[150,175,200,225,250,275,300,500,1000],
+        publish_rates=[150, 175, 200, 225, 250, 275, 300, 500, 1000],
         stop_seconds=[3],
         drop_rates=[0.25],
         randrec_tuples=[(8, 8)],
@@ -58,7 +62,7 @@ def collapsible_main():
     #
     utils.simulation.conduct_full_simulation(
         topologies=['med_clusters'],
-        publish_rates=[175,225,275,500,750,1000],
+        publish_rates=[175, 225, 275, 500, 750, 1000],
         stop_seconds=[3],
         drop_rates=[0.25],
         randrec_tuples=[(18, 18)],
@@ -78,11 +82,15 @@ def collapsible_main():
         mtu_sizes=[32, 16, 8, 4, 2],
         subfolder='latency_vs_mtu_1'
     )
+
+
 def read_config(jsonfile):
     print(jsonfile)
     fp = open(jsonfile)
     experiment_config = json.load(fp)
     return experiment_config
+
+
 def execute_config(experiment_config):
     for experiment_key in experiment_config.keys():
         experiment = experiment_config[experiment_key]
@@ -90,25 +98,24 @@ def execute_config(experiment_config):
             print(f'Experiment {experiment_key} skipped')
             continue
         topologies = experiment["topologies"]
-        publish_rates= experiment["publish_rates"]
-        stop_seconds= experiment["stop_seconds"]
-        drop_rates= experiment["drop_rates"]
+        publish_rates = experiment["publish_rates"]
+        stop_seconds = experiment["stop_seconds"]
+        drop_rates = experiment["drop_rates"]
         randrec_lists = experiment["randrec_tuples"]
         randrec_tuples = []
         for each_randrec_list in randrec_lists:
             randrec_tuples.append(tuple(each_randrec_list))
-        mtu_sizes=experiment["mtu_sizes"]
-        subfolder=experiment["subfolder"]
+        mtu_sizes = experiment["mtu_sizes"]
+        subfolder = experiment["subfolder"]
 
-        utils.simulation.conduct_full_simulation(topologies, 
-                                                 publish_rates, 
-                                                 stop_seconds, 
-                                                 drop_rates, 
+        utils.simulation.conduct_full_simulation(topologies,
+                                                 publish_rates,
+                                                 stop_seconds,
+                                                 drop_rates,
                                                  randrec_tuples,
                                                  mtu_sizes,
                                                  subfolder)
-        
+
 
 if __name__ == '__main__':
-    experiment_config = read_config("/home/developer/scenario-svs-217b/analysis/config_josh.json")
-    execute_config(experiment_config)
+    execute_config(read_config(sys.argv[1]))

@@ -1,0 +1,36 @@
+[nodes]
+A: _ network=/world router=/A.Router/
+A0: _ network=/world router=/A0.Router/
+A1: _ network=/world router=/A1.Router/
+A2: _ network=/world router=/A2.Router/
+A3: _ network=/world router=/A3.Router/
+A4: _ network=/world router=/A4.Router/
+A5: _ network=/world router=/A5.Router/
+A6: _ network=/world router=/A6.Router/
+A7: _ network=/world router=/A7.Router/
+A8: _ network=/world router=/A8.Router/
+A9: _ network=/world router=/A9.Router/
+A10: _ network=/world router=/A10.Router/
+A11: _ network=/world router=/A11.Router/
+A12: _ network=/world router=/A12.Router/
+A13: _ network=/world router=/A13.Router/
+A14: _ network=/world router=/A14.Router/
+A15: _ network=/world router=/A15.Router/
+[switches]
+[links]
+A:A0 delay=10ms
+A:A1 delay=10ms
+A:A2 delay=10ms
+A:A3 delay=10ms
+A:A4 delay=10ms
+A:A5 delay=10ms
+A:A6 delay=10ms
+A:A7 delay=10ms
+A:A8 delay=10ms
+A:A9 delay=10ms
+A:A10 delay=10ms
+A:A11 delay=10ms
+A:A12 delay=10ms
+A:A13 delay=10ms
+A:A14 delay=10ms
+A:A15 delay=10ms

@@ -7,6 +7,9 @@ from analysis import LogData, read_log_file
 
 def plot_line(points, label, marker):
     lists = sorted(points)
+    if not points:
+        print(f'Warning: label "{label}" was empty! Is this correct?')
+        return
     x, y = zip(*lists)
     plt.plot(x, y, label=label, marker=marker)
 
@@ -36,6 +39,8 @@ def plot_versus_publications(experiment_dir, strategies, topology_label, graph_t
         points = []
         for log in glob.glob(experiment_dir + f'{strategy}-*'):
             log_data = get_log_data(log)
+            if not log_data.complete():
+                continue
             if graph_type == 'bytes':
                 points.append((log_data.total_pubs_per_second(), log_data.sync_bytes))
             elif graph_type == 'packets':
@@ -73,6 +78,8 @@ def plot_versus_latency(experiment_dir, strategies, topology_label, graph_type):
         points = []
         for log in glob.glob(experiment_dir + f'{strategy}-*'):
             log_data = get_log_data(log)
+            if not log_data.complete():
+                continue
             if graph_type == 'bytes':
                 points.append((log_data.latency_percentile_averages()[1], log_data.sync_bytes))
             if graph_type == 'packets':
@@ -94,13 +101,15 @@ def plot_latency_vs_mtu(experiment_dir, topology_label):
     """
     Holding stop second, publish rate, drop rate constant.
     """
-    strategies = ['base', 'fullfrag', 'randrec', 'rand']
+    strategies = ['fullfrag', 'randrec', 'rand']
     fig = matplotlib.pyplot.gcf()
-    markers = ['o', '^', 'v', 's']
+    markers = ['^', 'v', 's']
     for i, strategy in enumerate(strategies):
         points = []
         for log in glob.glob(experiment_dir + f'{strategy}-*'):
             log_data = get_log_data(log)
+            if not log_data.complete():
+                continue
             points.append((log_data.mtu_size / len(log_data.nodes) * 100, log_data.latency_percentile_averages()[1]))
         plot_line(points, label=f'{topology_label}, {strategy}', marker=markers[i])
 
@@ -119,13 +128,15 @@ def plot_byte_overhead_vs_mtu(experiment_dir, topology_label):
     """
     Holding stop second, publish rate, drop rate constant.
     """
-    strategies = ['base', 'fullfrag', 'randrec', 'rand']
+    strategies = ['fullfrag', 'randrec', 'rand']
     fig = matplotlib.pyplot.gcf()
-    markers = ['o', '^', 'v', 's']
+    markers = ['^', 'v', 's']
     for i, strategy in enumerate(strategies):
         points = []
         for log in glob.glob(experiment_dir + f'{strategy}-*'):
             log_data = get_log_data(log)
+            if not log_data.complete():
+                continue
             points.append((log_data.mtu_size / len(log_data.nodes) * 100, log_data.sync_bytes))
         plot_line(points, label=f'{topology_label}, {strategy}', marker=markers[i])
 
@@ -137,6 +148,34 @@ def plot_byte_overhead_vs_mtu(experiment_dir, topology_label):
     plt.legend(bbox_to_anchor=(1.01,1), loc='upper left')
     experiment_name = os.path.basename(os.path.normpath(experiment_dir))
     plt.savefig(f'{experiment_dir}/{experiment_name}_mtu_vs_bytes.png',bbox_inches='tight', pad_inches=0)  
+    plt.show()
+    plt.clf()
+
+
+def plot_packet_overhead_vs_mtu(experiment_dir, topology_label):
+    """
+    Holding stop second, publish rate, drop rate constant.
+    """
+    strategies = ['fullfrag', 'randrec', 'rand']
+    fig = matplotlib.pyplot.gcf()
+    markers = ['^', 'v', 's']
+    for i, strategy in enumerate(strategies):
+        points = []
+        for log in glob.glob(experiment_dir + f'{strategy}-*'):
+            log_data = get_log_data(log)
+            if not log_data.complete():
+                continue
+            points.append((log_data.mtu_size / len(log_data.nodes) * 100, log_data.sync_pack))
+        plot_line(points, label=f'{topology_label}, {strategy}', marker=markers[i])
+
+
+    plt.xlabel("MTU size (as a % of total nodes)")
+    plt.ylabel(f"Overhead (packets)")
+    fig.set_size_inches(6, 2.5)
+    plt.grid()
+    plt.legend(bbox_to_anchor=(1.01,1), loc='upper left')
+    experiment_name = os.path.basename(os.path.normpath(experiment_dir))
+    plt.savefig(f'{experiment_dir}/{experiment_name}_mtu_vs_packets.png',bbox_inches='tight', pad_inches=0)  
     plt.show()
     plt.clf()
 
@@ -178,10 +217,26 @@ if __name__ == '__main__':
     #     topology_label='8x8'
     # )
     plot_latency_vs_mtu(
-        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/kite_1_5x5_1000MS/',
-        topology_label = '25_kite_1000ms'
+        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/6x6_mtu_experiment/',
+        topology_label = '6x6'
     )
     plot_byte_overhead_vs_mtu(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_1_5x5_1000MS/',
-        topology_label='25_kite_1000ms'
-    )    
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/6x6_mtu_experiment/',
+        topology_label='6x6'
+    )
+    plot_packet_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/6x6_mtu_experiment/',
+        topology_label='6x6'
+    )
+    plot_latency_vs_mtu(
+        experiment_dir = '/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
+        topology_label = '6x6'
+    )
+    plot_byte_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
+        topology_label='6x6'
+    )
+    plot_packet_overhead_vs_mtu(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_4_5x5_250MS/',
+        topology_label='6x6'
+    )
