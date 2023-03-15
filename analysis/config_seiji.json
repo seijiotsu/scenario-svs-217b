@@ -118,6 +118,6 @@
         "drop_rates":[0.50],
         "randrec_tuples": [[2, 14], [4, 12], [6, 10], [8, 8], [10, 6], [12, 4], [14, 2]],
         "mtu_sizes": [],
-        "subfolder":"kite_randrec_variation"
+        "subfolder":"kite_randrec_variation_16mtu"
     }
 }
