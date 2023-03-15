@@ -22,7 +22,7 @@
         "subfolder":"kite_4_5x5_250MS"
     },
     "connected_spikes_250MS":{
-        "enable":"true",
+        "enable":"false",
         "metadata":"80 node sim with 5 hubs and their spokes. Used in paper",
         "topologies":["connected_spikes"],
         "publish_rates":[250],
@@ -33,7 +33,7 @@
         "subfolder":"connected_spikes_250MS"
     },
     "sparse_250MS":{
-        "enable":"true",
+        "enable":"false",
         "metadata":"70 node sparse sim. Used in paper",
         "topologies":["sparse"],
         "publish_rates":[250],
@@ -51,7 +51,18 @@
         "stop_seconds":[10],
         "drop_rates":[0.50],
         "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
-        "mtu_sizes": [8],
+        "mtu_sizes": [],
+        "subfolder":"test_random_recent_variation"
+    },
+    "kite_randrec_variation": {
+        "enable": "true",
+        "metadata": "Vary the random:recent ratio. Used in paper",
+        "topologies": ["6x6_grid"],
+        "publish_rates":[250],
+        "stop_seconds":[10],
+        "drop_rates":[0.50],
+        "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
+        "mtu_sizes": [],
         "subfolder":"test_random_recent_variation"
     }
 }
