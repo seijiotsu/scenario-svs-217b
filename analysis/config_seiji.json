@@ -86,5 +86,16 @@
         "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
         "mtu_sizes": [],
         "subfolder":"spikes_randrec_variation"
+    },
+    "10x10_grid_randrec_variation":{
+        "enable":"true",
+        "metadata":"80 node sim with 5 hubs and their spokes. Used in paper",
+        "topologies":["10x10_grid"],
+        "publish_rates":[250],
+        "stop_seconds":[10],
+        "drop_rates":[0.50],
+        "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
+        "mtu_sizes": [],
+        "subfolder":"10x10_randrec_variation"
     }
 }

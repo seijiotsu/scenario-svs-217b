@@ -1,0 +1,155 @@
+router
+# node	comment	yPos	xPos
+new_1	NA	0	0
+new_2	NA	0	0
+new_3	NA	0	0
+new_4	NA	0	0
+new_5	NA	0	0
+new_6	NA	0	0
+new_7	NA	0	0
+new_8	NA	0	0
+new_9	NA	0	0
+new_10	NA	0	0
+new_11	NA	0	0
+new_12	NA	0	0
+new_13	NA	0	0
+new_14	NA	0	0
+new_15	NA	0	0
+new_16	NA	0	0
+new_17	NA	0	0
+new_18	NA	0	0
+new_19	NA	0	0
+new_20	NA	0	0
+new_21	NA	0	0
+new_22	NA	0	0
+new_23	NA	0	0
+new_24	NA	0	0
+new_25	NA	0	0
+new_26	NA	0	0
+new_27	NA	0	0
+new_28	NA	0	0
+new_29	NA	0	0
+new_30	NA	0	0
+new_31	NA	0	0
+new_32	NA	0	0
+new_33	NA	0	0
+new_34	NA	0	0
+new_35	NA	0	0
+new_36	NA	0	0
+new_37	NA	0	0
+new_38	NA	0	0
+new_39	NA	0	0
+new_40	NA	0	0
+new_41	NA	0	0
+new_42	NA	0	0
+new_43	NA	0	0
+new_44	NA	0	0
+new_45	NA	0	0
+new_46	NA	0	0
+new_47	NA	0	0
+new_48	NA	0	0
+new_49	NA	0	0
+new_50	NA	0	0
+new_51	NA	0	0
+new_52	NA	0	0
+new_53	NA	0	0
+new_54	NA	0	0
+new_55	NA	0	0
+new_56	NA	0	0
+new_57	NA	0	0
+new_58	NA	0	0
+new_59	NA	0	0
+new_60	NA	0	0
+new_61	NA	0	0
+new_62	NA	0	0
+new_63	NA	0	0
+new_64	NA	0	0
+new_65	NA	0	0
+new_66	NA	0	0
+new_67	NA	0	0
+new_68	NA	0	0
+new_69	NA	0	0
+new_70	NA	0	0
+new_71	NA	0	0
+new	NA	0	0
+
+link
+# src	dest	bandwidth	metric	delay	queue
+new_6	new_7	10Mbps	1 10ms	20
+new_7	new_8	10Mbps	1 10ms	20
+new_8	new_12	10Mbps	1 10ms	20
+new_12	new_11	10Mbps	1 10ms	20
+new_11	new_2	10Mbps	1 10ms	20
+new_2	new_6	10Mbps	1 10ms	20
+new_7	new_5	10Mbps	1 10ms	20
+new_5	new_3	10Mbps	1 10ms	20
+new_3	new_4	10Mbps	1 10ms	20
+new_4	new_9	10Mbps	1 10ms	20
+new_9	new_10	10Mbps	1 10ms	20
+new_10	new_1	10Mbps	1 10ms	20
+new_1	new_8	10Mbps	1 10ms	20
+new_13	new_3	10Mbps	1 10ms	20
+new_15	new_13	10Mbps	1 10ms	20
+new_14	new_15	10Mbps	1 10ms	20
+new_16	new_4	10Mbps	1 10ms	20
+new_18	new_17	10Mbps	1 10ms	20
+new_19	new_18	10Mbps	1 10ms	20
+new_19	new_17	10Mbps	1 10ms	20
+new_18	new_15	10Mbps	1 10ms	20
+new_20	new_19	10Mbps	1 10ms	20
+new_22	new_17	10Mbps	1 10ms	20
+new_23	new_22	10Mbps	1 10ms	20
+new_24	new_22	10Mbps	1 10ms	20
+new_21	new_14	10Mbps	1 10ms	20
+new_25	new_26	10Mbps	1 10ms	20
+new_28	new_25	10Mbps	1 10ms	20
+new_27	new_28	10Mbps	1 10ms	20
+new_29	new_28	10Mbps	1 10ms	20
+new_28	new_19	10Mbps	1 10ms	20
+new_30	new_27	10Mbps	1 10ms	20
+new_32	new_30	10Mbps	1 10ms	20
+new_31	new_32	10Mbps	1 10ms	20
+new_31	new_12	10Mbps	1 10ms	20
+new_33	new_25	10Mbps	1 10ms	20
+new_34	new_26	10Mbps	1 10ms	20
+new_35	new_33	10Mbps	1 10ms	20
+new_38	new_35	10Mbps	1 10ms	20
+new_36	new_38	10Mbps	1 10ms	20
+new_37	new_23	10Mbps	1 10ms	20
+new_41	new_33	10Mbps	1 10ms	20
+new_39	new_41	10Mbps	1 10ms	20
+new_40	new_39	10Mbps	1 10ms	20
+new_42	new_35	10Mbps	1 10ms	20
+new_44	new_40	10Mbps	1 10ms	20
+new_43	new_44	10Mbps	1 10ms	20
+new_46	new_43	10Mbps	1 10ms	20
+new_45	new_42	10Mbps	1 10ms	20
+new_32	new_47	10Mbps	1 10ms	20
+new_47	new_49	10Mbps	1 10ms	20
+new_49	new_48	10Mbps	1 10ms	20
+new_48	new_50	10Mbps	1 10ms	20
+new_50	new_51	10Mbps	1 10ms	20
+new_51	new_52	10Mbps	1 10ms	20
+new_52	new_53	10Mbps	1 10ms	20
+new_53	new_54	10Mbps	1 10ms	20
+new_54	new_55	10Mbps	1 10ms	20
+new_1	new_56	10Mbps	1 10ms	20
+new_10	new_57	10Mbps	1 10ms	20
+new_57	new_56	10Mbps	1 10ms	20
+new_56	new_55	10Mbps	1 10ms	20
+new_41	new_59	10Mbps	1 10ms	20
+new_59	new_58	10Mbps	1 10ms	20
+new_59	new_62	10Mbps	1 10ms	20
+new_59	new_61	10Mbps	1 10ms	20
+new_59	new_60	10Mbps	1 10ms	20
+new_59	new_63	10Mbps	1 10ms	20
+new_63	new_64	10Mbps	1 10ms	20
+new_64	new_65	10Mbps	1 10ms	20
+new_65	new_66	10Mbps	1 10ms	20
+new_69	new_66	10Mbps	1 10ms	20
+new_68	new_69	10Mbps	1 10ms	20
+new_67	new_69	10Mbps	1 10ms	20
+new_71	new_65	10Mbps	1 10ms	20
+new_70	new_69	10Mbps	1 10ms	20
+new_56	new_44	10Mbps	1 10ms	20
+new	new_64	10Mbps	1 10ms	20
