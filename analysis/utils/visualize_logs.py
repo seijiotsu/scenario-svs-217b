@@ -340,7 +340,11 @@ if __name__ == '__main__':
     #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/spikes_randrec_variation/',
     #     topology_label='6x6'
     # )
-    plot_latency_vs_sim_length(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_sim_length/',
+    plot_random_recent_tradeoff(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/10x10_randrec_variation/',
         topology_label='6x6'
     )
+    # plot_latency_vs_sim_length(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_sim_length/',
+    #     topology_label='6x6'
+    # )
