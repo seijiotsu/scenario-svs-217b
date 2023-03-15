@@ -186,23 +186,23 @@ def plot_random_recent_tradeoff(experiment_dir, topology_label):
     fig = matplotlib.pyplot.gcf()
     points = []
     xticks = []
-    show_every_nth_tick = 2
+    show_every_nth_tick = 1
 
     for log in glob.glob(experiment_dir + f'randrec-*'):
         n_random, n_recent = [int(x) for x in log.split('/')[-1].split('-')[2:4]]
-        ratio = n_recent / n_random
+        ratio = n_recent
         xticks.append((ratio, f'{n_random}:{n_recent}'))
         log_data = get_log_data(log)
         if not log_data.complete():
             continue
-        points.append((n_recent / n_random, log_data.latency_percentile_averages()[1]))
+        points.append((n_recent, log_data.latency_percentile_averages()[1]))
     plot_line(points, label='', marker='o')
 
     xticks.sort()
     xticks_points, xticks_labels = zip(*xticks)
 
     plt.xticks(xticks_points[::show_every_nth_tick], xticks_labels[::show_every_nth_tick])
-    plt.xlabel('Random:Recent ratio')
+    plt.xlabel(f'Random:Recent ratio for {topology_label}')
     plt.ylabel('Latency (ms)')
     fig.set_size_inches(6, 2.5)
     plt.grid()
@@ -332,23 +332,27 @@ if __name__ == '__main__':
     )
     plot_random_recent_tradeoff(
         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_randrec_variation/',
-        topology_label='6x6'
+        topology_label='kite-4 (250ms, 8mtu)'
     )
     plot_random_recent_tradeoff(
         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/sparse_randrec_variation/',
-        topology_label='6x6'
+        topology_label='sparse'
     )
     plot_random_recent_tradeoff(
         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/spikes_randrec_variation/',
-        topology_label='6x6'
+        topology_label='spikes'
     )
     plot_random_recent_tradeoff(
         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/10x10_randrec_variation/',
-        topology_label='6x6'
+        topology_label='10x10'
     )
     plot_random_recent_tradeoff(
         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_randrec_variation_16mtu/',
-        topology_label='6x6'
+        topology_label='kite-4 (16-mtu)'
+    )
+    plot_random_recent_tradeoff(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_randrec_variation_125ms_pub/',
+        topology_label='kite-4 (125ms)'
     )
     # plot_latency_vs_sim_length(
     #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_sim_length/',

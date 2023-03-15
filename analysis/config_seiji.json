@@ -130,5 +130,27 @@
         "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
         "mtu_sizes": [],
         "subfolder":"kite_randrec_variation_125ms_pub"
+    },
+    "kite_randrec_variation_4": {
+        "enable": "true",
+        "metadata": "Vary the random:recent ratio. Used in paper",
+        "topologies": ["kite_4_5x5"],
+        "publish_rates":[500],
+        "stop_seconds":[10],
+        "drop_rates":[0.50],
+        "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
+        "mtu_sizes": [],
+        "subfolder":"kite_randrec_variation_500ms_pub"
+    },
+    "kite_randrec_variation_5": {
+        "enable": "true",
+        "metadata": "Vary the random:recent ratio. Used in paper",
+        "topologies": ["kite_4_5x5"],
+        "publish_rates":[175],
+        "stop_seconds":[10],
+        "drop_rates":[0.50],
+        "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
+        "mtu_sizes": [],
+        "subfolder":"kite_randrec_variation_175ms_pub"
     }
 }
