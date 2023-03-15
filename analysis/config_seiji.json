@@ -44,7 +44,7 @@
         "subfolder":"sparse_250MS"
     },
     "test_random_recent_variation": {
-        "enable": "true",
+        "enable": "false",
         "metadata": "Vary the random:recent ratio. Used in paper",
         "topologies": ["6x6_grid"],
         "publish_rates":[250],
@@ -55,7 +55,7 @@
         "subfolder":"test_random_recent_variation"
     },
     "kite_randrec_variation": {
-        "enable": "true",
+        "enable": "false",
         "metadata": "Vary the random:recent ratio. Used in paper",
         "topologies": ["kite_4_5x5"],
         "publish_rates":[250],
@@ -66,7 +66,7 @@
         "subfolder":"kite_randrec_variation"
     },
     "sparse_randrec_variation": {
-        "enable": "true",
+        "enable": "false",
         "metadata": "Vary the random:recent ratio. Used in paper",
         "topologies": ["sparse"],
         "publish_rates":[250],
@@ -77,7 +77,7 @@
         "subfolder":"sparse_randrec_variation"
     },
     "spikes_randrec_variation":{
-        "enable":"true",
+        "enable":"false",
         "metadata":"80 node sim with 5 hubs and their spokes. Used in paper",
         "topologies":["connected_spikes"],
         "publish_rates":[250],
@@ -92,10 +92,21 @@
         "metadata":"80 node sim with 5 hubs and their spokes. Used in paper",
         "topologies":["10x10_grid"],
         "publish_rates":[250],
-        "stop_seconds":[10],
+        "stop_seconds":[5],
         "drop_rates":[0.50],
         "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
         "mtu_sizes": [],
         "subfolder":"10x10_randrec_variation"
+    },
+    "latency_vs_sim_length": {
+        "enable":"false",
+        "metadata":"Just some really quick sanity checking to make sure that the stop time doesn't affect latency nonlinearly",
+        "topologies":["6x6_grid"],
+        "publish_rates":[250],
+        "stop_seconds":[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        "drop_rates":[0.50],
+        "randrec_tuples": [[1, 7]],
+        "mtu_sizes": [8],
+        "subfolder":"latency_vs_sim_length"
     }
 }

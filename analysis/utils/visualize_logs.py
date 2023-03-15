@@ -209,6 +209,36 @@ def plot_random_recent_tradeoff(experiment_dir, topology_label):
     plt.show()
     plt.clf()
 
+def plot_latency_vs_sim_length(experiment_dir, topology_label):
+    """
+    Just some really quick sanity checking to make sure that the stop time doesn't affect latency nonlinearly
+    """
+    strategies = ['base', 'fullfrag', 'randrec', 'rand']
+    fig = matplotlib.pyplot.gcf()
+    markers = ['o', '^', 'v', 's']
+    for i, strategy in enumerate(strategies):
+        points = []
+        for log in glob.glob(experiment_dir + f'{strategy}-*'):
+            log_data = get_log_data(log)
+            # only works if drop rate 0.5, sry this is a quick hack. replace w/ your drop rate if this changes
+            sim_length = int(log.split('-0.5')[0].split('-')[-1])
+            if not log_data.complete():
+                continue
+            points.append((sim_length, log_data.latency_percentile_averages()[1]))
+        plot_line(points, label=f'{topology_label}, {strategy}', marker=markers[i])
+
+
+    plt.xlabel("Simulation length (seconds)")
+    plt.ylabel(f"Latency (ms)")
+    fig.set_size_inches(6, 2.5)
+    plt.grid()
+    plt.legend(bbox_to_anchor=(1.01,1), loc='upper left')
+    experiment_name = os.path.basename(os.path.normpath(experiment_dir))
+    plt.savefig(f'{experiment_dir}/{experiment_name}.png',bbox_inches='tight', pad_inches=0)  
+    plt.show()
+    plt.clf()
+
+
 def run_full_xiao_plots(experiment_dir, topology_label):
     """
     Generate all plots in the style of Appendix A, B and C from Xiao et al., and
@@ -294,19 +324,23 @@ if __name__ == '__main__':
     #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/sparse_250MS/',
     #     topology_label='Sparse'
     # )
-    plot_random_recent_tradeoff(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/test_random_recent_variation/',
-        topology_label='6x6'
-    )
-    plot_random_recent_tradeoff(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_randrec_variation/',
-        topology_label='6x6'
-    )
-    plot_random_recent_tradeoff(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/sparse_randrec_variation/',
-        topology_label='6x6'
-    )
-    plot_random_recent_tradeoff(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/spikes_randrec_variation/',
+    # plot_random_recent_tradeoff(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/test_random_recent_variation/',
+    #     topology_label='6x6'
+    # )
+    # plot_random_recent_tradeoff(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_randrec_variation/',
+    #     topology_label='6x6'
+    # )
+    # plot_random_recent_tradeoff(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/sparse_randrec_variation/',
+    #     topology_label='6x6'
+    # )
+    # plot_random_recent_tradeoff(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/spikes_randrec_variation/',
+    #     topology_label='6x6'
+    # )
+    plot_latency_vs_sim_length(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/latency_vs_sim_length/',
         topology_label='6x6'
     )
