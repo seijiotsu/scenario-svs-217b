@@ -110,7 +110,7 @@
         "subfolder":"latency_vs_sim_length"
     },
     "kite_randrec_variation_2": {
-        "enable": "false",
+        "enable": "true",
         "metadata": "Vary the random:recent ratio. Used in paper",
         "topologies": ["kite_4_5x5"],
         "publish_rates":[250],
@@ -119,5 +119,16 @@
         "randrec_tuples": [[2, 14], [4, 12], [6, 10], [8, 8], [10, 6], [12, 4], [14, 2]],
         "mtu_sizes": [],
         "subfolder":"kite_randrec_variation_16mtu"
+    },
+    "kite_randrec_variation_3": {
+        "enable": "true",
+        "metadata": "Vary the random:recent ratio. Used in paper",
+        "topologies": ["kite_4_5x5"],
+        "publish_rates":[125],
+        "stop_seconds":[10],
+        "drop_rates":[0.50],
+        "randrec_tuples": [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]],
+        "mtu_sizes": [],
+        "subfolder":"kite_randrec_variation_125ms_pub"
     }
 }
