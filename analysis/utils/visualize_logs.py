@@ -298,3 +298,7 @@ if __name__ == '__main__':
         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/test_random_recent_variation/',
         topology_label='6x6'
     )
+    plot_random_recent_tradeoff(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/kite_randrec_variation/',
+        topology_label='6x6'
+    )
