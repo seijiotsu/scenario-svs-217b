@@ -1,0 +1,74 @@
+[nodes]
+A00: _ network=/world router=/A00.Router/
+A10: _ network=/world router=/A10.Router/
+A01: _ network=/world router=/A01.Router/
+A11: _ network=/world router=/A11.Router/
+A20: _ network=/world router=/A20.Router/
+A02: _ network=/world router=/A02.Router/
+A21: _ network=/world router=/A21.Router/
+A12: _ network=/world router=/A12.Router/
+A30: _ network=/world router=/A30.Router/
+A03: _ network=/world router=/A03.Router/
+A22: _ network=/world router=/A22.Router/
+A31: _ network=/world router=/A31.Router/
+A13: _ network=/world router=/A13.Router/
+A40: _ network=/world router=/A40.Router/
+A04: _ network=/world router=/A04.Router/
+A23: _ network=/world router=/A23.Router/
+A32: _ network=/world router=/A32.Router/
+A41: _ network=/world router=/A41.Router/
+A14: _ network=/world router=/A14.Router/
+A50: _ network=/world router=/A50.Router/
+A05: _ network=/world router=/A05.Router/
+A33: _ network=/world router=/A33.Router/
+A24: _ network=/world router=/A24.Router/
+A42: _ network=/world router=/A42.Router/
+A51: _ network=/world router=/A51.Router/
+A15: _ network=/world router=/A15.Router/
+A34: _ network=/world router=/A34.Router/
+A43: _ network=/world router=/A43.Router/
+A25: _ network=/world router=/A25.Router/
+A52: _ network=/world router=/A52.Router/
+A35: _ network=/world router=/A35.Router/
+A44: _ network=/world router=/A44.Router/
+A53: _ network=/world router=/A53.Router/
+A45: _ network=/world router=/A45.Router/
+A54: _ network=/world router=/A54.Router/
+A55: _ network=/world router=/A55.Router/
+[switches]
+[links]
+A00:A10 delay=10ms
+A00:A01 delay=10ms
+A10:A11 delay=10ms
+A10:A20 delay=10ms
+A01:A02 delay=10ms
+A11:A21 delay=10ms
+A11:A12 delay=10ms
+A20:A30 delay=10ms
+A02:A03 delay=10ms
+A21:A22 delay=10ms
+A21:A31 delay=10ms
+A12:A13 delay=10ms
+A30:A40 delay=10ms
+A03:A04 delay=10ms
+A22:A23 delay=10ms
+A22:A32 delay=10ms
+A31:A41 delay=10ms
+A13:A14 delay=10ms
+A40:A50 delay=10ms
+A04:A05 delay=10ms
+A23:A24 delay=10ms
+A23:A33 delay=10ms
+A32:A42 delay=10ms
+A41:A51 delay=10ms
+A14:A15 delay=10ms
+A33:A43 delay=10ms
+A33:A34 delay=10ms
+A24:A25 delay=10ms
+A42:A52 delay=10ms
+A34:A35 delay=10ms
+A34:A44 delay=10ms
+A43:A53 delay=10ms
+A35:A45 delay=10ms
+A44:A54 delay=10ms
+A45:A55 delay=10ms
