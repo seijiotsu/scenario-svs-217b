@@ -70,12 +70,12 @@ protected:
       for (ndn::svs::SeqNo s = v[i].low; s <= v[i].high; ++s)
       {
         ndn::svs::NodeID nid = v[i].nodeId;
-        std::cout <<
+        std::cout << std::fixed <<
                 ndn::time::steady_clock::now().time_since_epoch().count() / 1e6 << "," <<
                 m_options.m_id << "," <<
                 "RECV," <<
                 nid.toUri() << "::" << s <<
-            std::endl;
+            std::endl << std::scientific;
       }
     }
   }
@@ -88,12 +88,12 @@ protected:
                                                 msg.size());
     auto seq = m_svs->publishData(block, ndn::time::milliseconds(5000));
 
-    std::cout <<
+    std::cout << std::fixed <<
         ndn::time::steady_clock::now().time_since_epoch().count() / 1e6 << "," <<
         m_options.m_id << "," <<
         "PUB," <<
         m_options.m_id << "::" << seq <<
-      std::endl;
+      std::endl << std::scientific;
   }
 
 public:

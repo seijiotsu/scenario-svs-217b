@@ -110,7 +110,7 @@
         "subfolder":"latency_vs_sim_length"
     },
     "kite_randrec_variation_2": {
-        "enable": "true",
+        "enable": "false",
         "metadata": "Vary the random:recent ratio. Used in paper",
         "topologies": ["kite_4_5x5"],
         "publish_rates":[250],
@@ -121,7 +121,7 @@
         "subfolder":"kite_randrec_variation_16mtu"
     },
     "kite_randrec_variation_3": {
-        "enable": "true",
+        "enable": "false",
         "metadata": "Vary the random:recent ratio. Used in paper",
         "topologies": ["kite_4_5x5"],
         "publish_rates":[125],
@@ -132,7 +132,7 @@
         "subfolder":"kite_randrec_variation_125ms_pub"
     },
     "kite_randrec_variation_4": {
-        "enable": "true",
+        "enable": "false",
         "metadata": "Vary the random:recent ratio. Used in paper",
         "topologies": ["kite_4_5x5"],
         "publish_rates":[500],
@@ -143,7 +143,7 @@
         "subfolder":"kite_randrec_variation_500ms_pub"
     },
     "kite_randrec_variation_5": {
-        "enable": "true",
+        "enable": "false",
         "metadata": "Vary the random:recent ratio. Used in paper",
         "topologies": ["kite_4_5x5"],
         "publish_rates":[175],

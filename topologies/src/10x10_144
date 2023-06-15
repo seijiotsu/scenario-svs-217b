@@ -1,0 +1,247 @@
+[nodes]
+Ax0y0: _ network=/world router=/Ax0y0.Router/ position=8.9,-116.4,0
+Ax0y1: _ network=/world router=/Ax0y1.Router/ position=-3.1,-112.1,0
+Ax0y2: _ network=/world router=/Ax0y2.Router/ position=-24.5,-87.2,0
+Ax0y3: _ network=/world router=/Ax0y3.Router/ position=-39.2,-87.4,0
+Ax0y4: _ network=/world router=/Ax0y4.Router/ position=-46.7,-74.5,0
+Ax0y5: _ network=/world router=/Ax0y5.Router/ position=-55.2,-63.2,0
+Ax0y6: _ network=/world router=/Ax0y6.Router/ position=-84.9,-50.9,0
+Ax0y7: _ network=/world router=/Ax0y7.Router/ position=-99.7,-49.6,0
+Ax0y8: _ network=/world router=/Ax0y8.Router/ position=-108.7,-37.6,0
+Ax0y9: _ network=/world router=/Ax0y9.Router/ position=-122.7,-39.3,0
+Ax1y0: _ network=/world router=/Ax1y0.Router/ position=12.5,-102.6,0
+Ax1y1: _ network=/world router=/Ax1y1.Router/ position=-2.5,-96.6,0
+Ax1y2: _ network=/world router=/Ax1y2.Router/ position=-9.8,-78.6,0
+Ax1y3: _ network=/world router=/Ax1y3.Router/ position=-19.4,-63.1,0
+Ax1y4: _ network=/world router=/Ax1y4.Router/ position=-37.6,-61,0
+Ax1y5: _ network=/world router=/Ax1y5.Router/ position=-50.5,-47.7,0
+Ax1y6: _ network=/world router=/Ax1y6.Router/ position=-70.3,-43.2,0
+Ax1y7: _ network=/world router=/Ax1y7.Router/ position=-80.3,-28.3,0
+Ax1y8: _ network=/world router=/Ax1y8.Router/ position=-98.1,-25,0
+Ax1y9: _ network=/world router=/Ax1y9.Router/ position=-102.8,-9.9,0
+Ax2y0: _ network=/world router=/Ax2y0.Router/ position=20.6,-89.9,0
+Ax2y1: _ network=/world router=/Ax2y1.Router/ position=19.8,-73.7,0
+Ax2y2: _ network=/world router=/Ax2y2.Router/ position=4.5,-64.2,0
+Ax2y3: _ network=/world router=/Ax2y3.Router/ position=-7.3,-49.5,0
+Ax2y4: _ network=/world router=/Ax2y4.Router/ position=-21.7,-38.8,0
+Ax2y5: _ network=/world router=/Ax2y5.Router/ position=-37.5,-30.6,0
+Ax2y6: _ network=/world router=/Ax2y6.Router/ position=-51.8,-19.6,0
+Ax2y7: _ network=/world router=/Ax2y7.Router/ position=-69.6,-15.1,0
+Ax2y8: _ network=/world router=/Ax2y8.Router/ position=-78.1,0.8,0
+Ax2y9: _ network=/world router=/Ax2y9.Router/ position=-94,0.7,0
+Ax3y0: _ network=/world router=/Ax3y0.Router/ position=47.1,-70.3,0
+Ax3y1: _ network=/world router=/Ax3y1.Router/ position=33,-62.5,0
+Ax3y2: _ network=/world router=/Ax3y2.Router/ position=18.2,-51.7,0
+Ax3y3: _ network=/world router=/Ax3y3.Router/ position=7.4,-37.5,0
+Ax3y4: _ network=/world router=/Ax3y4.Router/ position=-12.3,-14.7,0
+Ax3y5: _ network=/world router=/Ax3y5.Router/ position=-27.1,-12.7,0
+Ax3y6: _ network=/world router=/Ax3y6.Router/ position=-42.8,-7.1,0
+Ax3y7: _ network=/world router=/Ax3y7.Router/ position=-52.7,6.9,0
+Ax3y8: _ network=/world router=/Ax3y8.Router/ position=-68.4,15.3,0
+Ax3y9: _ network=/world router=/Ax3y9.Router/ position=-75.6,30,0
+Ax4y0: _ network=/world router=/Ax4y0.Router/ position=57.8,-61.4,0
+Ax4y1: _ network=/world router=/Ax4y1.Router/ position=46.7,-50,0
+Ax4y2: _ network=/world router=/Ax4y2.Router/ position=32.1,-45,0
+Ax4y3: _ network=/world router=/Ax4y3.Router/ position=13.3,-19.5,0
+Ax4y4: _ network=/world router=/Ax4y4.Router/ position=-0.3,-7.8,0
+Ax4y5: _ network=/world router=/Ax4y5.Router/ position=-14.6,2.3,0
+Ax4y6: _ network=/world router=/Ax4y6.Router/ position=-26.1,15.6,0
+Ax4y7: _ network=/world router=/Ax4y7.Router/ position=-43.4,18.6,0
+Ax4y8: _ network=/world router=/Ax4y8.Router/ position=-58.4,27.6,0
+Ax4y9: _ network=/world router=/Ax4y9.Router/ position=-66.9,42.1,0
+Ax5y0: _ network=/world router=/Ax5y0.Router/ position=66.7,-50.8,0
+Ax5y1: _ network=/world router=/Ax5y1.Router/ position=60.4,-36,0
+Ax5y2: _ network=/world router=/Ax5y2.Router/ position=48.8,-21.1,0
+Ax5y3: _ network=/world router=/Ax5y3.Router/ position=31.2,-13.1,0
+Ax5y4: _ network=/world router=/Ax5y4.Router/ position=7.5,1.7,0
+Ax5y5: _ network=/world router=/Ax5y5.Router/ position=-6.8,17.2,0
+Ax5y6: _ network=/world router=/Ax5y6.Router/ position=-18.6,30.5,0
+Ax5y7: _ network=/world router=/Ax5y7.Router/ position=-31.5,44,0
+Ax5y8: _ network=/world router=/Ax5y8.Router/ position=-43.4,56.7,0
+Ax5y9: _ network=/world router=/Ax5y9.Router/ position=-59.4,57.8,0
+Ax6y0: _ network=/world router=/Ax6y0.Router/ position=91,-31.5,0
+Ax6y1: _ network=/world router=/Ax6y1.Router/ position=76.9,-24.2,0
+Ax6y2: _ network=/world router=/Ax6y2.Router/ position=63.6,-13.5,0
+Ax6y3: _ network=/world router=/Ax6y3.Router/ position=34.7,4,0
+Ax6y4: _ network=/world router=/Ax6y4.Router/ position=23.5,16.2,0
+Ax6y5: _ network=/world router=/Ax6y5.Router/ position=8.9,22.5,0
+Ax6y6: _ network=/world router=/Ax6y6.Router/ position=-11.4,46.7,0
+Ax6y7: _ network=/world router=/Ax6y7.Router/ position=-24.7,56.8,0
+Ax6y8: _ network=/world router=/Ax6y8.Router/ position=-34.5,71.2,0
+Ax6y9: _ network=/world router=/Ax6y9.Router/ position=-51.6,71.2,0
+Ax7y0: _ network=/world router=/Ax7y0.Router/ position=100.5,-23.2,0
+Ax7y1: _ network=/world router=/Ax7y1.Router/ position=91.6,-11.2,0
+Ax7y2: _ network=/world router=/Ax7y2.Router/ position=65.1,3.3,0
+Ax7y3: _ network=/world router=/Ax7y3.Router/ position=51.3,11,0
+Ax7y4: _ network=/world router=/Ax7y4.Router/ position=28.2,31.6,0
+Ax7y5: _ network=/world router=/Ax7y5.Router/ position=14.2,39.6,0
+Ax7y6: _ network=/world router=/Ax7y6.Router/ position=4.2,56,0
+Ax7y7: _ network=/world router=/Ax7y7.Router/ position=-3.5,73.1,0
+Ax7y8: _ network=/world router=/Ax7y8.Router/ position=-18.1,84.6,0
+Ax7y9: _ network=/world router=/Ax7y9.Router/ position=-21.8,100.5,0
+Ax8y0: _ network=/world router=/Ax8y0.Router/ position=111.5,10,0
+Ax8y1: _ network=/world router=/Ax8y1.Router/ position=95,8.2,0
+Ax8y2: _ network=/world router=/Ax8y2.Router/ position=77.7,15.7,0
+Ax8y3: _ network=/world router=/Ax8y3.Router/ position=63.1,23.7,0
+Ax8y4: _ network=/world router=/Ax8y4.Router/ position=39.3,44.3,0
+Ax8y5: _ network=/world router=/Ax8y5.Router/ position=25.5,51.5,0
+Ax8y6: _ network=/world router=/Ax8y6.Router/ position=19.6,67.3,0
+Ax8y7: _ network=/world router=/Ax8y7.Router/ position=10.2,82.6,0
+Ax8y8: _ network=/world router=/Ax8y8.Router/ position=-2.2,95.6,0
+Ax8y9: _ network=/world router=/Ax8y9.Router/ position=-10.3,109.7,0
+Ax9y0: _ network=/world router=/Ax9y0.Router/ position=125.1,13.1,0
+Ax9y1: _ network=/world router=/Ax9y1.Router/ position=94.8,24.5,0
+Ax9y2: _ network=/world router=/Ax9y2.Router/ position=82,31.8,0
+Ax9y3: _ network=/world router=/Ax9y3.Router/ position=67.3,39.9,0
+Ax9y4: _ network=/world router=/Ax9y4.Router/ position=54.6,52.4,0
+Ax9y5: _ network=/world router=/Ax9y5.Router/ position=48.6,68.3,0
+Ax9y6: _ network=/world router=/Ax9y6.Router/ position=34.3,77.9,0
+Ax9y7: _ network=/world router=/Ax9y7.Router/ position=23.7,91.9,0
+Ax9y8: _ network=/world router=/Ax9y8.Router/ position=12.3,104.7,0
+Ax9y9: _ network=/world router=/Ax9y9.Router/ position=2.7,116.3,0
+[switches]
+[links]
+Ax7y2:Ax8y2 delay=10ms
+Ax6y0:Ax6y1 delay=10ms
+Ax7y6:Ax7y7 delay=10ms
+Ax8y8:Ax9y8 delay=10ms
+Ax2y2:Ax3y2 delay=10ms
+Ax3y2:Ax4y2 delay=10ms
+Ax6y6:Ax7y6 delay=10ms
+Ax1y0:Ax2y0 delay=10ms
+Ax5y5:Ax6y5 delay=10ms
+Ax3y1:Ax4y1 delay=10ms
+Ax8y0:Ax9y0 delay=10ms
+Ax4y7:Ax4y8 delay=10ms
+Ax0y2:Ax0y3 delay=10ms
+Ax4y1:Ax4y2 delay=10ms
+Ax5y7:Ax5y8 delay=10ms
+Ax7y5:Ax7y6 delay=10ms
+Ax3y0:Ax3y1 delay=10ms
+Ax7y8:Ax7y9 delay=10ms
+Ax4y0:Ax5y0 delay=10ms
+Ax6y5:Ax7y5 delay=10ms
+Ax1y6:Ax1y7 delay=10ms
+Ax7y9:Ax8y9 delay=10ms
+Ax7y2:Ax7y3 delay=10ms
+Ax1y8:Ax1y9 delay=10ms
+Ax5y1:Ax6y1 delay=10ms
+Ax6y4:Ax6y5 delay=10ms
+Ax1y9:Ax2y9 delay=10ms
+Ax2y2:Ax2y3 delay=10ms
+Ax4y0:Ax4y1 delay=10ms
+Ax3y0:Ax4y0 delay=10ms
+Ax5y0:Ax5y1 delay=10ms
+Ax8y2:Ax8y3 delay=10ms
+Ax9y7:Ax9y8 delay=10ms
+Ax8y4:Ax9y4 delay=10ms
+Ax2y8:Ax2y9 delay=10ms
+Ax7y4:Ax7y5 delay=10ms
+Ax4y9:Ax5y9 delay=10ms
+Ax4y5:Ax4y6 delay=10ms
+Ax9y8:Ax9y9 delay=10ms
+Ax1y5:Ax2y5 delay=10ms
+Ax3y7:Ax3y8 delay=10ms
+Ax2y6:Ax2y7 delay=10ms
+Ax3y8:Ax3y9 delay=10ms
+Ax0y6:Ax1y6 delay=10ms
+Ax5y3:Ax6y3 delay=10ms
+Ax0y8:Ax1y8 delay=10ms
+Ax9y3:Ax9y4 delay=10ms
+Ax8y1:Ax8y2 delay=10ms
+Ax5y8:Ax6y8 delay=10ms
+Ax3y9:Ax4y9 delay=10ms
+Ax1y4:Ax1y5 delay=10ms
+Ax7y7:Ax8y7 delay=10ms
+Ax0y5:Ax1y5 delay=10ms
+Ax8y2:Ax9y2 delay=10ms
+Ax8y7:Ax9y7 delay=10ms
+Ax0y0:Ax1y0 delay=10ms
+Ax1y1:Ax1y2 delay=10ms
+Ax5y1:Ax5y2 delay=10ms
+Ax2y6:Ax3y6 delay=10ms
+Ax4y6:Ax5y6 delay=10ms
+Ax7y6:Ax8y6 delay=10ms
+Ax5y6:Ax6y6 delay=10ms
+Ax6y8:Ax7y8 delay=10ms
+Ax8y6:Ax9y6 delay=10ms
+Ax2y0:Ax2y1 delay=10ms
+Ax3y4:Ax4y4 delay=10ms
+Ax3y7:Ax4y7 delay=10ms
+Ax9y1:Ax9y2 delay=10ms
+Ax9y6:Ax9y7 delay=10ms
+Ax8y5:Ax8y6 delay=10ms
+Ax8y8:Ax8y9 delay=10ms
+Ax0y4:Ax1y4 delay=10ms
+Ax6y6:Ax6y7 delay=10ms
+Ax8y3:Ax9y3 delay=10ms
+Ax1y0:Ax1y1 delay=10ms
+Ax0y2:Ax1y2 delay=10ms
+Ax8y9:Ax9y9 delay=10ms
+Ax4y6:Ax4y7 delay=10ms
+Ax3y1:Ax3y2 delay=10ms
+Ax5y2:Ax6y2 delay=10ms
+Ax3y6:Ax3y7 delay=10ms
+Ax2y4:Ax2y5 delay=10ms
+Ax3y3:Ax4y3 delay=10ms
+Ax1y2:Ax1y3 delay=10ms
+Ax0y4:Ax0y5 delay=10ms
+Ax7y5:Ax8y5 delay=10ms
+Ax7y7:Ax7y8 delay=10ms
+Ax6y3:Ax7y3 delay=10ms
+Ax5y6:Ax5y7 delay=10ms
+Ax6y1:Ax7y1 delay=10ms
+Ax6y4:Ax7y4 delay=10ms
+Ax9y5:Ax9y6 delay=10ms
+Ax2y1:Ax2y2 delay=10ms
+Ax1y3:Ax2y3 delay=10ms
+Ax7y1:Ax8y1 delay=10ms
+Ax1y2:Ax2y2 delay=10ms
+Ax4y5:Ax5y5 delay=10ms
+Ax3y5:Ax3y6 delay=10ms
+Ax9y2:Ax9y3 delay=10ms
+Ax8y4:Ax8y5 delay=10ms
+Ax6y0:Ax7y0 delay=10ms
+Ax2y1:Ax3y1 delay=10ms
+Ax4y3:Ax5y3 delay=10ms
+Ax9y4:Ax9y5 delay=10ms
+Ax2y5:Ax3y5 delay=10ms
+Ax2y7:Ax2y8 delay=10ms
+Ax1y5:Ax1y6 delay=10ms
+Ax7y4:Ax8y4 delay=10ms
+Ax5y8:Ax5y9 delay=10ms
+Ax5y7:Ax6y7 delay=10ms
+Ax7y0:Ax7y1 delay=10ms
+Ax2y3:Ax3y3 delay=10ms
+Ax4y1:Ax5y1 delay=10ms
+Ax4y4:Ax5y4 delay=10ms
+Ax4y8:Ax4y9 delay=10ms
+Ax5y5:Ax5y6 delay=10ms
+Ax3y5:Ax4y5 delay=10ms
+Ax4y3:Ax4y4 delay=10ms
+Ax6y8:Ax6y9 delay=10ms
+Ax8y6:Ax8y7 delay=10ms
+Ax7y8:Ax8y8 delay=10ms
+Ax3y4:Ax3y5 delay=10ms
+Ax2y3:Ax2y4 delay=10ms
+Ax4y4:Ax4y5 delay=10ms
+Ax6y7:Ax6y8 delay=10ms
+Ax2y5:Ax2y6 delay=10ms
+Ax1y7:Ax1y8 delay=10ms
+Ax0y7:Ax0y8 delay=10ms
+Ax0y8:Ax0y9 delay=10ms
+Ax5y2:Ax5y3 delay=10ms
+Ax6y2:Ax7y2 delay=10ms
+Ax2y8:Ax3y8 delay=10ms
+Ax0y1:Ax1y1 delay=10ms
+Ax6y3:Ax6y4 delay=10ms
+Ax3y8:Ax4y8 delay=10ms
+Ax6y1:Ax6y2 delay=10ms
+Ax8y1:Ax9y1 delay=10ms
+Ax3y2:Ax3y3 delay=10ms
+Ax1y7:Ax2y7 delay=10ms
+Ax1y3:Ax1y4 delay=10ms
+Ax0y3:Ax0y4 delay=10ms
+Ax0y6:Ax0y7 delay=10ms
+Ax7y3:Ax8y3 delay=10ms
+Ax8y0:Ax8y1 delay=10ms

@@ -41,8 +41,11 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
   , m_onUpdate(onUpdate)
   , m_rng(std::hash<std::string>()("SALT_WHATEVER"+nid.toUri()+"SALT"))
   , m_packetDist(10, 15)
-  , m_retxDist(2000 * 0.9, 2000 * 1.1)
-  , m_intrReplyDist(200 * 0.8, 200 * 1.2)
+  , m_retxDist(1000 * 0.75, 1000 * 1.25)
+  // Wait for 100ms before sending the first sync interest
+  // This is necessary to give other things time to initialize
+  , m_startPubDist(100, 100000)
+  , m_intrReplyDist(200 * 0.5, 200 * 1.5)
   , m_keyChainMem("pib-memory:", "tpm-memory:")
   , m_scheduler(m_face.getIoService())
   , m_instanceId(s_instanceCounter++)
@@ -61,11 +64,9 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
 void
 SVSyncCore::sendInitialInterest()
 {
-  // Wait for 100ms before sending the first sync interest
-  // This is necessary to give other things time to initialize
-  m_scheduler.schedule(time::milliseconds(100), [this] {
+  m_scheduler.schedule(time::milliseconds(m_startPubDist(m_rng)), [this] {
     m_initialized = true;
-    retxSyncInterest(true, 0);
+    retxSyncInterest(true, 0, 2);
   });
 }
 
@@ -110,7 +111,7 @@ SVSyncCore::onSyncInterestValidated(const Interest &interest)
   // If incoming state is older, send sync interest immediately
   if (!myVectorNew)
   {
-    retxSyncInterest(false, 0);
+    retxSyncInterest(false, 0, 0);
   }
   else
   {
@@ -120,13 +121,13 @@ SVSyncCore::onSyncInterestValidated(const Interest &interest)
     int delay = m_intrReplyDist(m_rng);
     if (getCurrentTime() + delay * 1000 < m_nextSyncInterest)
     {
-      retxSyncInterest(false, delay);
+      retxSyncInterest(false, delay, 1);
     }
   }
 }
 
 void
-SVSyncCore::retxSyncInterest(bool send, unsigned int delay)
+SVSyncCore::retxSyncInterest(bool send, unsigned int delay, unsigned int typeOfInterest)
 {
   if (send)
   {
@@ -145,7 +146,7 @@ SVSyncCore::retxSyncInterest(bool send, unsigned int delay)
       if (fragmentation_mtu != 0){
         sendSyncInterestFrag();
       }else{
-        sendSyncInterestRandRecent(); //sendSyncInterestFrag();
+        sendSyncInterestRandRecent(typeOfInterest); //sendSyncInterestFrag();
       }
     }
     m_recordedVv = nullptr;
@@ -161,7 +162,7 @@ SVSyncCore::retxSyncInterest(bool send, unsigned int delay)
     m_nextSyncInterest = getCurrentTime() + 1000 * delay;
 
     m_retxEvent = m_scheduler.schedule(time::milliseconds(delay),
-                                       [this] { retxSyncInterest(true, 0); });
+                                       [this, typeOfInterest] { retxSyncInterest(true, 0, typeOfInterest); });
   }
 }
 
@@ -220,7 +221,6 @@ SVSyncCore::sendSyncInterestFrag()
       total_sync_interest_sz += interest.wireEncode().size();
 
       m_face.expressInterest(interest, nullptr, nullptr, nullptr);
-      // std::cerr << interest << std::endl;
     }
 
 
@@ -228,7 +228,7 @@ SVSyncCore::sendSyncInterestFrag()
 }
 
 void
-SVSyncCore::sendSyncInterestRandRecent()
+SVSyncCore::sendSyncInterestRandRecent(unsigned int typeOfInterest)
 {
   //assert(pRand + pRecent == 1.0 && pRand >= 0 && pRecent >= 0);
 
@@ -241,7 +241,24 @@ SVSyncCore::sendSyncInterestRandRecent()
   {
     std::lock_guard<std::mutex> lock(m_vvMutex);
     // At this point the size of subselected vv is already <= MTU
-    syncName.append(Name::Component(m_subsetSelect.selectRandRecent(m_vv).encode()));
+    auto subset = m_subsetSelect.selectRandRecent(m_vv);
+    std::string typeOfInterestStr;
+    switch(typeOfInterest) {
+      case 0:
+        typeOfInterestStr = "PERIODIC";
+        break;
+      case 1:
+        typeOfInterestStr = "SUPPRESSION";
+        break;
+      case 2:
+        typeOfInterestStr = "PUBLISH";
+        break;
+    }
+    std::cout << std::fixed << ndn::time::steady_clock::now().time_since_epoch().count() / 1e6
+     << std::scientific << "," << m_id << ",INTEREST," << typeOfInterestStr << std::endl;
+    //std::cout << std::fixed << ndn::time::steady_clock::now().time_since_epoch().count() / 1e6
+    //  << std::scientific << "," << m_id << ",INTEREST," << subset.toStr() << std::endl;
+    syncName.append(Name::Component(subset.encode()));
   }
 
   interest.setName(syncName);
@@ -457,7 +474,7 @@ SVSyncCore::updateSeqNo(const SeqNo& seq, const NodeID& nid)
   }
 
   if (seq > prev)
-    retxSyncInterest(false, 1);
+    retxSyncInterest(false, 1, 2);
 }
 
 std::set<NodeID>

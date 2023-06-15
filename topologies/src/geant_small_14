@@ -1,0 +1,28 @@
+[nodes]
+is: _ network=/world router=/is.Router/ position=1.2,18.1,0
+no: _ network=/world router=/no.Router/ position=-17.5,23.9,0
+fi: _ network=/world router=/fi.Router/ position=-40,14.9,0
+se: _ network=/world router=/se.Router/ position=-26.4,16.1,0
+ee: _ network=/world router=/ee.Router/ position=-24,-14.1,0
+dk: _ network=/world router=/dk.Router/ position=-11.7,10.5,0
+uk: _ network=/world router=/uk.Router/ position=9.6,9,0
+nl: _ network=/world router=/nl.Router/ position=-0.4,-1.2,0
+de1: _ network=/world router=/de1.Router/ position=-14.3,-4.4,0
+be: _ network=/world router=/be.Router/ position=13.3,-2.1,0
+lu: _ network=/world router=/lu.Router/ position=1.4,-15.2,0
+[switches]
+[links]
+is:dk delay=10ms
+is:uk delay=10ms
+no:se delay=10ms
+no:dk delay=10ms
+fi:se delay=10ms
+ee:de1 delay=10ms
+dk:de1 delay=10ms
+dk:nl delay=10ms
+dk:se delay=10ms
+uk:nl delay=10ms
+uk:be delay=10ms
+nl:de1 delay=10ms
+nl:be delay=10ms
+lu:nl delay=10ms

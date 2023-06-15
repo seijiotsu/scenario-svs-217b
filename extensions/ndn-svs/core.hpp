@@ -182,7 +182,7 @@ NDN_SVS_PUBLIC_WITH_TESTS_ELSE_PRIVATE:
    * @param delay Delay in milliseconds to schedule next interest (0 for default).
    */
   void
-  retxSyncInterest(bool send, unsigned int delay);
+  retxSyncInterest(bool send, unsigned int delay, unsigned int typeOfInterest);
 
   /**
    * @brief Add one sync interest to queue.
@@ -235,7 +235,7 @@ NDN_SVS_PUBLIC_WITH_TESTS_ELSE_PRIVATE:
    * @param pRecent Percent of randomly-selected states to include in the interest
    * @param pRand Percent of randomly-selected states to include in the interest
    */
-  void sendSyncInterestRandRecent();
+  void sendSyncInterestRandRecent(unsigned int typeOfInterest);
 
 
   /**
@@ -351,6 +351,8 @@ private:
   std::uniform_int_distribution<> m_retxDist;
   // Milliseconds to send sync interest reply after
   std::uniform_int_distribution<> m_intrReplyDist;
+  // Distribute the times for the first sync interest publish of each node
+  std::uniform_int_distribution<> m_startPubDist;
 
   // Security
   ndn::KeyChain m_keyChainMem;

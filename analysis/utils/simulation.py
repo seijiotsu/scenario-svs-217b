@@ -3,6 +3,7 @@ import subprocess
 import sys
 import os
 import time
+from multiprocessing import Process
 
 from .colors import Colors
 
@@ -25,9 +26,13 @@ def randrecent(topology_name, n_random, n_recent, publish_rate_ms,
     else:
         start_time = time.time()
         with open(output_file, 'w') as hdl:
-            subprocess.run([SIMULATOR_PATH, PROCESSED_TOPOLOGIES_PATH + topology_name,
-                            str(n_random), str(n_recent), str(publish_rate_ms),
-                            str(stop_second), str(drop_rate), '0'], stdout=hdl, stderr=DEVNULL)
+            # args = [
+            #     SIMULATOR_PATH, PROCESSED_TOPOLOGIES_PATH + topology_name,
+            #     str(n_random), str(n_recent), str(publish_rate_ms),
+            #     str(stop_second), str(drop_rate), '0'
+            # ]
+            # print(' '.join(args))
+            subprocess.run(args, stdout=hdl, stderr=DEVNULL)
         end_time = time.time()
         print(f'done in {(end_time - start_time):.2f} sec')
     return output_file
@@ -60,18 +65,19 @@ def base(topology_name, publish_rate_ms, stop_second, drop_rate, subfolder) -> s
     """
     output_file = LOGGING_PATH + subfolder + '/' + \
         f'base-{topology_name}-{publish_rate_ms}-{stop_second}-{drop_rate}'
-    print(Colors.HEADER + f'Running {output_file}...' + Colors.ENDC, end='')
     sys.stdout.flush()
     if os.path.isfile(output_file):
-        print('already exists!')
+        print(Colors.HEADER + f'{output_file}' + Colors.ENDC + ' already exists!')
     else:
         start_time = time.time()
+        print(Colors.OKGREEN + f'Running {output_file}' + Colors.ENDC)
         with open(output_file, 'w') as hdl:
-            subprocess.run([SIMULATOR_PATH, PROCESSED_TOPOLOGIES_PATH + topology_name,
-                            '99999', '0', str(publish_rate_ms), str(stop_second), str(drop_rate), '0'],
-                        stdout=hdl, stderr=DEVNULL)
+            args = [SIMULATOR_PATH, PROCESSED_TOPOLOGIES_PATH + topology_name,
+                '99999', '0', str(publish_rate_ms), str(stop_second), str(drop_rate), '0']
+            # print(' '.join(args))
+            subprocess.run(args, stdout=hdl, stderr=DEVNULL)
         end_time = time.time()
-        print(f'done in {(end_time - start_time):.2f} sec')
+        print(f'{output_file} DONE in {(end_time - start_time):.2f} sec')
     return output_file
 
 
@@ -115,18 +121,20 @@ def conduct_full_simulation(topologies,
             for stop_second in stop_seconds:
                 for drop_rate in drop_rates:
                     # Simulate base first
-                    base(topology, publish_rate, stop_second, drop_rate, subfolder)
-                    # Simulate fullfrag next
-                    for mtu_size in mtu_sizes:
-                        fragment(topology, publish_rate, stop_second, drop_rate,
-                                 mtu_size, subfolder)
-                        #simulate random, where n_random is mtu_size
-                        rand(topology, mtu_size, 0, publish_rate, stop_second,
-                            drop_rate, subfolder)
-                    # Simulate randrec last
-                    for n_random, n_recent in randrec_tuples:
-                        randrecent(topology, n_random, n_recent, publish_rate,
-                                   stop_second, drop_rate, subfolder)
+                    process = Process(target=base, args=(topology, publish_rate, stop_second, drop_rate, subfolder))
+                    process.start()
+                    # base(topology, publish_rate, stop_second, drop_rate, subfolder)
+                    # # Simulate fullfrag next
+                    # for mtu_size in mtu_sizes:
+                    #     fragment(topology, publish_rate, stop_second, drop_rate,
+                    #              mtu_size, subfolder)
+                    #     #simulate random, where n_random is mtu_size
+                    #     rand(topology, mtu_size, 0, publish_rate, stop_second,
+                    #         drop_rate, subfolder)
+                    # # Simulate randrec last
+                    # for n_random, n_recent in randrec_tuples:
+                    #     randrecent(topology, n_random, n_recent, publish_rate,
+                    #                stop_second, drop_rate, subfolder)
 
 
 if __name__ == '__main__':

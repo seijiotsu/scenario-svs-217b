@@ -1,0 +1,30 @@
+router
+# node	comment	yPos	xPos
+is	NA	0	0
+no	NA	0	0
+fi	NA	0	0
+se	NA	0	0
+ee	NA	0	0
+dk	NA	0	0
+uk	NA	0	0
+nl	NA	0	0
+de1	NA	0	0
+be	NA	0	0
+lu	NA	0	0
+
+link
+# src	dest	bandwidth	metric	delay	queue
+is	dk	10Mbps	1 10ms	20
+is	uk	10Mbps	1 10ms	20
+no	se	10Mbps	1 10ms	20
+no	dk	10Mbps	1 10ms	20
+fi	se	10Mbps	1 10ms	20
+ee	de1	10Mbps	1 10ms	20
+dk	de1	10Mbps	1 10ms	20
+dk	nl	10Mbps	1 10ms	20
+dk	se	10Mbps	1 10ms	20
+uk	nl	10Mbps	1 10ms	20
+uk	be	10Mbps	1 10ms	20
+nl	de1	10Mbps	1 10ms	20
+nl	be	10Mbps	1 10ms	20
+lu	nl	10Mbps	1 10ms	20

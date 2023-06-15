@@ -1,0 +1,100 @@
+router
+# node	comment	yPos	xPos
+is	NA	0	0
+no	NA	0	0
+fi	NA	0	0
+se	NA	0	0
+ee	NA	0	0
+lv	NA	0	0
+dk	NA	0	0
+lt	NA	0	0
+by	NA	0	0
+ie	NA	0	0
+uk	NA	0	0
+nl	NA	0	0
+de1	NA	0	0
+pl	NA	0	0
+be	NA	0	0
+de2	NA	0	0
+cz	NA	0	0
+ua	NA	0	0
+lu	NA	0	0
+sk	NA	0	0
+at	NA	0	0
+md	NA	0	0
+hu	NA	0	0
+fr1	NA	0	0
+ch	NA	0	0
+si	NA	0	0
+hr	NA	0	0
+ro	NA	0	0
+rs	NA	0	0
+it	NA	0	0
+fr2	NA	0	0
+pt	NA	0	0
+es	NA	0	0
+me	NA	0	0
+bg	NA	0	0
+mk	NA	0	0
+al	NA	0	0
+ge	NA	0	0
+tr	NA	0	0
+am	NA	0	0
+az	NA	0	0
+gr	NA	0	0
+mt	NA	0	0
+cy	NA	0	0
+il	NA	0	0
+
+link
+# src	dest	bandwidth	metric	delay	queue
+is	dk	10Mbps	1 10ms	20
+is	uk	10Mbps	1 10ms	20
+no	se	10Mbps	1 10ms	20
+no	dk	10Mbps	1 10ms	20
+fi	se	10Mbps	1 10ms	20
+ee	lv	10Mbps	1 10ms	20
+lv	lt	10Mbps	1 10ms	20
+dk	de1	10Mbps	1 10ms	20
+lt	pl	10Mbps	1 10ms	20
+by	pl	10Mbps	1 10ms	20
+ie	uk	10Mbps	1 10ms	20
+uk	cy	10Mbps	1 10ms	20
+uk	il	10Mbps	1 10ms	20
+uk	be	10Mbps	1 10ms	20
+uk	pt	10Mbps	1 10ms	20
+nl	de1	10Mbps	1 10ms	20
+pl	de2	10Mbps	1 10ms	20
+pl	at	10Mbps	1 10ms	20
+de2	az	10Mbps	1 10ms	20
+de2	tr	10Mbps	1 10ms	20
+cz	at	10Mbps	1 10ms	20
+ua	at	10Mbps	1 10ms	20
+lu	nl	10Mbps	1 10ms	20
+lu	de2	10Mbps	1 10ms	20
+sk	hu	10Mbps	1 10ms	20
+sk	at	10Mbps	1 10ms	20
+at	bg	10Mbps	1 10ms	20
+at	hr	10Mbps	1 10ms	20
+at	si	10Mbps	1 10ms	20
+at	gr	10Mbps	1 10ms	20
+at	mk	10Mbps	1 10ms	20
+at	it	10Mbps	1 10ms	20
+md	ro	10Mbps	1 10ms	20
+hu	ro	10Mbps	1 10ms	20
+hu	ge	10Mbps	1 10ms	20
+hu	rs	10Mbps	1 10ms	20
+hu	hr	10Mbps	1 10ms	20
+hu	me	10Mbps	1 10ms	20
+hu	si	10Mbps	1 10ms	20
+fr1	ch	10Mbps	1 10ms	20
+ch	it	10Mbps	1 10ms	20
+it	fr2	10Mbps	1 10ms	20
+it	mt	10Mbps	1 10ms	20
+it	al	10Mbps	1 10ms	20
+it	gr	10Mbps	1 10ms	20
+fr2	es	10Mbps	1 10ms	20
+pt	es	10Mbps	1 10ms	20
+bg	mk	10Mbps	1 10ms	20
+am	de2	10Mbps	1 10ms	20
+tr	cy	10Mbps	1 10ms	20

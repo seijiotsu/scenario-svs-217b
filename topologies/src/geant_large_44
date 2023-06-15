@@ -1,0 +1,92 @@
+[nodes]
+is: _ network=/world router=/is.Router/ position=15.6,34.4,0
+no: _ network=/world router=/no.Router/ position=23.7,8.9,0
+fi: _ network=/world router=/fi.Router/ position=3.6,17,0
+se: _ network=/world router=/se.Router/ position=12.1,7.5,0
+ee: _ network=/world router=/ee.Router/ position=-63.2,7.3,0
+lv: _ network=/world router=/lv.Router/ position=-50.7,2.2,0
+dk: _ network=/world router=/dk.Router/ position=21.8,21.8,0
+lt: _ network=/world router=/lt.Router/ position=-36.4,-2.3,0
+by: _ network=/world router=/by.Router/ position=-7.1,-6.1,0
+ie: _ network=/world router=/ie.Router/ position=10.6,64.8,0
+uk: _ network=/world router=/uk.Router/ position=12.8,49.4,0
+nl: _ network=/world router=/nl.Router/ position=3.6,-2.3,0
+de1: _ network=/world router=/de1.Router/ position=14.4,-9.7,0
+pl: _ network=/world router=/pl.Router/ position=-20.1,-5,0
+be: _ network=/world router=/be.Router/ position=24.3,59.3,0
+de2: _ network=/world router=/de2.Router/ position=-20,14.4,0
+cz: _ network=/world router=/cz.Router/ position=-24.4,-20.1,0
+ua: _ network=/world router=/ua.Router/ position=-9,-40.2,0
+lu: _ network=/world router=/lu.Router/ position=-6.5,7.1,0
+sk: _ network=/world router=/sk.Router/ position=-55.2,-35.9,0
+at: _ network=/world router=/at.Router/ position=-11.6,-25.1,0
+md: _ network=/world router=/md.Router/ position=-55.3,-74.2,0
+hu: _ network=/world router=/hu.Router/ position=-42.4,-45.9,0
+fr1: _ network=/world router=/fr1.Router/ position=52.5,-30,0
+ch: _ network=/world router=/ch.Router/ position=53.2,-16.4,0
+si: _ network=/world router=/si.Router/ position=-58.1,-48.1,0
+hr: _ network=/world router=/hr.Router/ position=-26.6,-35.6,0
+ro: _ network=/world router=/ro.Router/ position=-50.2,-61.4,0
+rs: _ network=/world router=/rs.Router/ position=-28,-51.3,0
+it: _ network=/world router=/it.Router/ position=51.5,-0.7,0
+fr2: _ network=/world router=/fr2.Router/ position=48.1,15.8,0
+pt: _ network=/world router=/pt.Router/ position=29.8,41.7,0
+es: _ network=/world router=/es.Router/ position=41.6,30.4,0
+me: _ network=/world router=/me.Router/ position=-43.8,-30.7,0
+bg: _ network=/world router=/bg.Router/ position=18.2,-29.4,0
+mk: _ network=/world router=/mk.Router/ position=5.2,-24,0
+al: _ network=/world router=/al.Router/ position=65.3,1.4,0
+ge: _ network=/world router=/ge.Router/ position=-35.7,-60.1,0
+tr: _ network=/world router=/tr.Router/ position=-12.5,29.2,0
+am: _ network=/world router=/am.Router/ position=-28.4,27.2,0
+az: _ network=/world router=/az.Router/ position=-34.4,16,0
+gr: _ network=/world router=/gr.Router/ position=0.5,-34.7,0
+mt: _ network=/world router=/mt.Router/ position=39,-6.8,0
+cy: _ network=/world router=/cy.Router/ position=-2.4,40.5,0
+il: _ network=/world router=/il.Router/ position=-0.9,56.8,0
+[switches]
+[links]
+is:dk delay=10ms
+is:uk delay=10ms
+no:se delay=10ms
+no:dk delay=10ms
+fi:se delay=10ms
+ee:lv delay=10ms
+lv:lt delay=10ms
+lt:pl delay=10ms
+by:pl delay=10ms
+ie:uk delay=10ms
+uk:cy delay=10ms
+uk:il delay=10ms
+uk:be delay=10ms
+uk:pt delay=10ms
+nl:de1 delay=10ms
+pl:de2 delay=10ms
+pl:at delay=10ms
+de2:az delay=10ms
+de2:tr delay=10ms
+cz:at delay=10ms
+ua:at delay=10ms
+lu:nl delay=10ms
+lu:de2 delay=10ms
+sk:hu delay=10ms
+at:hr delay=10ms
+at:gr delay=10ms
+at:mk delay=10ms
+md:ro delay=10ms
+hu:ro delay=10ms
+hu:ge delay=10ms
+hu:rs delay=10ms
+hu:hr delay=10ms
+hu:me delay=10ms
+hu:si delay=10ms
+fr1:ch delay=10ms
+ch:it delay=10ms
+it:fr2 delay=10ms
+it:mt delay=10ms
+it:al delay=10ms
+fr2:es delay=10ms
+pt:es delay=10ms
+am:de2 delay=10ms
+tr:cy delay=10ms
+bg:mk delay=10ms
