@@ -1,4 +1,6 @@
 import matplotlib
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
 import matplotlib.pylab as plt
 import os
 import glob
@@ -402,7 +404,7 @@ if __name__ == '__main__':
     plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
     plt.xlabel("Average node degree")
     plt.ylabel(f"90th percentile latency (ms)")
-    plt.suptitle('GÉANT Latency vs. Connectivity', fontweight='bold')
+    # plt.suptitle('GÉANT Latency vs. Connectivity', fontweight='bold')
     fig.set_size_inches(6, 6.5)
 
     ylim = [0, 10000]
@@ -439,7 +441,7 @@ if __name__ == '__main__':
     plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
     plt.xlabel("Average node degree")
     plt.ylabel(f"Total sync interest count")
-    plt.suptitle('GÉANT total sync interest counts', fontweight='bold')
+    # plt.suptitle('GÉANT total sync interest counts', fontweight='bold')
     fig.set_size_inches(6, 6.5)
 
     plot_connectivity_vs_packets(
@@ -475,14 +477,14 @@ if __name__ == '__main__':
     plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
     plt.xlabel("Average node degree")
     plt.ylabel(f"Periodic sync interests fraction")
-    plt.suptitle('GÉANT periodic sync interests fraction', fontweight='bold')
+    # plt.suptitle('GÉANT periodic sync interests fraction', fontweight='bold')
     fig.set_size_inches(6, 6.5)
 
     plot_connectivity_vs_packets(
         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_250/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
         ylim=[0, 1],
         packet_type='periodic',
         ax=axs[0]
@@ -491,7 +493,7 @@ if __name__ == '__main__':
         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_1000/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
         ylim=[0, 1],
         packet_type='periodic',
         ax=axs[1]
@@ -510,30 +512,44 @@ if __name__ == '__main__':
     plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/periodic_fraction.pdf')
     plt.clf()
 
-    # plot_connectivity_vs_packets(
-    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_1000/',
-    #     topology_label='GÉANT',
-    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
-    #     ylim=[0, 1],
-    #     packet_type='suppression'
-    # )
-    # plot_connectivity_vs_packets(
-    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_250/',
-    #     topology_label='GÉANT',
-    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
-    #     ylim=[0, 1],
-    #     packet_type='suppression'
-    # )
-    # plot_connectivity_vs_packets(
-    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_4000/',
-    #     topology_label='GÉANT',
-    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
-    #     ylim=[0, 1],
-    #     packet_type='suppression'
-    # )
+    fig, axs = plt.subplots(nrows=3, ncols=1)
+    plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    plt.xlabel("Average node degree")
+    plt.ylabel(f"Suppression sync interests fraction")
+    # plt.suptitle('GÉANT periodic sync interests fraction', fontweight='bold')
+    fig.set_size_inches(6, 6.5)
+
+    plot_connectivity_vs_packets(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_250/',
+        topology_label='GÉANT',
+        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
+        ylim=[0, 1],
+        packet_type='suppression',
+        ax=axs[0]
+    )
+    plot_connectivity_vs_packets(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_1000/',
+        topology_label='GÉANT',
+        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
+        ylim=[0, 1],
+        packet_type='suppression',
+        ax=axs[1]
+    )
+    plot_connectivity_vs_packets(
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_4000/',
+        topology_label='GÉANT',
+        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
+        ylim=[0, 1],
+        packet_type='suppression',
+        ax=axs[2],
+        no_legend=False
+    )
+
+    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/suppression.pdf')
+    plt.clf()
 
     # dirs = [('4 sec', '10x10_4000'), ('1 sec', '10x10_1000')]
     # for time, dir in dirs:
