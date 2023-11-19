@@ -343,6 +343,17 @@ private:
   GetExtraBlockCallback m_getExtraBlock;
   RecvExtraBlockCallback m_recvExtraBlock;
 
+  // https://github.com/named-data/ndn-svs/commit/69ecfd36e32ca8a31b03f7bb02a3a4d72d8e7155
+  // Max suppression time; this value is roughly
+  // correlated to the network diameter
+  int m_maxSuppressionTime;
+  // Periodic timer value; can be set to lower
+  // for highly lossy networks.
+  int m_periodicSyncTime;
+  // Fraction of jitter in the periodic timer value.
+  // Correlated to network diameter.
+  double m_periodicSyncJitter;
+
   // Random Engine
   ndn::random::RandomNumberEngine m_rng;
   // Milliseconds between sending two packets in the queues

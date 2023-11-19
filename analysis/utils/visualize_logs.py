@@ -385,21 +385,6 @@ def run_full_xiao_plots(experiment_dir, topology_label):
 
 
 if __name__ == '__main__':
-    # plot_connectivity_vs_latency(
-    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_small_prelim_week_7_3/',
-    #     topology_label='GÉANT small'
-    # )
-    # plot_drop_rate_vs_latency(
-    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_small_prelim_week_7_2/',
-    #     topology_label='GÉANT small'
-    # )
-    # plot_latency_vs_sim_length_single_file(
-    #     dir='/home/developer/scenario-svs-217b/analysis/logs/geant_small_prelim_week_7_3/',
-    #     filename='base-geant_small_11-11000-4000-0.5',
-    #     label='GÉANT small (MST)',
-    #     num_points=20
-    # )
-
     fig, axs = plt.subplots(nrows=3, ncols=1)
     plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
     plt.xlabel("Average node degree")
@@ -409,7 +394,7 @@ if __name__ == '__main__':
 
     ylim = [0, 10000]
     plot_connectivity_vs_latency(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_250/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='Periodic timer of 0.25 sec',
@@ -417,7 +402,7 @@ if __name__ == '__main__':
         ax=axs[0]
     )
     plot_connectivity_vs_latency(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_1000/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='Periodic timer of 1 sec',
@@ -425,7 +410,7 @@ if __name__ == '__main__':
         ax=axs[1]
     )
     plot_connectivity_vs_latency(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_4000/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='Periodic timer of 4 sec',
@@ -434,7 +419,7 @@ if __name__ == '__main__':
         ax=axs[2]
     )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/connectivity_vs_latency.pdf')
+    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/connectivity_vs_latency_exp.pdf')
     plt.clf()
 
     fig, axs = plt.subplots(nrows=3, ncols=1)
@@ -445,7 +430,7 @@ if __name__ == '__main__':
     fig.set_size_inches(6, 6.5)
 
     plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_250/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
@@ -453,7 +438,7 @@ if __name__ == '__main__':
         ax=axs[0]
     )
     plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_1000/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
@@ -461,7 +446,7 @@ if __name__ == '__main__':
         ax=axs[1]
     )
     plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_4000/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
@@ -470,7 +455,7 @@ if __name__ == '__main__':
         no_legend=False
     )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/total_packet_count.pdf')
+    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/total_packet_count_exp.pdf')
     plt.clf()
 
     fig, axs = plt.subplots(nrows=3, ncols=1)
@@ -481,7 +466,7 @@ if __name__ == '__main__':
     fig.set_size_inches(6, 6.5)
 
     plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_250/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
@@ -490,7 +475,7 @@ if __name__ == '__main__':
         ax=axs[0]
     )
     plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_1000/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
@@ -499,7 +484,7 @@ if __name__ == '__main__':
         ax=axs[1]
     )
     plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_4000/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
@@ -509,7 +494,7 @@ if __name__ == '__main__':
         no_legend=False
     )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/periodic_fraction.pdf')
+    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/periodic_fraction_exp.pdf')
     plt.clf()
 
     fig, axs = plt.subplots(nrows=3, ncols=1)
@@ -520,7 +505,7 @@ if __name__ == '__main__':
     fig.set_size_inches(6, 6.5)
 
     plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_250/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
@@ -529,7 +514,7 @@ if __name__ == '__main__':
         ax=axs[0]
     )
     plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_1000/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
@@ -538,7 +523,7 @@ if __name__ == '__main__':
         ax=axs[1]
     )
     plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_4000/',
+        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
         topology_label='GÉANT',
         drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
@@ -548,30 +533,5 @@ if __name__ == '__main__':
         no_legend=False
     )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/suppression.pdf')
+    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/suppression_exp.pdf')
     plt.clf()
-
-    # dirs = [('4 sec', '10x10_4000'), ('1 sec', '10x10_1000')]
-    # for time, dir in dirs:
-    #     plot_connectivity_vs_latency(
-    #         experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/' + dir + '/',
-    #         topology_label='10x10 Grid',
-    #         drop_rates=[0, 0.125, 0.25],
-    #         title=f'10x10 Grid (Publish rate of 1/sec, Periodic timer of {time})'
-    #     )
-    #     for packet_type in ['all', 'periodic', 'suppression']:
-    #         plot_connectivity_vs_packets(
-    #             experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/' + dir + '/',
-    #             topology_label='10x10 Grid',
-    #             drop_rates=[0, 0.125, 0.25],
-    #             title=f'10x10 Grid (Publish rate of 1/sec, Periodic timer of {time})',
-    #             packet_type=packet_type
-    #         )
-    #         plot_connectivity_vs_packets(
-    #             experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/' + dir + '/',
-    #             topology_label='10x10 Grid',
-    #             drop_rates=[0, 0.125, 0.25],
-    #             title=f'10x10 Grid (Publish rate of 1/sec, Periodic timer of {time})',
-    #             packet_type=packet_type,
-    #             as_proportion=False
-    #         )

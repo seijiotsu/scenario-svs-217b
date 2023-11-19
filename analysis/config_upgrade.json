@@ -1,0 +1,31 @@
+{
+    "upgrade_test": {
+        "enable": "true",
+        "metadata": "Upgrading to new SVS timer functionality.",
+        "topologies": [
+            "geant_small_10",
+            "geant_small_11",
+            "geant_small_12",
+            "geant_small_13",
+            "geant_small_14",
+            "geant_small_19",
+            "geant_small_25",
+            "geant_small_31"
+        ],
+        "publish_rates": [
+            11000
+        ],
+        "stop_seconds": [
+            400
+        ],
+        "drop_rates": [
+            0.05,
+            0.10,
+            0.25,
+            0.5
+        ],
+        "randrec_tuples": [],
+        "mtu_sizes": [],
+        "subfolder": "upgrade_test_after"
+    }
+}

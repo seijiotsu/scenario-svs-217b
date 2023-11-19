@@ -39,13 +39,16 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
   , m_securityOptions(securityOptions)
   , m_id(nid)
   , m_onUpdate(onUpdate)
+  , m_maxSuppressionTime(300)
+  , m_periodicSyncTime(1000)
+  , m_periodicSyncJitter(0.25)
   , m_rng(std::hash<std::string>()("SALT_WHATEVER"+nid.toUri()+"SALT"))
   , m_packetDist(10, 15)
-  , m_retxDist(1000 * 0.75, 1000 * 1.25)
+  , m_retxDist(m_periodicSyncTime * (1.0 - m_periodicSyncJitter), m_periodicSyncTime * (1.0 + m_periodicSyncJitter))
   // Wait for 100ms before sending the first sync interest
   // This is necessary to give other things time to initialize
   , m_startPubDist(100, 100000)
-  , m_intrReplyDist(200 * 0.5, 200 * 1.5)
+  , m_intrReplyDist(0, m_maxSuppressionTime)
   , m_keyChainMem("pib-memory:", "tpm-memory:")
   , m_scheduler(m_face.getIoService())
   , m_instanceId(s_instanceCounter++)
@@ -59,6 +62,26 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
                              [] (auto&&...) {
                                 NDN_THROW(Error("Failed to register sync prefix"));
                              });
+}
+
+inline int
+suppressionCurve(int constFactor, int value)
+{
+  // https://github.com/named-data/ndn-svs/commit/69ecfd36e32ca8a31b03f7bb02a3a4d72d8e7155
+
+  /**
+   * This curve increases the probability that only one or a few
+   * nodes pick lower values for timers compared to other nodes.
+   * This leads to better suppression results.
+   * Increasing the curve factor makes the curve steeper =>
+   * better for more nodes, but worse for fewer nodes.
+   */
+
+  double c = constFactor;
+  double v = value;
+  double f = 5.0; // curve factor
+
+  return (int) (c * (1.0 - std::exp((v - c) / (c / f))));
 }
 
 void
@@ -119,6 +142,10 @@ SVSyncCore::onSyncInterestValidated(const Interest &interest)
     // Check how much time is left on the timer,
     // reset to ~m_intrReplyDist if more than that.
     int delay = m_intrReplyDist(m_rng);
+
+    // Curve the delay for better suppression in large groups
+    // TODO: efficient curve depends on number of active nodes
+    delay = suppressionCurve(m_maxSuppressionTime, delay);
     if (getCurrentTime() + delay * 1000 < m_nextSyncInterest)
     {
       retxSyncInterest(false, delay, 1);
