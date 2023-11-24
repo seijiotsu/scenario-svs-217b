@@ -303,6 +303,89 @@ def plot_connectivity_vs_latency(experiment_dir, topology_label, drop_rates, tit
     # plt.clf()
     return ax
 
+def plot_hop_count_vs_latency(experiment_dir, topology_label, drop_rates, title, ylim=None, no_legend=True, ax = None):
+    markers = ['o', '^', 'v', 's', '*']
+    for i, drop_rate in enumerate(drop_rates):
+        points = []
+        logs = glob.glob(experiment_dir + f'*-{drop_rate}')
+        for log in logs:
+            if 'large_' in log:
+                # hack
+                counts = {
+                    44: 6.31,
+                    50: 4.81,
+                    55: 4.40,
+                    63: 3.48,
+                    71: 3.15
+                }
+                log_data = get_log_data(log)
+                avg_hop_count = counts[int(str(log).split('large_')[2].split('-')[0])]
+            points.append((avg_hop_count, log_data._90th_percentile_latency()))
+        plot_line(points, label=f'Drop rate={drop_rate}', marker=markers[i], plotter=ax)
+    ax.grid()
+    if not no_legend:
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.30), ncol=3)
+    ax.set_title(title)
+    if ylim:
+        ax.set_ylim(ylim)
+    # experiment_name = os.path.basename(os.path.normpath(experiment_dir))
+    # ax.savefig(f'{experiment_dir}/{experiment_name}.png',bbox_inches='tight')
+    # plt.show()
+    # plt.clf()
+    return ax
+
+VARY_SUPP_TIMER_VALS = [50, 100, 150, 200, 300, 400, 500, 600, 800, 1000, 1200, 1400, 1600]
+def plot_suppression_timer_vs_packet_count():
+    fig = matplotlib.pyplot.gcf()
+    points = []
+    for supp_timer in VARY_SUPP_TIMER_VALS:
+        log_data = get_log_data(f'/home/developer/scenario-svs-217b/analysis/logs/suppression_tuning_{supp_timer}ms/base-geant_large_55-44000-500-0.25')
+        points.append((supp_timer, log_data.sync_pack))
+    plot_line(points, label='Packet count vs. suppression timer (ms)', marker='o')
+    plt.xlabel("Suppression timer (ms)")
+    plt.ylabel(f"Total packets sent")
+    plt.ylim(0, 8000)
+    fig.set_size_inches(6, 2.5)
+    plt.grid()
+    plt.legend(loc='upper left')
+    plt.savefig(f'/home/developer/scenario-svs-217b/analysis/logs/packet_count_vs_supp_timer.pdf',bbox_inches='tight', pad_inches=0)
+    plt.show()
+    plt.clf()
+
+def plot_suppression_timer_vs_latency():
+    fig = matplotlib.pyplot.gcf()
+    points = []
+    for supp_timer in VARY_SUPP_TIMER_VALS:
+        log_data = get_log_data(f'/home/developer/scenario-svs-217b/analysis/logs/suppression_tuning_{supp_timer}ms/base-geant_large_55-44000-500-0.25')
+        points.append((supp_timer, log_data._90th_percentile_latency()))
+    plot_line(points, label='Latency vs. suppression timer (ms)', marker='o')
+    plt.xlabel("Suppression timer (ms)")
+    plt.ylabel(f"90th percentile latency (ms)")
+    plt.ylim(0, 2000)
+    fig.set_size_inches(6, 2.5)
+    plt.grid()
+    plt.legend(loc='upper left')
+    plt.savefig(f'/home/developer/scenario-svs-217b/analysis/logs/latency_vs_supp_timer.pdf',bbox_inches='tight', pad_inches=0)
+    plt.show()
+    plt.clf()
+
+def plot_latency_vs_packets():
+    fig = matplotlib.pyplot.gcf()
+    points = []
+    for supp_timer in VARY_SUPP_TIMER_VALS:
+        log_data = get_log_data(f'/home/developer/scenario-svs-217b/analysis/logs/suppression_tuning_{supp_timer}ms/base-geant_large_55-44000-500-0.25')
+        points.append((log_data.sync_pack, log_data._90th_percentile_latency()))
+    x, y = zip(*sorted(points))
+    plt.scatter(x, y)
+    plt.xlabel(f"Total packets sent")
+    plt.ylabel("90th percentile latency (ms)")
+    # plt.ylim(0, 2000)
+    fig.set_size_inches(6, 2.5)
+    plt.grid()
+    plt.savefig(f'/home/developer/scenario-svs-217b/analysis/logs/latency_vs_packets.pdf',bbox_inches='tight', pad_inches=0)
+    plt.show()
+    plt.clf()
+
 def plot_connectivity_vs_packets(experiment_dir, topology_label, drop_rates, title, ylim=None, packet_type='all', as_proportion=True, no_legend=True, ax=None):
     fig = matplotlib.pyplot.gcf()
     markers = ['o', '^', 'v', 's', '*']
@@ -368,6 +451,7 @@ def plot_drop_rate_vs_latency(experiment_dir, topology_label):
     plt.show()
     plt.clf()
 
+
 def run_full_xiao_plots(experiment_dir, topology_label):
     """
     Generate all plots in the style of Appendix A, B and C from Xiao et al., and
@@ -383,155 +467,302 @@ def run_full_xiao_plots(experiment_dir, topology_label):
     plot_versus_latency(experiment_dir, strategies, topology_label, 'bytes')
     plot_versus_latency(experiment_dir, strategies, topology_label, 'packets')
 
+def plot_exp_latency_decrease(timer, drop_rates, title, ylim=None, no_legend=True, ax = None):
+    markers = ['o', 'v', '*']
+    for i, drop_rate in enumerate(drop_rates):
+        points = []
+        logs = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+        logs_upgraded = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+        for j in range(len(logs)):
+            average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
+            log_data = get_log_data(logs[j])
+            log_data_upgraded = get_log_data(logs_upgraded[j])
+            points.append((average_degree, log_data_upgraded._90th_percentile_latency() / log_data._90th_percentile_latency()))
+        plot_line(points, label=f'Drop rate={drop_rate}', marker=markers[i], plotter=ax)
+    ax.grid()
+    if not no_legend:
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.30), ncol=3)
+    ax.set_title(title)
+    if ylim:
+        ax.set_ylim(ylim)
+    return ax
+
+def plot_exp_count_decrease(timer, drop_rates, title, ylim=None, no_legend=True, ax = None):
+    markers = ['o', 'v', '*']
+    for i, drop_rate in enumerate(drop_rates):
+        points = []
+        logs = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+        logs_upgraded = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+        for j in range(len(logs)):
+            average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
+            log_data = get_log_data(logs[j])
+            log_data_upgraded = get_log_data(logs_upgraded[j])
+            points.append((average_degree, log_data_upgraded.sync_pack / log_data.sync_pack))
+        plot_line(points, label=f'Drop rate={drop_rate}', marker=markers[i], plotter=ax)
+    ax.grid()
+    if not no_legend:
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.30), ncol=3)
+    ax.set_title(title)
+    if ylim:
+        ax.set_ylim(ylim)
+    return ax
 
 if __name__ == '__main__':
-    fig, axs = plt.subplots(nrows=3, ncols=1)
-    plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
-    plt.xlabel("Average node degree")
-    plt.ylabel(f"90th percentile latency (ms)")
-    # plt.suptitle('GÉANT Latency vs. Connectivity', fontweight='bold')
-    fig.set_size_inches(6, 6.5)
+    # fig, axs = plt.subplots(nrows=3, ncols=1)
+    # plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    # plt.xlabel("Average hop count")
+    # plt.ylabel(f"90th percentile latency (ms)")
+    # # plt.suptitle('GÉANT Latency vs. Connectivity', fontweight='bold')
+    # fig.set_size_inches(6, 6.5)
 
-    ylim = [0, 10000]
-    plot_connectivity_vs_latency(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='Periodic timer of 0.25 sec',
-        ylim=ylim,
-        ax=axs[0]
-    )
-    plot_connectivity_vs_latency(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='Periodic timer of 1 sec',
-        ylim=ylim,
-        ax=axs[1]
-    )
-    plot_connectivity_vs_latency(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='Periodic timer of 4 sec',
-        ylim=ylim,
-        no_legend=False,
-        ax=axs[2]
-    )
+    # ylim = [0, 10000]
+    # plot_hop_count_vs_latency(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='Periodic timer of 0.25 sec',
+    #     ylim=ylim,
+    #     ax=axs[0]
+    # )
+    # plot_hop_count_vs_latency(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='Periodic timer of 1 sec',
+    #     ylim=ylim,
+    #     ax=axs[1]
+    # )
+    # plot_hop_count_vs_latency(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='Periodic timer of 4 sec',
+    #     ylim=ylim,
+    #     no_legend=False,
+    #     ax=axs[2]
+    # )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/connectivity_vs_latency_exp.pdf')
-    plt.clf()
+    # plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/hop_count_vs_latency.pdf')
+    # plt.clf()
 
-    fig, axs = plt.subplots(nrows=3, ncols=1)
-    plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
-    plt.xlabel("Average node degree")
-    plt.ylabel(f"Total sync interest count")
-    # plt.suptitle('GÉANT total sync interest counts', fontweight='bold')
-    fig.set_size_inches(6, 6.5)
+    # fig, axs = plt.subplots(nrows=3, ncols=1)
+    # plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    # plt.xlabel("Average node degree")
+    # plt.ylabel(f"90th percentile latency (ms)")
+    # # plt.suptitle('GÉANT Latency vs. Connectivity', fontweight='bold')
+    # fig.set_size_inches(6, 6.5)
 
-    plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
-        ylim=[0, 60000],
-        ax=axs[0]
-    )
-    plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
-        ylim=[0, 15000],
-        ax=axs[1]
-    )
-    plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
-        ylim=[0, 6000],
-        ax=axs[2],
-        no_legend=False
-    )
+    # ylim = [0, 10000]
+    # plot_connectivity_vs_latency(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='Periodic timer of 0.25 sec',
+    #     ylim=ylim,
+    #     ax=axs[0]
+    # )
+    # plot_connectivity_vs_latency(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='Periodic timer of 1 sec',
+    #     ylim=ylim,
+    #     ax=axs[1]
+    # )
+    # plot_connectivity_vs_latency(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='Periodic timer of 4 sec',
+    #     ylim=ylim,
+    #     no_legend=False,
+    #     ax=axs[2]
+    # )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/total_packet_count_exp.pdf')
-    plt.clf()
+    # plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/connectivity_vs_latency_exp.pdf')
+    # plt.clf()
 
-    fig, axs = plt.subplots(nrows=3, ncols=1)
-    plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
-    plt.xlabel("Average node degree")
-    plt.ylabel(f"Periodic sync interests fraction")
-    # plt.suptitle('GÉANT periodic sync interests fraction', fontweight='bold')
-    fig.set_size_inches(6, 6.5)
+    # fig, axs = plt.subplots(nrows=3, ncols=1)
+    # plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    # plt.xlabel("Average node degree")
+    # plt.ylabel(f"Total sync interest count")
+    # # plt.suptitle('GÉANT total sync interest counts', fontweight='bold')
+    # fig.set_size_inches(6, 6.5)
 
-    plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
-        ylim=[0, 1],
-        packet_type='periodic',
-        ax=axs[0]
-    )
-    plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
-        ylim=[0, 1],
-        packet_type='periodic',
-        ax=axs[1]
-    )
-    plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
-        ylim=[0, 1],
-        packet_type='periodic',
-        ax=axs[2],
-        no_legend=False
-    )
+    # plot_connectivity_vs_packets(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
+    #     ylim=[0, 60000],
+    #     ax=axs[0]
+    # )
+    # plot_connectivity_vs_packets(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
+    #     ylim=[0, 15000],
+    #     ax=axs[1]
+    # )
+    # plot_connectivity_vs_packets(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
+    #     ylim=[0, 6000],
+    #     ax=axs[2],
+    #     no_legend=False
+    # )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/periodic_fraction_exp.pdf')
-    plt.clf()
+    # plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/total_packet_count_exp.pdf')
+    # plt.clf()
 
-    fig, axs = plt.subplots(nrows=3, ncols=1)
-    plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
-    plt.xlabel("Average node degree")
-    plt.ylabel(f"Suppression sync interests fraction")
-    # plt.suptitle('GÉANT periodic sync interests fraction', fontweight='bold')
-    fig.set_size_inches(6, 6.5)
+    # fig, axs = plt.subplots(nrows=3, ncols=1)
+    # plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    # plt.xlabel("Average node degree")
+    # plt.ylabel(f"Periodic sync interests fraction")
+    # # plt.suptitle('GÉANT periodic sync interests fraction', fontweight='bold')
+    # fig.set_size_inches(6, 6.5)
 
-    plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
-        ylim=[0, 1],
-        packet_type='suppression',
-        ax=axs[0]
-    )
-    plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
-        ylim=[0, 1],
-        packet_type='suppression',
-        ax=axs[1]
-    )
-    plot_connectivity_vs_packets(
-        experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
-        topology_label='GÉANT',
-        drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
-        title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
-        ylim=[0, 1],
-        packet_type='suppression',
-        ax=axs[2],
-        no_legend=False
-    )
+    # plot_connectivity_vs_packets(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
+    #     ylim=[0, 1],
+    #     packet_type='periodic',
+    #     ax=axs[0]
+    # )
+    # plot_connectivity_vs_packets(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
+    #     ylim=[0, 1],
+    #     packet_type='periodic',
+    #     ax=axs[1]
+    # )
+    # plot_connectivity_vs_packets(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
+    #     ylim=[0, 1],
+    #     packet_type='periodic',
+    #     ax=axs[2],
+    #     no_legend=False
+    # )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/suppression_exp.pdf')
-    plt.clf()
+    # plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/periodic_fraction_exp.pdf')
+    # plt.clf()
+
+    # fig, axs = plt.subplots(nrows=3, ncols=1)
+    # plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    # plt.xlabel("Average node degree")
+    # plt.ylabel(f"Suppression sync interests fraction")
+    # # plt.suptitle('GÉANT periodic sync interests fraction', fontweight='bold')
+    # fig.set_size_inches(6, 6.5)
+
+    # plot_connectivity_vs_packets(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_250/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
+    #     ylim=[0, 1],
+    #     packet_type='suppression',
+    #     ax=axs[0]
+    # )
+    # plot_connectivity_vs_packets(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_1000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
+    #     ylim=[0, 1],
+    #     packet_type='suppression',
+    #     ax=axs[1]
+    # )
+    # plot_connectivity_vs_packets(
+    #     experiment_dir='/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_4000/',
+    #     topology_label='GÉANT',
+    #     drop_rates=[0, 0.125, 0.25, 0.375, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
+    #     ylim=[0, 1],
+    #     packet_type='suppression',
+    #     ax=axs[2],
+    #     no_legend=False
+    # )
+
+    # plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/suppression_exp.pdf')
+    # plt.clf()
+
+    # """
+    # This guy is just a one-off
+    # """
+    # fig, axs = plt.subplots(nrows=3, ncols=1)
+    # plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    # plt.xlabel("Average node degree")
+    # plt.ylabel(f"% 90th percentile latency (after/before) exp(suppression)")
+    # fig.set_size_inches(6, 6.5)
+
+    # plot_exp_latency_decrease(
+    #     timer='250',
+    #     drop_rates=[0, 0.25, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
+    #     ylim=[0.8, 1.2],
+    #     ax=axs[0]
+    # )
+    # plot_exp_latency_decrease(
+    #     timer='1000',
+    #     drop_rates=[0, 0.25, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
+    #     ylim=[0.8, 1.2],
+    #     ax=axs[1]
+    # )
+    # plot_exp_latency_decrease(
+    #     timer='4000',
+    #     drop_rates=[0, 0.25, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
+    #     ylim=[0.8, 1.2],
+    #     ax=axs[2],
+    #     no_legend=False
+    # )
+
+    # plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/exp_sup_latency_change.pdf')
+    # plt.clf()
+
+    # fig, axs = plt.subplots(nrows=3, ncols=1)
+    # plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    # plt.xlabel("Average node degree")
+    # plt.ylabel(f"% total packet count (after/before) exp(suppression)")
+    # fig.set_size_inches(6, 6.5)
+
+    # plot_exp_count_decrease(
+    #     timer='250',
+    #     drop_rates=[0, 0.25, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
+    #     ylim=[0.5, 1.2],
+    #     ax=axs[0]
+    # )
+    # plot_exp_count_decrease(
+    #     timer='1000',
+    #     drop_rates=[0, 0.25, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
+    #     ylim=[0.5, 1.2],
+    #     ax=axs[1]
+    # )
+    # plot_exp_count_decrease(
+    #     timer='4000',
+    #     drop_rates=[0, 0.25, 0.5],
+    #     title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
+    #     ylim=[0.5, 1.2],
+    #     ax=axs[2],
+    #     no_legend=False
+    # )
+
+    # plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/exp_sup_count_change.pdf')
+    # plt.clf()
+
+    plot_suppression_timer_vs_packet_count()
+    plot_suppression_timer_vs_latency()
+    plot_latency_vs_packets()

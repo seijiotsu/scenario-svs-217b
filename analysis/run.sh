@@ -12,4 +12,4 @@ python3 ./topologies/build.py
 python3 ./topologies/clean_topologies.py
 
 cd /home/developer/scenario-svs-217b/analysis
-python3 main.py /home/developer/scenario-svs-217b/analysis/config_upgrade_2.json
+python3 main.py /home/developer/scenario-svs-217b/analysis/config_exp_suppression_tuning.json

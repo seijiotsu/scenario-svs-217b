@@ -15,7 +15,8 @@ def load_topology(topology_name):
     return g
 
 if __name__ == '__main__':
-    g = load_topology('geant_large_71')
-    print(f'Average hop count for original GÉANT: {nx.average_shortest_path_length(g):.2f}')
-    g = load_topology('geant_large_44')
-    print(f'Average hop count for tree GÉANT: {nx.average_shortest_path_length(g):.2f}')
+    topologies = [44, 50, 55, 63, 71]
+    for topology in topologies:
+        name = f'geant_large_{topology}'
+        g = load_topology(name)
+        print(f'Average hop count for {name}: {nx.average_shortest_path_length(g):.2f}')

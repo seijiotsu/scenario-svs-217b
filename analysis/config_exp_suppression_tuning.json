@@ -1,0 +1,21 @@
+{
+    "exp_suppression_tuning": {
+        "enable": "true",
+        "metadata": "Tuning the exponential suppression timer.",
+        "topologies": [
+            "geant_large_55"
+        ],
+        "publish_rates": [
+            44000
+        ],
+        "stop_seconds": [
+            500
+        ],
+        "drop_rates": [
+            0.25
+        ],
+        "randrec_tuples": [],
+        "mtu_sizes": [],
+        "subfolder": "suppression_tuning_2400ms"
+    }
+}
