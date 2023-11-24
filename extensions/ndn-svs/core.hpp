@@ -28,6 +28,7 @@
 #include <atomic>
 #include <chrono>
 #include <mutex>
+#include <map>
 
 namespace ndn {
 namespace svs {
@@ -335,6 +336,8 @@ private:
   // State
   VersionVector m_vv;
   mutable std::mutex m_vvMutex;
+  // State update time
+  std::map<NodeID, long> m_vvTime;
   // Aggregates incoming vectors while in suppression state
   std::unique_ptr<VersionVector> m_recordedVv = nullptr;
   mutable std::mutex m_recordedVvMutex;
@@ -386,6 +389,9 @@ private:
 
   //subset
   SubsetSelector m_subsetSelect;
+
+  // Time it takes for a sync interest to do a round trip on the network in milliseconds.
+  int m_networkRTT;
 
   private:
     // set mtu here instead

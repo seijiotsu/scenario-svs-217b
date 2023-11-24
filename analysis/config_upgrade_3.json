@@ -1,0 +1,77 @@
+{
+    "week_8_testing": {
+        "enable": "false",
+        "metadata": "Trying to get stuff such as the periodic timer etc. to work",
+        "topologies": [
+            "geant_large_44",
+            "geant_large_50",
+            "geant_large_55",
+            "geant_large_63",
+            "geant_large_71"
+        ],
+        "publish_rates": [
+            44000
+        ],
+        "stop_seconds": [
+            500
+        ],
+        "drop_rates": [
+            0,
+            0.25,
+            0.5
+        ],
+        "randrec_tuples": [],
+        "mtu_sizes": [],
+        "subfolder": "upgraded3_geant_large_week_8_1000"
+    },
+    "week_8_testing_250": {
+        "enable": "true",
+        "metadata": "Trying to get stuff such as the periodic timer etc. to work",
+        "topologies": [
+            "geant_large_44",
+            "geant_large_50",
+            "geant_large_55",
+            "geant_large_63",
+            "geant_large_71"
+        ],
+        "publish_rates": [
+            44000
+        ],
+        "stop_seconds": [
+            500
+        ],
+        "drop_rates": [
+            0,
+            0.25,
+            0.5
+        ],
+        "randrec_tuples": [],
+        "mtu_sizes": [],
+        "subfolder": "upgraded3_geant_large_week_8_250"
+    },
+    "week_8_testing_4000": {
+        "enable": "false",
+        "metadata": "Trying to get stuff such as the periodic timer etc. to work",
+        "topologies": [
+            "geant_large_44",
+            "geant_large_50",
+            "geant_large_55",
+            "geant_large_63",
+            "geant_large_71"
+        ],
+        "publish_rates": [
+            44000
+        ],
+        "stop_seconds": [
+            500
+        ],
+        "drop_rates": [
+            0,
+            0.25,
+            0.5
+        ],
+        "randrec_tuples": [],
+        "mtu_sizes": [],
+        "subfolder": "upgraded3_geant_large_week_8_4000"
+    }
+}

@@ -1,0 +1,10 @@
+router
+# node	comment	yPos	xPos
+A	NA	0	0
+X	NA	0	0
+B	NA	0	0
+
+link
+# src	dest	bandwidth	metric	delay	queue
+A	X	10Mbps	1 10ms	20
+X	B	10Mbps	1 10ms	20

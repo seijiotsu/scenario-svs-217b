@@ -1,0 +1,23 @@
+{
+    "simple2": {
+        "enable": "true",
+        "metadata": "Testing the hashset",
+        "topologies": [
+            "simple2"
+        ],
+        "publish_rates": [
+            3000
+        ],
+        "stop_seconds": [
+            100
+        ],
+        "drop_rates": [
+            0,
+            0.5,
+            0.99
+        ],
+        "randrec_tuples": [],
+        "mtu_sizes": [],
+        "subfolder": "simple2"
+    }
+}

@@ -24,6 +24,7 @@ namespace ndn {
 namespace svs {
 
 int SVSyncCore::s_instanceCounter = 0;
+bool DEBUG = false;
 
 const NodeID SVSyncCore::EMPTY_NODE_ID;
 
@@ -39,8 +40,8 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
   , m_securityOptions(securityOptions)
   , m_id(nid)
   , m_onUpdate(onUpdate)
-  , m_maxSuppressionTime(2400)
-  , m_periodicSyncTime(1000)
+  , m_maxSuppressionTime(300)
+  , m_periodicSyncTime(250)
   , m_periodicSyncJitter(0.25)
   , m_rng(std::hash<std::string>()("SALT_WHATEVER"+nid.toUri()+"SALT"))
   , m_packetDist(10, 15)
@@ -53,6 +54,8 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
   , m_scheduler(m_face.getIoService())
   , m_instanceId(s_instanceCounter++)
   , m_subsetSelect(numRecent,numRand, 10,nid)
+  , m_vvTime()
+  , m_networkRTT(250)
 {
   // Register sync interest filter
   m_syncRegisteredPrefix =
@@ -138,6 +141,8 @@ SVSyncCore::onSyncInterestValidated(const Interest &interest)
   }
   else
   {
+    if(DEBUG)
+      std::cout << "(Entering suppression state)" << std::endl;
     enterSuppressionState(*vvOther);
     // Check how much time is left on the timer,
     // reset to ~m_intrReplyDist if more than that.
@@ -449,6 +454,7 @@ SVSyncCore::mergeStateVector(const VersionVector &vvOther)
       v.push_back({nidOther, startSeq, seqOther});
 
       m_vv.set(nidOther, seqOther);
+      m_vvTime[nidOther] = ndn::time::steady_clock::now().time_since_epoch().count() / 1e6;
     }
   }
 
@@ -465,9 +471,34 @@ SVSyncCore::mergeStateVector(const VersionVector &vvOther)
     SeqNo seq = entry.second;
     SeqNo seqOther = vvOther.get(nid);
 
+    long currentTime = ndn::time::steady_clock::now().time_since_epoch().count() / 1e6;
+    long delta_ms = currentTime - m_vvTime[nid];
+
+    if(delta_ms < m_networkRTT)
+    {
+      // Consider the case A <-> X <-> B
+      // Assume node A publishes /A::1 at 0ms, and node B publishes /B::1 at 10ms
+      // If node X recieves publish update /A::1 from node A at t=10 ms, and
+      // then receives publish update /B::1 from node B at t=20 ms, then we
+      // would expect a naive node X to enter suppression state since the sync
+      // interest coming from B will not contain /A::1 and appear outdated to node
+      // X, who is in the middle and already knows about /A::1. However, it is
+      // completely possible that node B simply has not received the sync interest
+      // with /A::1 in it yet. So we should ignore any state updates less than a
+      // network RTT old, since in all likelihood B may receive /A::1 just fine and
+      // X's suppression interest would be redundant.
+      if (seqOther < seq) {
+        if(DEBUG)
+          std::cout << m_id << ",Found outdated entry " << nid << "::" << seqOther << " but ignoring since within network RTT (" << delta_ms << " ms out of date)" << std::endl;
+      }
+      continue;
+    }
+
     if (seqOther < seq)
     {
       myVectorNew = true;
+        if(DEBUG)
+          std::cout << m_id << ",Found outdated entry " << nid << "::" << seqOther << " older than RTT (" << delta_ms << " ms out of date)" << std::endl;
       break;
     }
   }
@@ -498,6 +529,7 @@ SVSyncCore::updateSeqNo(const SeqNo& seq, const NodeID& nid)
     std::lock_guard<std::mutex> lock(m_vvMutex);
     prev = m_vv.get(t_nid);
     m_vv.set(t_nid, seq);
+    m_vvTime[t_nid] = ndn::time::steady_clock::now().time_since_epoch().count() / 1e6;
   }
 
   if (seq > prev)
