@@ -45,9 +45,9 @@ The `analysis/logs/upgraded_test_{before,after}` folders were from when I was te
 
 It shouldn't be too difficult to find the corresponding JSON configs for these files.
 
-### extensions/ndn-svs/main.cpp
+### extensions/ndn-svs/core.cpp
 
-I had to make changes to `main.cpp` for each of my different experiments. Since periodic timer duration is specified in this file, I manually changed it before running the corresponding simulation specified in my JSON files. For instance, for the `upgraded_geant_large_week_8_250` simulations I had to change the periodic timer duration to 250 in `main.cpp` then recompile and run `run.sh`. This is not the most elegant way to do it, I know. Maybe one day it can be integrated into the JSON config directly but that would require a lot of changes I wasn't sure how to make.
+I had to make changes to `core.cpp` for each of my different experiments. Since periodic timer duration is specified in this file, I manually changed it before running the corresponding simulation specified in my JSON files. For instance, for the `upgraded_geant_large_week_8_250` simulations I had to change the periodic timer duration to 250 in `core.cpp` then recompile and run `run.sh`. This is not the most elegant way to do it, I know. Maybe one day it can be integrated into the JSON config directly but that would require a lot of changes I wasn't sure how to make.
 
 Also the code for exponential suppression timer and exponential suppression timer + RTT optimization is implemented in this file.
 
