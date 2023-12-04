@@ -41,7 +41,7 @@ SVSyncCore::SVSyncCore(ndn::Face& face,
   , m_id(nid)
   , m_onUpdate(onUpdate)
   , m_maxSuppressionTime(300)
-  , m_periodicSyncTime(250)
+  , m_periodicSyncTime(1000)
   , m_periodicSyncJitter(0.25)
   , m_rng(std::hash<std::string>()("SALT_WHATEVER"+nid.toUri()+"SALT"))
   , m_packetDist(10, 15)

@@ -451,7 +451,6 @@ def plot_drop_rate_vs_latency(experiment_dir, topology_label):
     plt.show()
     plt.clf()
 
-
 def run_full_xiao_plots(experiment_dir, topology_label):
     """
     Generate all plots in the style of Appendix A, B and C from Xiao et al., and
@@ -467,41 +466,65 @@ def run_full_xiao_plots(experiment_dir, topology_label):
     plot_versus_latency(experiment_dir, strategies, topology_label, 'bytes')
     plot_versus_latency(experiment_dir, strategies, topology_label, 'packets')
 
-def plot_exp_latency_decrease(timer, drop_rates, title, ylim=None, no_legend=True, ax = None):
+def plot_exp_latency_decrease(timer, drop_rate, title, ylim=None, no_legend=True, ax = None):
     markers = ['o', 'v', '*']
-    for i, drop_rate in enumerate(drop_rates):
-        points = []
-        logs = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_{timer}/' + f'*-{drop_rate}')
-        logs_upgraded = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/upgraded3_geant_large_week_8_{timer}/' + f'*-{drop_rate}')
-        for j in range(len(logs)):
-            average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
-            log_data = get_log_data(logs[j])
-            log_data_upgraded = get_log_data(logs_upgraded[j])
-            points.append((average_degree, log_data_upgraded._90th_percentile_latency() / log_data._90th_percentile_latency()))
-        plot_line(points, label=f'Drop rate={drop_rate}', marker=markers[i], plotter=ax)
+    points = []
+    logs = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+    logs_upgraded = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+    logs_upgraded3 = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/upgraded3_geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+    for j in range(len(logs)):
+        average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
+        log_data = get_log_data(logs[j])
+        log_data_upgraded = get_log_data(logs_upgraded[j])
+        points.append((average_degree, log_data._90th_percentile_latency()))
+    plot_line(points, label=f'Uniform suppression timer', marker=markers[0], plotter=ax)
+    points = []
+    for j in range(len(logs)):
+        average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
+        log_data = get_log_data(logs[j])
+        log_data_upgraded = get_log_data(logs_upgraded[j])
+        points.append((average_degree, log_data_upgraded._90th_percentile_latency()))
+    plot_line(points, label=f'Exponential suppression timer', marker=markers[1], plotter=ax)
+    points = []
+    for j in range(len(logs)):
+        average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
+        log_data_upgraded3 = get_log_data(logs_upgraded3[j])
+        points.append((average_degree, log_data_upgraded3._90th_percentile_latency()))
+    plot_line(points, label=f'Exp. timer and RTT optimization', marker=markers[1], plotter=ax)
     ax.grid()
     if not no_legend:
-        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.30), ncol=3)
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.30), ncol=2)
     ax.set_title(title)
     if ylim:
         ax.set_ylim(ylim)
     return ax
 
-def plot_exp_count_decrease(timer, drop_rates, title, ylim=None, no_legend=True, ax = None):
+def plot_exp_count_decrease(timer, drop_rate, title, ylim=None, no_legend=True, ax = None):
     markers = ['o', 'v', '*']
-    for i, drop_rate in enumerate(drop_rates):
-        points = []
-        logs = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_{timer}/' + f'*-{drop_rate}')
-        logs_upgraded = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/upgraded3_geant_large_week_8_{timer}/' + f'*-{drop_rate}')
-        for j in range(len(logs)):
-            average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
-            log_data = get_log_data(logs[j])
-            log_data_upgraded = get_log_data(logs_upgraded[j])
-            points.append((average_degree, log_data_upgraded.sync_pack / log_data.sync_pack))
-        plot_line(points, label=f'Drop rate={drop_rate}', marker=markers[i], plotter=ax)
+    points = []
+    logs = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+    logs_upgraded = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/upgraded_geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+    logs_upgraded3 = glob.glob(f'/home/developer/scenario-svs-217b/analysis/logs/upgraded3_geant_large_week_8_{timer}/' + f'*-{drop_rate}')
+    for j in range(len(logs)):
+        average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
+        log_data = get_log_data(logs[j])
+        points.append((average_degree, log_data.sync_pack))
+    plot_line(points, label=f'Uniform suppression timer', marker=markers[0], plotter=ax)
+    points = []
+    for j in range(len(logs)):
+        average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
+        log_data_upgraded = get_log_data(logs_upgraded[j])
+        points.append((average_degree, log_data_upgraded.sync_pack))
+    plot_line(points, label=f'Exponential suppression timer', marker=markers[1], plotter=ax)
+    points = []
+    for j in range(len(logs)):
+        average_degree = 2 * int(str(logs[j]).split('large_')[2].split('-')[0]) / 45
+        log_data_upgraded3 = get_log_data(logs_upgraded3[j])
+        points.append((average_degree, log_data_upgraded3.sync_pack))
+    plot_line(points, label=f'Exp. timer and RTT optimization', marker=markers[2], plotter=ax)
     ax.grid()
     if not no_legend:
-        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.30), ncol=3)
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.30), ncol=2)
     ax.set_title(title)
     if ylim:
         ax.set_ylim(ylim)
@@ -702,65 +725,132 @@ if __name__ == '__main__':
     fig, axs = plt.subplots(nrows=3, ncols=1)
     plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
     plt.xlabel("Average node degree")
-    plt.ylabel(f"% 90th percentile latency (after/before) exp(suppression) and rtt optimization")
+    plt.ylabel(f"% 90th percentile latency")
     fig.set_size_inches(6, 6.5)
 
     plot_exp_latency_decrease(
         timer='250',
-        drop_rates=[0, 0.25, 0.5],
+        drop_rate=0.25,
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
-        ylim=[0.8, 2],
+        ylim=[0, 1500],
         ax=axs[0]
     )
     plot_exp_latency_decrease(
         timer='1000',
-        drop_rates=[0, 0.25, 0.5],
+        drop_rate=0.25,
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
-        ylim=[0.8, 2],
+        ylim=[0, 3000],
         ax=axs[1]
     )
     plot_exp_latency_decrease(
         timer='4000',
-        drop_rates=[0, 0.25, 0.5],
+        drop_rate=0.25,
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
-        ylim=[0.8, 2],
+        ylim=[0, 5000],
         ax=axs[2],
         no_legend=False
     )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/exp_sup_latency_change_with_rtt.pdf')
+    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/change_latency_with_exp.pdf')
     plt.clf()
 
     fig, axs = plt.subplots(nrows=3, ncols=1)
     plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
     plt.xlabel("Average node degree")
-    plt.ylabel(f"% total packet count (after/before) exp(suppression) and rtt optimization")
+    plt.ylabel(f"Total packet count")
     fig.set_size_inches(6, 6.5)
 
     plot_exp_count_decrease(
         timer='250',
-        drop_rates=[0, 0.25, 0.5],
+        drop_rate=0.25,
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
-        ylim=[0.5, 1.2],
+        ylim=[0, 45000],
         ax=axs[0]
     )
     plot_exp_count_decrease(
         timer='1000',
-        drop_rates=[0, 0.25, 0.5],
+        drop_rate=0.25,
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
-        ylim=[0.5, 1.2],
+        ylim=[0, 8000],
         ax=axs[1]
     )
     plot_exp_count_decrease(
         timer='4000',
-        drop_rates=[0, 0.25, 0.5],
+        drop_rate=0.25,
         title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
-        ylim=[0.5, 1.2],
+        ylim=[0, 4000],
         ax=axs[2],
         no_legend=False
     )
 
-    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/exp_sup_count_change_with_rtt.pdf')
+    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/change_count_with_exp.pdf')
+    plt.clf()
+
+    """
+    This guy is just a one-off
+    """
+    fig, axs = plt.subplots(nrows=3, ncols=1)
+    plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    plt.xlabel("Average node degree")
+    plt.ylabel(f"% 90th percentile latency")
+    fig.set_size_inches(6, 6.5)
+
+    plot_exp_latency_decrease(
+        timer='250',
+        drop_rate=0,
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
+        ylim=[0, 1500],
+        ax=axs[0]
+    )
+    plot_exp_latency_decrease(
+        timer='1000',
+        drop_rate=0,
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
+        ylim=[0, 3000],
+        ax=axs[1]
+    )
+    plot_exp_latency_decrease(
+        timer='4000',
+        drop_rate=0,
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
+        ylim=[0, 5000],
+        ax=axs[2],
+        no_legend=False
+    )
+
+    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/change_latency_with_exp_no_drop.pdf')
+    plt.clf()
+
+    fig, axs = plt.subplots(nrows=3, ncols=1)
+    plt.subplots_adjust(hspace=0.4, wspace=0.3, top=0.9, bottom=0.155)
+    plt.xlabel("Average node degree")
+    plt.ylabel(f"Total packet count")
+    fig.set_size_inches(6, 6.5)
+
+    plot_exp_count_decrease(
+        timer='250',
+        drop_rate=0,
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 0.25 sec)',
+        ylim=[0, 30000],
+        ax=axs[0]
+    )
+    plot_exp_count_decrease(
+        timer='1000',
+        drop_rate=0,
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 1 sec)',
+        ylim=[0, 2500],
+        ax=axs[1]
+    )
+    plot_exp_count_decrease(
+        timer='4000',
+        drop_rate=0,
+        title='GÉANT (Publish rate of 1/sec, Periodic timer of 4 sec)',
+        ylim=[0, 1000],
+        ax=axs[2],
+        no_legend=False
+    )
+
+    plt.savefig('/home/developer/scenario-svs-217b/analysis/logs/change_count_with_exp_no_drop.pdf')
     plt.clf()
 
     plot_suppression_timer_vs_packet_count()
